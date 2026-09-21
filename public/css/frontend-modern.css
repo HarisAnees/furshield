@@ -372,10 +372,66 @@ p {
 .fe-portal-emergency {
     color: #d1d5db;
     letter-spacing: 0.04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
 }
 
 .fe-portal-emergency strong {
     color: var(--emerald-light);
+}
+
+.fe-portal-label-short {
+    display: none;
+}
+
+.fe-portal-label-full {
+    display: inline;
+}
+
+.fe-portal-role-badge {
+    background: rgba(16, 185, 129, 0.18);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    color: #10b981;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    display: inline-block;
+}
+
+.fe-portal-username {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.fe-portal-signout-btn {
+    background: rgba(239, 68, 68, 0.12) !important;
+    border: 1px solid rgba(239, 68, 68, 0.28) !important;
+    color: #f87171 !important;
+    font-size: 10.5px !important;
+    font-weight: 600 !important;
+    padding: 2px 7px !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    transition: all 0.2s ease !important;
+    font-family: inherit !important;
+    line-height: 1.2 !important;
+}
+
+.fe-portal-signout-btn:hover {
+    background: rgba(239, 68, 68, 0.25) !important;
+    color: #ffffff !important;
+    border-color: #ef4444 !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -1393,33 +1449,84 @@ textarea.form-control {
     }
 }
 
+@media (max-width: 1024px) {
+    .fe-portal-emergency {
+        display: none !important;
+    }
+}
+
 @media (max-width: 768px) {
     .fe-hide-mobile {
         display: none !important;
     }
     .fe-portal-bar {
-        font-size: 10px;
-        padding: 6px 12px;
+        font-size: 11px;
+        padding: 6px 14px;
         gap: 8px;
     }
     .fe-portal-emergency {
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        padding: 2px 8px;
-        border-radius: 9999px;
-        background: rgba(239, 68, 68, 0.15);
-        border: 1px solid rgba(239, 68, 68, 0.35);
-        color: #fca5a5;
-        font-size: 10.5px;
-        text-decoration: none;
+        display: none !important;
     }
-    .fe-portal-emergency .fe-emergency-label {
-        display: none;
+    .fe-portal-bar-left {
+        gap: 8px;
+        flex-shrink: 1;
+        min-width: 0;
     }
     .fe-portal-bar-right {
-        gap: 10px !important;
+        gap: 8px !important;
+        flex-shrink: 0;
     }
+}
+
+@media (max-width: 640px) {
+    .fe-portal-bar {
+        padding: 6px 12px;
+        font-size: 10.5px;
+        gap: 6px;
+    }
+    .fe-portal-tag {
+        display: none !important;
+    }
+    .fe-portal-label-full {
+        display: none !important;
+    }
+    .fe-portal-label-short {
+        display: inline !important;
+    }
+    .fe-portal-username {
+        max-width: 75px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .fe-portal-bar-left {
+        gap: 6px;
+    }
+    .fe-portal-link {
+        padding: 3px 7px;
+        font-size: 10.5px;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 380px) {
+    .fe-portal-username {
+        display: none !important;
+    }
+    .fe-portal-bar {
+        padding: 5px 8px;
+    }
+    .fe-portal-link {
+        padding: 2px 5px;
+        font-size: 9.5px;
+    }
+    .fe-portal-signout-btn {
+        padding: 2px 5px !important;
+        font-size: 9.5px !important;
+    }
+}
     .fe-services-grid {
         grid-template-columns: 1fr;
     }

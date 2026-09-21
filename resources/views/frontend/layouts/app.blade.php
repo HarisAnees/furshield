@@ -37,19 +37,23 @@
             @auth
                 @if(Auth::user()->role === 'admin')
                     <a href="{{ route('admin.dashboard') }}" class="fe-portal-link {{ request()->is('admin*') ? 'active' : '' }}" style="color: #10b981; font-weight: 700;">
-                        🛡️ Platform Admin Panel
+                        <span class="fe-portal-label-full">🛡️ Platform Admin Panel</span>
+                        <span class="fe-portal-label-short">🛡️ Admin</span>
                     </a>
                 @elseif(Auth::user()->role === 'vet')
                     <a href="{{ route('vet.dashboard') }}" class="fe-portal-link {{ request()->is('vet*') ? 'active' : '' }}" style="color: #10b981; font-weight: 700;">
-                        🩺 Clinician Portal
+                        <span class="fe-portal-label-full">🩺 Clinician Portal</span>
+                        <span class="fe-portal-label-short">🩺 Vet</span>
                     </a>
                 @elseif(Auth::user()->role === 'shelter')
                     <a href="{{ route('shelter.dashboard') }}" class="fe-portal-link {{ request()->is('shelter*') ? 'active' : '' }}" style="color: #10b981; font-weight: 700;">
-                        🏡 Shelter Portal
+                        <span class="fe-portal-label-full">🏡 Shelter Portal</span>
+                        <span class="fe-portal-label-short">🏡 Shelter</span>
                     </a>
                 @else
                     <a href="{{ route('owner.dashboard') }}" class="fe-portal-link {{ request()->is('owner*') ? 'active' : '' }}" style="color: #10b981; font-weight: 700;">
-                        🐾 Pet Owner Portal
+                        <span class="fe-portal-label-full">🐾 Pet Owner Portal</span>
+                        <span class="fe-portal-label-short">🐾 Owner</span>
                     </a>
                 @endif
             @else
@@ -66,13 +70,13 @@
             </a>
             @auth
                 <div class="fe-portal-auth-status" style="display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: var(--font-mono, monospace);">
-                    <span style="background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; padding: 2px 7px; border-radius: 4px; font-weight: 700; text-transform: uppercase;">
+                    <span class="fe-portal-role-badge">
                         {{ Auth::user()->role }}
                     </span>
-                    <span style="color: #ffffff;">{{ Auth::user()->name }}</span>
+                    <span class="fe-portal-username">{{ Auth::user()->name }}</span>
                     <form action="{{ route('logout') }}" method="POST" style="display: inline; margin: 0; padding: 0;">
                         @csrf
-                        <button type="submit" style="background: none; border: none; color: #ef4444; font-size: 11px; cursor: pointer; text-decoration: underline; font-family: inherit;">Sign Out</button>
+                        <button type="submit" class="fe-portal-signout-btn">Sign Out</button>
                     </form>
                 </div>
             @else
