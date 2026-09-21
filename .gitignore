@@ -8,7 +8,14 @@
 /storage/*.key
 /storage/app/private/*
 /storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+!/storage/framework/cache/.gitkeep
+!/storage/framework/sessions/.gitkeep
+!/storage/framework/views/.gitkeep
 /bootstrap/cache/*
+!/bootstrap/cache/.gitkeep
 database/*.sqlite
 *.zip
 .vscode/

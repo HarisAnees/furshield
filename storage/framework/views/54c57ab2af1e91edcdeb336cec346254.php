@@ -1,2 +1,0 @@
-<?php echo $__env->make('frontend.partials.pagination', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-<?php /**PATH D:\pat\FurShield\resources\views/vendor/pagination/tailwind.blade.php ENDPATH**/ ?>
