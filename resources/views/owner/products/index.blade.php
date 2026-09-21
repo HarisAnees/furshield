@@ -12,7 +12,7 @@
         <span style="font-size: 12px; color: #64748b;">{{ $products->count() }} Products Available</span>
     </div>
     <div class="owner-subpage-body">
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px;">
+        <div class="owner-cards-grid">
             @forelse($products as $prod)
                 <div style="border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #ffffff; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
                     <div style="height: 150px; background: #f8fafc; overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative;">
@@ -75,7 +75,7 @@
     <div class="owner-subpage-body no-padding" style="padding: 0;">
         <div style="display: flex; flex-direction: column;">
             @forelse($myOrders as $ord)
-                <div style="padding: 16px 24px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                <div class="owner-activity-row" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
                     <div>
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <strong style="font-size: 13.5px; color: #0f172a; font-family: monospace;">#ORD-{{ str_pad($ord->id, 5, '0', STR_PAD_LEFT) }}</strong>

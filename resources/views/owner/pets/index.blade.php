@@ -14,7 +14,7 @@
         </button>
     </div>
     <div class="owner-subpage-body">
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+        <div class="owner-cards-grid">
             @forelse($pets as $pet)
                 <div style="border: 1px solid var(--border); border-radius: 12px; padding: 18px; background: #ffffff; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
                     <div style="display: flex; gap: 14px; margin-bottom: 14px;">
@@ -49,7 +49,7 @@
                         @endif
                     </div>
 
-                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-top: 1px solid #f1f5f9; padding-top: 12px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-top: 1px solid #f1f5f9; padding-top: 12px; flex-wrap: wrap;">
                         <a href="{{ route('owner.appointments') }}" class="owner-btn owner-btn-secondary" style="font-size: 11px; padding: 5px 10px;">
                             Book Vet Visit
                         </a>
@@ -87,7 +87,7 @@
                     <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">Pet Name *</label>
                     <input type="text" name="name" required style="width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px;" placeholder="e.g. Max">
                 </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                <div class="owner-form-row">
                     <div>
                         <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">Species *</label>
                         <select name="species" required style="width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px;">

@@ -11,7 +11,7 @@
         <span style="font-size: 12px; color: #64748b;">{{ $articles->count() }} Articles Published</span>
     </div>
     <div class="owner-subpage-body">
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
+        <div class="owner-cards-grid">
             @forelse($articles as $art)
                 <div style="border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #ffffff; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
                     <div style="height: 140px; background: #f1f5f9; overflow: hidden; position: relative;">

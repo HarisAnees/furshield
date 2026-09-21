@@ -3,23 +3,23 @@
 @section('title', 'Pet Owner Dashboard — FurShield')
 
 @section('content')
-<div style="display: flex; flex-direction: column; gap: 32px;">
+<div style="display: flex; flex-direction: column; gap: 24px;">
 
     <!-- 1. Editorial Welcome Header -->
-    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
+    <div class="owner-welcome-header">
         <div>
             <div style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 6px;">
                 Pet Owner Dashboard / Overview
             </div>
-            <h1 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; color: var(--ink);">
+            <h1 class="owner-welcome-title">
                 Good Day, <em>{{ auth()->user()->name ?? 'Sarah' }}</em>
             </h1>
-            <p style="color: var(--muted); font-size: 0.95rem; margin-top: 4px;">
+            <p style="color: var(--muted); font-size: 0.92rem; margin-top: 4px;">
                 Here is the verified health status, appointments and care logs for your pets.
             </p>
         </div>
 
-        <div style="display: flex; gap: 10px;">
+        <div class="owner-welcome-actions">
             <a href="{{ route('owner.appointments') }}" class="owner-btn owner-btn-primary">
                 <span>+ Book Vet Visit</span>
             </a>
@@ -30,54 +30,54 @@
     </div>
 
     <!-- 2. Minimalist Stat Cards Grid -->
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+    <div class="owner-stats-grid">
         
         <!-- Stat 1: Registered Pets -->
-        <div class="owner-subpage-card" style="padding: 24px;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
+        <div class="owner-subpage-card" style="padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px;">
                 <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);">
                     01 / My Pets
                 </span>
-                <span style="font-size: 14px;">🐾</span>
+                <span style="font-size: 16px;">🐾</span>
             </div>
-            <div style="font-family: var(--font-mono); font-size: 2.6rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 12px;">
+            <div style="font-family: var(--font-mono); font-size: 2.4rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 10px;">
                 {{ $stats['pets'] ?? 2 }}
             </div>
-            <a href="{{ route('owner.pets') }}" style="font-size: 12.5px; font-weight: 600; color: var(--emerald-dark); display: inline-flex; align-items: center; gap: 4px;">
+            <a href="{{ route('owner.pets') }}" style="font-size: 12px; font-weight: 600; color: var(--emerald-dark); display: inline-flex; align-items: center; gap: 4px;">
                 <span>View registered companions</span>
                 <span>→</span>
             </a>
         </div>
 
         <!-- Stat 2: Upcoming Appointments -->
-        <div class="owner-subpage-card" style="padding: 24px;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
+        <div class="owner-subpage-card" style="padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px;">
                 <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);">
                     02 / Appointments
                 </span>
-                <span style="font-size: 14px;">📅</span>
+                <span style="font-size: 16px;">📅</span>
             </div>
-            <div style="font-family: var(--font-mono); font-size: 2.6rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 12px;">
+            <div style="font-family: var(--font-mono); font-size: 2.4rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 10px;">
                 {{ $stats['upcoming_appointments'] ?? 1 }}
             </div>
-            <a href="{{ route('owner.appointments') }}" style="font-size: 12.5px; font-weight: 600; color: var(--emerald-dark); display: inline-flex; align-items: center; gap: 4px;">
+            <a href="{{ route('owner.appointments') }}" style="font-size: 12px; font-weight: 600; color: var(--emerald-dark); display: inline-flex; align-items: center; gap: 4px;">
                 <span>Consultation schedule</span>
                 <span>→</span>
             </a>
         </div>
 
         <!-- Stat 3: Care Protocols -->
-        <div class="owner-subpage-card" style="padding: 24px;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
+        <div class="owner-subpage-card" style="padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px;">
                 <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);">
                     03 / Reminders
                 </span>
-                <span style="font-size: 14px;">🔔</span>
+                <span style="font-size: 16px;">🔔</span>
             </div>
-            <div style="font-family: var(--font-mono); font-size: 2.6rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 12px;">
+            <div style="font-family: var(--font-mono); font-size: 2.4rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 10px;">
                 3
             </div>
-            <a href="{{ route('owner.pets') }}" style="font-size: 12.5px; font-weight: 600; color: var(--emerald-dark); display: inline-flex; align-items: center; gap: 4px;">
+            <a href="{{ route('owner.pets') }}" style="font-size: 12px; font-weight: 600; color: var(--emerald-dark); display: inline-flex; align-items: center; gap: 4px;">
                 <span>Pending vaccinations</span>
                 <span>→</span>
             </a>
@@ -86,7 +86,7 @@
     </div>
 
     <!-- 3. Lower Two-Column Section (Activity Feed + Ecosystem Guidance) -->
-    <div style="display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 24px; align-items: start;">
+    <div class="owner-dashboard-split">
         
         <!-- Left: Recent Activity Feed -->
         <div class="owner-subpage-card">
@@ -98,9 +98,9 @@
             </div>
 
             <div style="display: flex; flex-direction: column;">
-                <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 28px; border-bottom: 1px solid var(--border);">
+                <div class="owner-activity-row">
                     <div style="display: flex; align-items: center; gap: 14px;">
-                        <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--paper-subtle); display: flex; align-items: center; justify-content: center; font-size: 16px;">
+                        <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--paper-subtle); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
                             📅
                         </div>
                         <div>
@@ -108,12 +108,12 @@
                             <span style="font-size: 12px; color: var(--muted);">Buddy • Routine Preventive Checkup</span>
                         </div>
                     </div>
-                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald-dark); font-weight: 600;">ACTIVE</span>
+                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald-dark); font-weight: 600; flex-shrink: 0;">ACTIVE</span>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 28px; border-bottom: 1px solid var(--border);">
+                <div class="owner-activity-row">
                     <div style="display: flex; align-items: center; gap: 14px;">
-                        <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--paper-subtle); display: flex; align-items: center; justify-content: center; font-size: 16px;">
+                        <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--paper-subtle); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
                             🩺
                         </div>
                         <div>
@@ -121,12 +121,12 @@
                             <span style="font-size: 12px; color: var(--muted);">Luna • Annual Rabies Booster</span>
                         </div>
                     </div>
-                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--muted);">DOCUMENTED</span>
+                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--muted); flex-shrink: 0;">DOCUMENTED</span>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 28px;">
+                <div class="owner-activity-row">
                     <div style="display: flex; align-items: center; gap: 14px;">
-                        <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--paper-subtle); display: flex; align-items: center; justify-content: center; font-size: 16px;">
+                        <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--paper-subtle); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
                             📦
                         </div>
                         <div>
@@ -134,13 +134,13 @@
                             <span style="font-size: 12px; color: var(--muted);">Premium Dog Food • Standard Delivery</span>
                         </div>
                     </div>
-                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald-dark); font-weight: 600;">DELIVERED</span>
+                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald-dark); font-weight: 600; flex-shrink: 0;">DELIVERED</span>
                 </div>
             </div>
         </div>
 
         <!-- Right: Ecosystem Summary Card -->
-        <div class="owner-subpage-card" style="padding: 28px; background: var(--white); display: flex; flex-direction: column; justify-content: space-between; gap: 20px;">
+        <div class="owner-subpage-card" style="padding: 24px; background: var(--white); display: flex; flex-direction: column; justify-content: space-between; gap: 18px;">
             <div>
                 <div style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--emerald); margin-bottom: 8px;">
                     CLINICAL ARCHITECTURE

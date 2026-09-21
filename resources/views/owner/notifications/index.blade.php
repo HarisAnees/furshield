@@ -12,12 +12,12 @@
     <div class="owner-subpage-body no-padding" style="padding: 0;">
         <div style="display: flex; flex-direction: column;">
             <!-- Notification Item 1 -->
-            <div style="padding: 18px 24px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: flex-start; gap: 14px; background: #f8fafc;">
+            <div class="owner-activity-row" style="display: flex; align-items: flex-start; gap: 14px; background: #f8fafc;">
                 <div style="width: 38px; height: 38px; border-radius: 50%; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
                     💉
                 </div>
-                <div style="flex: 1;">
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="flex: 1; min-width: 0;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
                         <strong style="font-size: 13.5px; color: #0f172a;">Vaccination Reminder: Buddy's Rabies Booster Due</strong>
                         <span style="font-size: 11px; color: #94a3b8;">Tomorrow</span>
                     </div>
@@ -28,12 +28,12 @@
             </div>
 
             <!-- Notification Item 2 -->
-            <div style="padding: 18px 24px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: flex-start; gap: 14px;">
+            <div class="owner-activity-row" style="display: flex; align-items: flex-start; gap: 14px;">
                 <div style="width: 38px; height: 38px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
                     📅
                 </div>
-                <div style="flex: 1;">
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="flex: 1; min-width: 0;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
                         <strong style="font-size: 13.5px; color: #0f172a;">Appointment Confirmed with Dr. Emily Carter</strong>
                         <span style="font-size: 11px; color: #94a3b8;">2 days ago</span>
                     </div>
@@ -44,12 +44,12 @@
             </div>
 
             <!-- Notification Item 3 -->
-            <div style="padding: 18px 24px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: flex-start; gap: 14px;">
+            <div class="owner-activity-row" style="display: flex; align-items: flex-start; gap: 14px;">
                 <div style="width: 38px; height: 38px; border-radius: 50%; background: #fef3c7; color: #b45309; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
                     📦
                 </div>
-                <div style="flex: 1;">
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="flex: 1; min-width: 0;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
                         <strong style="font-size: 13.5px; color: #0f172a;">Marketplace Order Processed</strong>
                         <span style="font-size: 11px; color: #94a3b8;">3 days ago</span>
                     </div>

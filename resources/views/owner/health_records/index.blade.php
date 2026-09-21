@@ -6,23 +6,23 @@
 <div style="padding: 1.5rem 0;">
 
     <!-- Panel 12 Header Row -->
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
-            <h1 style="font-size: 2.25rem; font-weight: 800; color: #0f172a; margin-bottom: 0.25rem; letter-spacing: -0.02em;">
+            <h1 class="owner-welcome-title">
                 Health Records
             </h1>
-            <p style="color: #64748b; font-size: 1rem;">
+            <p style="color: #64748b; font-size: 0.95rem; margin-top: 4px;">
                 Track your pet's medical history and keep them healthy.
             </p>
         </div>
 
-        <button type="button" onclick="alert('Record form dialog simulated.');" class="fe-btn-pill" style="padding: 0.75rem 1.6rem; font-size: 0.95rem;">
+        <button type="button" onclick="alert('Record form dialog simulated.');" class="owner-btn owner-btn-primary">
             + Add Record
         </button>
     </div>
 
     <!-- Panel 12: List of Health Record Rows matching screenshot -->
-    <div class="fe-card" style="padding: 0; overflow: hidden;">
+    <div class="owner-subpage-card" style="padding: 0; overflow: hidden;">
         @php
             $panelRows = [
                 ['type' => 'Vaccination', 'title' => 'Rabies Vaccine', 'date' => 'Apr 15, 2025', 'icon' => '🐾', 'color' => '#0284c7', 'bg' => '#e0f2fe'],
@@ -33,26 +33,26 @@
         @endphp
 
         @foreach($panelRows as $row)
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; border-bottom: 1px solid #f1f5f9; gap: 1rem;">
-                <div style="display: flex; align-items: center; gap: 1.25rem;">
+            <div class="owner-activity-row">
+                <div style="display: flex; align-items: center; gap: 1rem;">
                     <!-- Circular Icon -->
-                    <div style="width: 48px; height: 48px; border-radius: 50%; background: {{ $row['bg'] }}; color: {{ $row['color'] }}; font-size: 1.35rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <div style="width: 44px; height: 44px; border-radius: 50%; background: {{ $row['bg'] }}; color: {{ $row['color'] }}; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                         {{ $row['icon'] }}
                     </div>
 
                     <div>
-                        <strong style="display: block; font-size: 1.05rem; color: #0f172a; margin-bottom: 0.2rem;">
+                        <strong style="display: block; font-size: 1rem; color: #0f172a; margin-bottom: 2px;">
                             {{ $row['type'] }}
                         </strong>
-                        <span style="font-size: 0.88rem; color: #64748b;">
+                        <span style="font-size: 0.84rem; color: #64748b;">
                             {{ $row['title'] }} • {{ $row['date'] }}
                         </span>
                     </div>
                 </div>
 
-                <div style="display: flex; align-items: center; gap: 1.5rem;">
+                <div style="display: flex; align-items: center; gap: 1rem; flex-shrink: 0;">
                     <!-- Completed Badge -->
-                    <span class="fe-badge fe-badge-green" style="font-size: 0.82rem; padding: 0.35rem 0.85rem;">
+                    <span style="font-size: 0.78rem; font-weight: 700; padding: 4px 10px; border-radius: 9999px; background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0;">
                         Completed
                     </span>
                     <span style="color: #94a3b8; font-size: 1.1rem; cursor: pointer;">›</span>

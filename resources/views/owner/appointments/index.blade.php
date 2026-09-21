@@ -3,7 +3,7 @@
 @section('title', 'My Appointments')
 
 @section('content')
-<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px; align-items: start;">
+<div class="owner-appointments-split">
     <!-- Appointments List -->
     <div class="owner-subpage-card">
         <div class="owner-subpage-header">
@@ -17,7 +17,7 @@
         <div class="owner-subpage-body no-padding" style="padding: 0;">
             <div style="display: flex; flex-direction: column;">
                 @forelse($appointments as $apt)
-                    <div style="padding: 18px 24px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+                    <div class="owner-appointment-item">
                         <div style="display: flex; align-items: center; gap: 14px;">
                             <div style="width: 46px; height: 46px; border-radius: 10px; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
                                 🐾
