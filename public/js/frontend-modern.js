@@ -604,7 +604,71 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     initStickyFooter();
+
+    // ==========================================================================
+    // 18. Global Cart Authentication Interceptor & Modal
+    // ==========================================================================
+    window.openAuthCartModal = function() {
+        const modal = document.getElementById('authRequiredCartModal');
+        if (!modal) return;
+
+        const returnUrl = encodeURIComponent(window.location.href);
+        const loginBtn = document.getElementById('authModalLoginBtn');
+        const registerBtn = document.getElementById('authModalRegisterBtn');
+
+        if (loginBtn && window.FurShieldLoginUrl) {
+            loginBtn.href = window.FurShieldLoginUrl + '?redirect=' + returnUrl;
+        }
+        if (registerBtn && window.FurShieldRegisterUrl) {
+            registerBtn.href = window.FurShieldRegisterUrl + '?redirect=' + returnUrl;
+        }
+
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeAuthCartModal = function() {
+        const modal = document.getElementById('authRequiredCartModal');
+        if (!modal) return;
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    };
+
+    // Intercept clicks on any Add to Cart button when user is logged out
+    document.addEventListener('click', function(e) {
+        const target = e.target;
+        const cartBtn = target.closest('.fe-parallax-cart-btn, .card-btn.primary, [data-action="add-to-cart"]');
+
+        if (cartBtn) {
+            if (window.FurShieldAuth === false || window.FurShieldAuth === 'false') {
+                e.preventDefault();
+                e.stopPropagation();
+                window.openAuthCartModal();
+                return false;
+            }
+        }
+    }, true);
+
+    // Intercept form submissions targeting cart.add when logged out
+    document.addEventListener('submit', function(e) {
+        const form = e.target;
+        if (form && (form.classList.contains('fe-parallax-cart-form') || form.classList.contains('card-actions') || (form.action && form.action.includes('/cart/add/')))) {
+            if (window.FurShieldAuth === false || window.FurShieldAuth === 'false') {
+                e.preventDefault();
+                e.stopPropagation();
+                window.openAuthCartModal();
+                return false;
+            }
+        }
+    }, true);
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('authRequiredCartModal');
+            if (modal && modal.style.display === 'flex') {
+                window.closeAuthCartModal();
+            }
+        }
+    });
 });
-
-
-

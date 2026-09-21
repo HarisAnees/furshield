@@ -25,19 +25,27 @@ class AdminAuthController extends Controller
         };
     }
 
-    public function showLogin()
+    public function showLogin(Request $request)
     {
         if (Auth::check()) {
             return redirect()->route($this->dashboardRouteFor(Auth::user()));
         }
 
+        if ($request->has('redirect')) {
+            session()->put('url.intended', $request->input('redirect'));
+        }
+
         return view('auth.auth_switch', ['mode' => 'signin']);
     }
 
-    public function showRegister()
+    public function showRegister(Request $request)
     {
         if (Auth::check()) {
             return redirect()->route($this->dashboardRouteFor(Auth::user()));
+        }
+
+        if ($request->has('redirect')) {
+            session()->put('url.intended', $request->input('redirect'));
         }
 
         return view('auth.auth_switch', ['mode' => 'signup']);

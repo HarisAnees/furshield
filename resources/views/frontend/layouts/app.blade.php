@@ -441,15 +441,83 @@
     </footer>
 </div>
 
+<!-- Global Auth Required for Cart Modal -->
+<div id="authRequiredCartModal" class="fe-modal-overlay" onclick="if(event.target===this) closeAuthCartModal()">
+    <div class="fe-modal-card fe-auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+        <div class="fe-auth-modal-banner">
+            <div class="fe-auth-modal-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span class="fe-auth-modal-lock-badge" aria-hidden="true">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                </span>
+            </div>
+            <button type="button" onclick="closeAuthCartModal()" class="fe-modal-close fe-auth-modal-close" aria-label="Close modal">&times;</button>
+        </div>
+
+        <div class="fe-modal-body fe-auth-modal-body">
+            <div class="fe-auth-modal-badge">
+                <span class="care-badge-dot"></span>
+                <span>AUTHENTICATION REQUIRED</span>
+            </div>
+
+            <h3 id="authModalTitle" class="fe-auth-modal-title">Sign In to Add to Cart</h3>
+            
+            <p class="fe-auth-modal-desc">
+                Please sign in to your FurShield account to add clinical pet care items to your shopping cart, access order tracking, and manage wellness deliveries.
+            </p>
+
+            <div class="fe-auth-modal-perks">
+                <div class="fe-auth-perk-item">
+                    <div class="fe-auth-perk-icon">✓</div>
+                    <div class="fe-auth-perk-text">
+                        <strong>Verified Clinical Essentials</strong>
+                        <span>Veterinary-approved diets, supplements, and supplies</span>
+                    </div>
+                </div>
+                <div class="fe-auth-perk-item">
+                    <div class="fe-auth-perk-icon">✓</div>
+                    <div class="fe-auth-perk-text">
+                        <strong>Saved Pet Profiles & Addresses</strong>
+                        <span>Fast, seamless checkout tailored to your companions</span>
+                    </div>
+                </div>
+                <div class="fe-auth-perk-item">
+                    <div class="fe-auth-perk-icon">✓</div>
+                    <div class="fe-auth-perk-text">
+                        <strong>Prescription & Order Tracking</strong>
+                        <span>Instant digital invoices and shipment status alerts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fe-modal-footer fe-auth-modal-footer">
+            <button type="button" onclick="closeAuthCartModal()" class="btn btn-secondary fe-auth-btn-ghost">Continue Browsing</button>
+            <a id="authModalRegisterBtn" href="{{ route('register') }}" class="btn btn-secondary fe-auth-btn-register">Create Account</a>
+            <a id="authModalLoginBtn" href="{{ route('login') }}" class="btn btn-primary fe-auth-btn-login">Sign In &rarr;</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.FurShieldAuth = @json(auth()->check());
+    window.FurShieldLoginUrl = "{{ route('login') }}";
+    window.FurShieldRegisterUrl = "{{ route('register') }}";
+</script>
+
 <!-- GSAP & ScrollTrigger -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <!-- Swiper Slider JS (Cards Effect) -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<!-- Frontend Interaction Script -->
-<script src="/js/frontend-modern.js"></script>
 
     <!-- AI-Powered Pet Care Chatbot Widget (SRS Page 8: Optional Feature) -->
     <div id="aiChatWrapper">

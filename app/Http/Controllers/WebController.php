@@ -278,6 +278,19 @@ class WebController extends Controller
 
     public function addToCart(Request $request, Product $product)
     {
+        if (!auth()->check()) {
+            if ($request->wantsJson() || $request->ajax()) {
+                return response()->json([
+                    'success' => false,
+                    'requires_auth' => true,
+                    'message' => 'Please sign in to your FurShield account to add items to your cart.',
+                    'login_url' => route('login', ['redirect' => url()->previous() ?: route('products.index')])
+                ], 401);
+            }
+            return redirect()->route('login', ['redirect' => url()->previous() ?: route('products.index')])
+                ->with('info', 'Please sign in to your FurShield account to add products to your cart.');
+        }
+
         $quantity = max(1, (int)$request->input('quantity', 1));
         $cart = session()->get('cart', []);
 
