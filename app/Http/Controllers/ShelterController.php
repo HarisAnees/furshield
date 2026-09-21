@@ -1,0 +1,1 @@
+<?php namespace App\Http\Controllers; use App\Models\Shelter; use Illuminate\Http\Request; class ShelterController extends Controller { public function index(Request $r){return Shelter::query()->when($r->search,fn($q,$s)=>$q->where('name','like','%'.$s.'%'))->paginate(20);} }

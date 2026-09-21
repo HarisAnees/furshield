@@ -1,0 +1,1 @@
+<?php use Illuminate\Foundation\Testing\RefreshDatabase; uses(RefreshDatabase::class); it('public endpoints respond',function(){ $this->getJson('/api/v1/products')->assertOk(); $this->getJson('/api/v1/vets')->assertOk(); $this->getJson('/api/v1/adoptions')->assertOk(); $this->getJson('/api/v1/care-content')->assertOk(); });

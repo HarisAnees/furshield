@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration { public function up(): void { Schema::create('insurance_policies', function(Blueprint $t){$t->id();$t->foreignId('pet_id')->constrained('pets')->cascadeOnDelete();$t->string('provider');$t->string('policy_number');$t->date('start_date')->nullable();$t->date('end_date')->nullable();$t->text('coverage_summary')->nullable();$t->json('claims')->nullable();$t->string('document_path')->nullable();$t->timestamps();$t->index(['pet_id','policy_number']);}); } public function down(): void {Schema::dropIfExists('insurance_policies');}};

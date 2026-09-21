@@ -1,0 +1,3 @@
+<?php
+use Illuminate\Database\Migrations\Migration; use Illuminate\Database\Schema\Blueprint; use Illuminate\Support\Facades\Schema;
+return new class extends Migration { public function up(): void { Schema::create('reminders', function(Blueprint $t){$t->id();$t->foreignId('user_id')->constrained()->cascadeOnDelete();$t->foreignId('pet_id')->nullable()->constrained()->nullOnDelete();$t->string('type');$t->string('title');$t->text('notes')->nullable();$t->dateTime('due_at');$t->dateTime('completed_at')->nullable();$t->boolean('is_active')->default(true);$t->timestamps();$t->index(['user_id','due_at']);}); } public function down(): void {Schema::dropIfExists('reminders');}};

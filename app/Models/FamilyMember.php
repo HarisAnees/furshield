@@ -1,0 +1,1 @@
+<?php namespace App\Models; use Illuminate\Database\Eloquent\Model; class FamilyMember extends Model { protected $fillable=['owner_id','member_id','status','permissions']; public function owner(){return $this->belongsTo(User::class,'owner_id');} public function member(){return $this->belongsTo(User::class,'member_id');} }

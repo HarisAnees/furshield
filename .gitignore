@@ -1,0 +1,15 @@
+/vendor
+/node_modules
+/FurShield
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+/storage/*.key
+/storage/app/private/*
+/storage/logs/*
+/bootstrap/cache/*
+database/*.sqlite
+*.zip
+.vscode/
+.idea/

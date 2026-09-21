@@ -1,0 +1,1 @@
+<?php namespace App\Http\Requests; use Illuminate\Foundation\Http\FormRequest; class FamilyMemberRequest extends FormRequest { public function authorize(): bool{return $this->user()!==null;} public function rules(): array{return ['member_id'=>'required|exists:users,id|different:'.$this->user()->id,'permissions'=>'required|in:view,manage'];} }

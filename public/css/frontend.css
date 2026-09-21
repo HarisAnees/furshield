@@ -1,0 +1,608 @@
+/* FurShield Master Frontend Design System - Matching the 16 Reference Panels */
+
+:root {
+    --fe-primary: #059669;
+    --fe-primary-hover: #047857;
+    --fe-primary-light: #ecfdf5;
+    --fe-primary-mint: #e8f7f0;
+    --fe-dark-navy: #092c28;
+    --fe-slate-900: #0f172a;
+    --fe-slate-800: #1e293b;
+    --fe-slate-700: #334155;
+    --fe-slate-600: #475569;
+    --fe-slate-500: #64748b;
+    --fe-slate-400: #94a3b8;
+    --fe-slate-200: #e2e8f0;
+    --fe-slate-100: #f1f5f9;
+    --fe-slate-50: #f8fafc;
+    --fe-font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --fe-radius-pill: 9999px;
+    --fe-radius-lg: 24px;
+    --fe-radius-md: 16px;
+    --fe-radius-sm: 10px;
+    --fe-shadow-sm: 0 2px 8px -1px rgba(0, 0, 0, 0.04);
+    --fe-shadow-md: 0 6px 20px -2px rgba(0, 0, 0, 0.05);
+    --fe-shadow-lg: 0 14px 35px -4px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fe-font);
+    background-color: #f8fafc;
+    color: var(--fe-slate-800);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Layout Containers */
+.fe-site-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.fe-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Portal Switcher Bar at Top */
+.fe-portal-bar {
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 6px 24px;
+    font-size: 11.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1e293b;
+}
+
+.fe-portal-bar a {
+    transition: color 0.15s ease;
+}
+
+.fe-portal-bar a:hover {
+    color: #ffffff;
+}
+
+/* Main Site Navbar (Matching Panel 1-15 Top Header) */
+.fe-navbar {
+    background: #ffffff;
+    border-bottom: 1px solid #eef2f6;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 12px -2px rgba(15, 23, 42, 0.04);
+}
+
+.fe-navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 74px;
+}
+
+/* Brand Logo Lockup */
+.fe-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.fe-brand-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fe-brand-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--fe-slate-900);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+/* Center Nav Menu */
+.fe-nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 2.25rem;
+}
+
+.fe-nav-link {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--fe-slate-700);
+    transition: color 0.15s ease;
+    padding: 0.5rem 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.fe-nav-link:hover,
+.fe-nav-link.active {
+    color: var(--fe-primary);
+}
+
+.fe-nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2.5px;
+    background: var(--fe-primary);
+    border-radius: 2px;
+}
+
+/* Nav Right Actions (Search, Calendar, Cart, Login Pill) */
+.fe-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.fe-nav-icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fe-slate-700);
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    font-size: 1rem;
+    position: relative;
+    transition: all 0.15s ease;
+}
+
+.fe-nav-icon-btn:hover {
+    background: #ecfdf5;
+    color: var(--fe-primary);
+    border-color: #a7f3d0;
+}
+
+.fe-cart-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #ef4444;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Green Pill Buttons (Matching Design Reference) */
+.fe-btn-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--fe-primary);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.65rem 1.4rem;
+    border-radius: var(--fe-radius-pill);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px -1px rgba(5, 150, 105, 0.25);
+    text-decoration: none;
+}
+
+.fe-btn-pill:hover {
+    background: var(--fe-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px -1px rgba(5, 150, 105, 0.35);
+}
+
+.fe-btn-pill-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--fe-slate-700);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.6rem 1.35rem;
+    border-radius: var(--fe-radius-pill);
+    border: 1.5px solid var(--fe-slate-200);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.fe-btn-pill-outline:hover {
+    border-color: var(--fe-primary);
+    color: var(--fe-primary);
+    background: #ecfdf5;
+}
+
+/* Mint Organic Hero Card (Panel 1, 4, 5) */
+.fe-hero-card {
+    background: var(--fe-primary-mint);
+    border-radius: 28px;
+    padding: 3rem 3.5rem;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: 2.5rem;
+    box-shadow: 0 10px 30px -5px rgba(5, 150, 105, 0.08);
+}
+
+.fe-hero-title {
+    font-size: 2.85rem;
+    font-weight: 800;
+    color: var(--fe-slate-900);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+}
+
+.fe-hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--fe-slate-600);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 520px;
+}
+
+.fe-hero-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.fe-hero-watch-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--fe-slate-700);
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: color 0.15s ease;
+}
+
+.fe-hero-watch-link:hover {
+    color: var(--fe-primary);
+}
+
+.fe-hero-img-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.fe-hero-img-wrap img {
+    border-radius: 20px;
+    max-height: 320px;
+    object-fit: cover;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 4 Quick Categories Bar (Panel 1) */
+.fe-quick-categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 3.5rem;
+}
+
+.fe-cat-card {
+    background: #ffffff;
+    border-radius: var(--fe-radius-md);
+    padding: 1.5rem;
+    border: 1px solid #eef2f6;
+    box-shadow: var(--fe-shadow-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.fe-cat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--fe-shadow-md);
+    border-color: #a7f3d0;
+}
+
+.fe-cat-icon-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #ecfdf5;
+    color: var(--fe-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.fe-cat-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--fe-slate-900);
+    margin-bottom: 0.25rem;
+}
+
+.fe-cat-desc {
+    font-size: 0.82rem;
+    color: var(--fe-slate-500);
+}
+
+/* Our Services Section (Panel 1) */
+.fe-services-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+}
+
+.fe-service-box {
+    background: #ffffff;
+    border-radius: var(--fe-radius-md);
+    padding: 1.75rem 1.5rem;
+    border: 1px solid #eef2f6;
+    box-shadow: var(--fe-shadow-sm);
+    transition: all 0.2s ease;
+}
+
+.fe-service-box:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--fe-shadow-md);
+}
+
+.fe-service-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    margin-bottom: 1.25rem;
+}
+
+.fe-service-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--fe-slate-900);
+    margin-bottom: 0.4rem;
+}
+
+.fe-service-desc {
+    font-size: 0.85rem;
+    color: var(--fe-slate-500);
+    line-height: 1.5;
+}
+
+/* White Standard Cards */
+.fe-card {
+    background: #ffffff;
+    border-radius: var(--fe-radius-md);
+    border: 1px solid #eef2f6;
+    box-shadow: var(--fe-shadow-sm);
+    padding: 1.75rem;
+    transition: all 0.2s ease;
+}
+
+.fe-card:hover {
+    box-shadow: var(--fe-shadow-md);
+}
+
+/* Badges */
+.fe-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--fe-radius-pill);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.fe-badge-green {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.fe-badge-blue {
+    background: #e0f2fe;
+    color: #0284c7;
+}
+
+.fe-badge-amber {
+    background: #fffbeb;
+    color: #b45309;
+}
+
+/* Forms and Inputs */
+.fe-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    border: 1.5px solid var(--fe-slate-200);
+    font-family: inherit;
+    font-size: 0.92rem;
+    color: var(--fe-slate-900);
+    background: #ffffff;
+    transition: all 0.15s ease;
+}
+
+.fe-input:focus {
+    outline: none;
+    border-color: var(--fe-primary);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+}
+
+/* Panel 16 Footer: Dark Deep Navy Card */
+.fe-footer-card {
+    background: var(--fe-dark-navy);
+    border-radius: 28px;
+    color: #ffffff;
+    padding: 3rem;
+    margin: 3rem auto 2rem;
+    max-width: 1200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.fe-footer-top {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2.5rem;
+    align-items: center;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2.5rem;
+}
+
+.fe-footer-newsletter-wrap {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 440px;
+    margin-top: 1.25rem;
+}
+
+.fe-footer-input {
+    flex: 1;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--fe-radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.fe-footer-input::placeholder {
+    color: #94a3b8;
+}
+
+.fe-footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fe-footer-col h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1.25rem;
+}
+
+.fe-footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.fe-footer-col a {
+    color: #94a3b8;
+    font-size: 0.88rem;
+    transition: color 0.15s ease;
+}
+
+.fe-footer-col a:hover {
+    color: #10b981;
+}
+
+.fe-footer-social-icons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.fe-footer-social-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: background 0.15s ease;
+}
+
+.fe-footer-social-btn:hover {
+    background: var(--fe-primary);
+}
+
+.fe-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    font-size: 0.82rem;
+    color: #64748b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .fe-hero-card {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+        text-align: center;
+    }
+    .fe-quick-categories,
+    .fe-services-row {
+        grid-template-columns: 1fr 1fr;
+    }
+    .fe-nav-menu {
+        display: none;
+    }
+    .fe-footer-top {
+        grid-template-columns: 1fr;
+    }
+    .fe-footer-links-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,1 @@
+<?php namespace App\Models; use Illuminate\Database\Eloquent\Model; class VetAvailability extends Model { protected $fillable=['vet_id','day_of_week','start_time','end_time','is_active']; protected $casts=['is_active'=>'boolean']; public function vet(){return $this->belongsTo(Vet::class);} }
