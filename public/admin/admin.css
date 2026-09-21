@@ -1822,22 +1822,9 @@ img {
     opacity: 1;
 }
 
-/* Floating label badge */
+/* Floating label badge - disabled to prevent obstructing UI elements */
 .image-label-badge {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(13, 15, 17, 0.9);
-    color: var(--white);
-    font-family: var(--font-mono);
-    font-size: 10px;
-    padding: 6px 14px;
-    border-radius: var(--radius-pill);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    z-index: 100;
-    pointer-events: none;
-    border: 1px solid var(--border-dark);
+    display: none !important;
 }
 
 /* Responsive */

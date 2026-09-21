@@ -187,10 +187,6 @@
     </div>
 </div>
 
-<div class="image-label-badge">
-    Pet Owner Portal • FurShield
-</div>
-
 <script>
 function openOwnerModal(id) { 
     const el = document.getElementById(id);

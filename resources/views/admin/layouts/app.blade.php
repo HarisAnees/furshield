@@ -245,10 +245,6 @@
     </div>
 </div>
 
-<div class="image-label-badge">
-    Admin Console • FurShield
-</div>
-
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <script src="/admin/admin.js"></script>
 </body>
