@@ -658,127 +658,249 @@
             pointer-events: all;
         }
 
+        /* Mobile-only components hidden on desktop */
+        .mobile-auth-switch {
+            display: none;
+        }
+
+        .mobile-switch-prompt {
+            display: none;
+        }
+
         /* -------------------------------------------------------------
-           Responsive Queries
+           Mobile & Tablet Responsive Layout (<= 920px)
            ------------------------------------------------------------- */
         @media (max-width: 920px) {
             body {
-                padding: 16px;
+                padding: 16px 12px 32px;
                 align-items: flex-start;
+                min-height: 100vh;
             }
 
             .auth-top-bar {
                 position: static;
-                margin-bottom: 16px;
+                margin-bottom: 20px;
+                width: 100%;
+                max-width: 520px;
             }
 
             .auth-container {
-                min-height: 840px;
-                height: auto;
-                max-width: 580px;
+                position: relative !important;
+                min-height: auto !important;
+                height: auto !important;
+                max-width: 520px !important;
+                width: 100% !important;
+                border-radius: 24px !important;
+                padding: 24px 20px 28px !important;
+                overflow: visible !important;
+                margin: 0 auto !important;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(16, 185, 129, 0.25) !important;
+            }
+
+            /* Disable sliding circular overlay completely on mobile/tablet to avoid intercepting touches */
+            .auth-container:before {
+                display: none !important;
+            }
+
+            /* Hide sliding desktop panels */
+            .panels-container {
+                display: none !important;
+            }
+
+            /* Segmented switcher visible on mobile */
+            .mobile-auth-switch {
+                display: flex !important;
+                background: var(--gray-100);
+                border: 1.5px solid var(--gray-200);
+                border-radius: 9999px;
+                padding: 4px;
+                margin-bottom: 20px;
+                gap: 4px;
+                width: 100%;
+                position: relative;
+                z-index: 15;
+            }
+
+            .mobile-switch-tab {
+                flex: 1;
+                border: none;
+                background: transparent;
+                padding: 10px 14px;
+                border-radius: 9999px;
+                font-family: 'Manrope', sans-serif;
+                font-weight: 700;
+                font-size: 0.88rem;
+                color: var(--gray-600);
+                cursor: pointer;
+                transition: all 0.25s ease;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                touch-action: manipulation;
+            }
+
+            .mobile-switch-tab.active {
+                background: var(--obsidian);
+                color: #ffffff;
+                box-shadow: 0 4px 12px rgba(9, 26, 19, 0.25);
+            }
+
+            .mobile-switch-tab.active i {
+                color: var(--emerald);
+            }
+
+            /* Mobile In-form helper prompt */
+            .mobile-switch-prompt {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                margin-top: 14px;
+                font-size: 0.82rem;
+                color: var(--gray-600);
+                width: 100%;
+                max-width: 380px;
+                text-align: center;
+                flex-wrap: wrap;
+            }
+
+            .mobile-switch-link {
+                background: none;
+                border: none;
+                color: var(--emerald);
+                font-weight: 700;
+                font-size: 0.82rem;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                padding: 2px 4px;
+                transition: color 0.2s ease;
+            }
+
+            .mobile-switch-link:hover {
+                color: var(--emerald-hover);
+                text-decoration: underline;
+            }
+
+            /* Form container and placement */
+            .forms-container {
+                position: static !important;
+                width: 100% !important;
+                height: auto !important;
             }
 
             .signin-signup {
-                width: 100%;
-                top: 80%;
-                left: 50%;
-                transform: translate(-50%, -100%);
-                transition: 1s 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+                position: static !important;
+                width: 100% !important;
+                transform: none !important;
+                left: auto !important;
+                top: auto !important;
+                display: block !important;
+                z-index: 10 !important;
             }
 
-            .auth-container.sign-up-mode .signin-signup {
-                left: 50%;
-                top: 25%;
-                transform: translate(-50%, 0);
+            form {
+                position: static !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                transform: none !important;
+                padding: 0 !important;
+                grid-column: auto !important;
+                grid-row: auto !important;
+                transition: opacity 0.25s ease !important;
             }
 
-            .panels-container {
-                grid-template-columns: 1fr;
-                grid-template-rows: 1fr 2fr 1fr;
+            /* Display correct form based on mode */
+            .auth-container:not(.sign-up-mode) form.sign-in-form {
+                display: flex !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
             }
 
-            .panel {
-                flex-direction: row;
-                justify-content: space-around;
-                align-items: center;
-                padding: 2rem 8%;
-                grid-column: 1 / 2;
+            .auth-container:not(.sign-up-mode) form.sign-up-form {
+                display: none !important;
             }
 
-            .right-panel {
-                grid-row: 3 / 4;
+            .auth-container.sign-up-mode form.sign-up-form {
+                display: flex !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
             }
 
-            .left-panel {
-                grid-row: 1 / 2;
+            .auth-container.sign-up-mode form.sign-in-form {
+                display: none !important;
             }
 
-            .panel .content {
-                padding-right: 0;
-                transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-                transition-delay: 0.6s;
+            .input-field {
+                max-width: 100% !important;
+                grid-template-columns: 44px 1fr 40px !important;
             }
 
-            .panel h3 {
-                font-size: 1.5rem;
+            .input-field.two-col {
+                grid-template-columns: 44px 1fr !important;
             }
 
-            .panel p {
-                font-size: 0.8rem;
-                padding: 0.3rem 0 0.8rem;
+            .input-field input {
+                font-size: 16px !important; /* Prevents auto-zoom in iOS Safari */
             }
 
-            .btn-transparent {
-                width: 120px;
-                height: 38px;
-                font-size: 0.75rem;
+            .btn-submit {
+                max-width: 100% !important;
+                height: 50px !important;
             }
 
-            .auth-container:before {
-                width: 1600px;
-                height: 1600px;
-                transform: translateX(-50%);
-                left: 30%;
-                bottom: 68%;
-                right: initial;
-                top: initial;
-                transition: 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+            .role-selector-wrap {
+                max-width: 100% !important;
             }
 
-            .auth-container.sign-up-mode:before {
-                transform: translate(-50%, 100%);
-                bottom: 32%;
-                right: initial;
+            .role-pills {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 6px;
             }
 
-            .auth-container.sign-up-mode .left-panel .content {
-                transform: translateY(-300px);
+            .role-pill-label {
+                padding: 8px 4px;
+                min-height: 44px;
+                font-size: 0.72rem;
             }
 
-            .auth-container.sign-up-mode .right-panel .content {
-                transform: translateY(0px);
+            .form-helpers {
+                max-width: 100% !important;
             }
 
-            .right-panel .content {
-                transform: translateY(300px);
+            .demo-bar {
+                max-width: 100% !important;
+            }
+
+            .demo-pills {
+                flex-wrap: wrap;
             }
         }
 
-        @media (max-width: 580px) {
-            form {
-                padding: 1.5rem 1.25rem;
+        @media (max-width: 480px) {
+            .auth-container {
+                padding: 20px 16px 24px !important;
+                border-radius: 20px !important;
             }
 
             .form-title {
-                font-size: 1.65rem;
+                font-size: 1.6rem !important;
             }
 
-            .panel .content {
-                padding: 0.5rem;
+            .form-subtitle {
+                font-size: 0.78rem !important;
             }
 
-            .auth-container {
-                min-height: 880px;
+            .role-pills {
+                grid-template-columns: 1fr 1fr 1fr !important;
+                gap: 4px;
+            }
+
+            .role-pill-label {
+                font-size: 0.68rem;
+                padding: 6px 2px;
             }
         }
     </style>
@@ -816,6 +938,16 @@
         $isSignUpMode = (old('_form') === 'signup' || (isset($mode) && $mode === 'signup') || session('mode') === 'signup');
     @endphp
     <div class="auth-container {{ $isSignUpMode ? 'sign-up-mode' : '' }}" id="authContainer">
+        <!-- Mobile Segmented Auth Tab Switcher (Visible on Mobile & Tablet <= 920px) -->
+        <div class="mobile-auth-switch" id="mobileAuthSwitch">
+            <button type="button" class="mobile-switch-tab {{ !$isSignUpMode ? 'active' : '' }}" id="mobileSignInTab" onclick="switchToSignIn()">
+                <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+            <button type="button" class="mobile-switch-tab {{ $isSignUpMode ? 'active' : '' }}" id="mobileSignUpTab" onclick="switchToSignUp()">
+                <i class="fas fa-user-plus"></i> Create Account
+            </button>
+        </div>
+
         <div class="forms-container">
             <div class="signin-signup">
 
@@ -904,6 +1036,15 @@
                             </button>
                         </div>
                     </div>
+
+                    <!-- Mobile In-Form Switch Helper -->
+                    <div class="mobile-switch-prompt">
+                        <span>Don't have an account yet?</span>
+                        <button type="button" class="mobile-switch-link" onclick="switchToSignUp()">
+                            <span>Create account here</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
                 </form>
 
                 <!-- 2. SIGN UP FORM -->
@@ -987,6 +1128,15 @@
                         <span>Register Account</span>
                         <i class="fas fa-arrow-right"></i>
                     </button>
+
+                    <!-- Mobile In-Form Switch Helper -->
+                    <div class="mobile-switch-prompt">
+                        <span>Already have an account?</span>
+                        <button type="button" class="mobile-switch-link" onclick="switchToSignIn()">
+                            <i class="fas fa-arrow-left"></i>
+                            <span>Sign in here</span>
+                        </button>
+                    </div>
                 </form>
 
             </div>
@@ -1047,32 +1197,54 @@
         const authContainer = document.getElementById('authContainer');
         const signUpBtn = document.getElementById('signUpBtn');
         const signInBtn = document.getElementById('signInBtn');
+        const mobileSignInTab = document.getElementById('mobileSignInTab');
+        const mobileSignUpTab = document.getElementById('mobileSignUpTab');
 
-        // Sliding Panel Toggle
-        if (signUpBtn && authContainer) {
-            signUpBtn.addEventListener('click', () => {
-                authContainer.classList.add('sign-up-mode');
-                if (window.history.pushState) {
-                    window.history.pushState({ mode: 'signup' }, '', '{{ route('register') }}');
-                }
-            });
+        function switchToSignUp() {
+            if (!authContainer) return;
+            authContainer.classList.add('sign-up-mode');
+            if (mobileSignInTab) mobileSignInTab.classList.remove('active');
+            if (mobileSignUpTab) mobileSignUpTab.classList.add('active');
+            if (window.history.pushState) {
+                window.history.pushState({ mode: 'signup' }, '', '{{ route('register') }}');
+            }
+            if (window.innerWidth <= 920) {
+                authContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
-        if (signInBtn && authContainer) {
-            signInBtn.addEventListener('click', () => {
-                authContainer.classList.remove('sign-up-mode');
-                if (window.history.pushState) {
-                    window.history.pushState({ mode: 'signin' }, '', '{{ route('login') }}');
-                }
-            });
+        function switchToSignIn() {
+            if (!authContainer) return;
+            authContainer.classList.remove('sign-up-mode');
+            if (mobileSignInTab) mobileSignInTab.classList.add('active');
+            if (mobileSignUpTab) mobileSignUpTab.classList.remove('active');
+            if (window.history.pushState) {
+                window.history.pushState({ mode: 'signin' }, '', '{{ route('login') }}');
+            }
+            if (window.innerWidth <= 920) {
+                authContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Desktop Sliding Panel Buttons
+        if (signUpBtn) {
+            signUpBtn.addEventListener('click', switchToSignUp);
+        }
+
+        if (signInBtn) {
+            signInBtn.addEventListener('click', switchToSignIn);
         }
 
         // Handle Browser Back / Forward
         window.addEventListener('popstate', (e) => {
             if (window.location.pathname.includes('register')) {
                 authContainer.classList.add('sign-up-mode');
+                if (mobileSignInTab) mobileSignInTab.classList.remove('active');
+                if (mobileSignUpTab) mobileSignUpTab.classList.add('active');
             } else {
                 authContainer.classList.remove('sign-up-mode');
+                if (mobileSignInTab) mobileSignInTab.classList.add('active');
+                if (mobileSignUpTab) mobileSignUpTab.classList.remove('active');
             }
         });
 
