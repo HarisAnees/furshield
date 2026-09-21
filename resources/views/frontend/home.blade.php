@@ -91,6 +91,11 @@
                         </p>
                     </div>
 
+                    <!-- Floating Companion Pet Visual Breaking Out of Container -->
+                    <div class="fe-mugsy-hero-pet-wrap">
+                        <img src="/images/hero-dog-2.png" alt="FurShield Verified Companion Dog" role="presentation" class="fe-mugsy-hero-pet" draggable="false" />
+                    </div>
+
                     <div class="fe-mugsy-stat-card">
                         <div class="fe-mugsy-stat-flex">
                             <span class="fe-mugsy-stat-number font-anton">98%</span>
@@ -139,9 +144,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Floating Companion Pet Visual Breaking Out of Container -->
-            <img src="/images/hero-dog-2.png" alt="FurShield Verified Companion Dog" role="presentation" class="fe-mugsy-hero-pet" draggable="false" />
         </header>
     </div>
 </section>
