@@ -56,17 +56,28 @@
                      tabindex="0"
                      onclick="openArticleModal('{{ addslashes($art['title']) }}', '{{ addslashes($art['cat']) }}', '{{ $art['time'] }}')">
                     
-                    <div class="care-poster-badge">
-                        <span class="care-badge-dot"></span>
-                        <span>{{ strtoupper($art['cat']) }}</span>
+                    <div class="care-poster-top-bar">
+                        <div class="care-poster-badge">
+                            <span class="care-badge-dot"></span>
+                            <span>{{ strtoupper($art['cat']) }}</span>
+                        </div>
+                        <div class="care-poster-index-badge">
+                            <span>GUIDE {{ sprintf('%02d', $loop->iteration) }} / {{ sprintf('%02d', count($panelArticles)) }}</span>
+                        </div>
                     </div>
 
-                    <img src="{{ $art['img'] }}" alt="{{ $art['title'] }}" class="care-poster-img">
+                    <img src="{{ $art['img'] }}" alt="{{ $art['title'] }}" class="care-poster-img" loading="lazy">
 
                     <div class="care-poster-description">
+                        <div class="care-poster-meta-pill">
+                            <span class="care-poster-verified-icon">🐾</span>
+                            <span>Practitioner Verified</span>
+                            <span class="care-poster-meta-sep">•</span>
+                            <span class="care-description__year">{{ $art['time'] }}</span>
+                        </div>
+
                         <h3 class="care-description__title">
                             {{ $art['title'] }}
-                            <span class="care-description__year">({{ $art['time'] }})</span>
                         </h3>
 
                         <div class="care-description__genres">

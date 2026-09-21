@@ -229,38 +229,71 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
+        const stackContainer = document.querySelector('.care-poster-stack');
         const careCards = gsap.utils.toArray('.care-poster-card-wrapper');
 
-        // Only apply card pinning on desktop screens (>768px) to prevent mobile scroll locks
-        if (careCards.length > 0 && window.innerWidth > 768) {
-            const stickDistance = 120;
-            const lastCard = careCards[careCards.length - 1];
+        if (stackContainer && careCards.length > 0) {
+            let mm = gsap.matchMedia();
 
-            const lastCardST = ScrollTrigger.create({
-                trigger: lastCard,
-                start: 'bottom bottom'
-            });
+            // Desktop & Laptops: Smooth scrubbed stacking with progressive scale, dimming & lift
+            mm.add("(min-width: 769px)", () => {
+                careCards.forEach((card, index) => {
+                    const cardInner = card.querySelector('.care-poster-card-contents');
+                    card.style.zIndex = index + 1;
 
-            careCards.forEach((card, index) => {
-                card.style.zIndex = index + 1;
+                    // As subsequent cards scroll up over this card, scale down and subtly dim
+                    if (index < careCards.length - 1 && cardInner) {
+                        const nextCard = careCards[index + 1];
 
-                ScrollTrigger.create({
-                    trigger: card,
-                    start: 'center center',
-                    end: () => (lastCardST && lastCardST.start ? (lastCardST.start + stickDistance) : 'bottom bottom'),
-                    pin: true,
-                    pinSpacing: false,
-                    ease: 'none',
-                    toggleActions: 'restart none none reverse'
+                        gsap.to(cardInner, {
+                            scale: Math.max(0.88, 0.94 - (index * 0.015)),
+                            filter: 'brightness(0.72)',
+                            y: -12,
+                            ease: 'power1.out',
+                            scrollTrigger: {
+                                id: 'care-card-stack-' + index,
+                                trigger: nextCard,
+                                start: 'top 80%',
+                                end: 'top 24%',
+                                scrub: 0.35,
+                                invalidateOnRefresh: true
+                            }
+                        });
+                    }
                 });
             });
 
+            // Mobile viewports (<= 768px): clean sequential scroll reveal
+            mm.add("(max-width: 768px)", () => {
+                careCards.forEach((card, index) => {
+                    const cardInner = card.querySelector('.care-poster-card-contents');
+                    if (cardInner) {
+                        gsap.fromTo(cardInner,
+                            { y: 32, opacity: 0.88 },
+                            {
+                                y: 0,
+                                opacity: 1,
+                                duration: 0.55,
+                                ease: 'power2.out',
+                                scrollTrigger: {
+                                    id: 'care-card-mob-' + index,
+                                    trigger: card,
+                                    start: 'top 88%',
+                                    toggleActions: 'play none none reverse'
+                                }
+                            }
+                        );
+                    }
+                });
+            });
+
+            // Refresh ScrollTrigger calculations after initial paint and asset loads
             window.addEventListener('load', () => {
                 ScrollTrigger.refresh();
             });
             setTimeout(() => {
                 ScrollTrigger.refresh();
-            }, 300);
+            }, 250);
         }
     }
 

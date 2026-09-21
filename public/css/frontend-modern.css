@@ -3729,7 +3729,7 @@ textarea.form-control {
 .care-poster-stack {
     position: relative;
     width: 100%;
-    max-width: 460px;
+    max-width: 680px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -3741,65 +3741,67 @@ textarea.form-control {
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 80px;
-    margin-bottom: 80px;
-    will-change: transform;
-    transition: box-shadow 300ms ease;
-    position: relative;
+    position: sticky;
+    top: clamp(96px, 14vh, 130px);
+    margin-bottom: clamp(140px, 22vh, 220px);
+    will-change: transform, filter;
+    perspective: 1200px;
 }
 
-.care-poster-card-wrapper:nth-of-type(2n) {
-    transform: rotate(3deg);
-}
-
-.care-poster-card-wrapper:nth-of-type(2n+1) {
-    transform: rotate(-3deg);
-}
-
-.care-poster-card-wrapper:nth-of-type(3n) {
-    transform: rotate(0deg);
+.care-poster-card-wrapper:last-child {
+    margin-bottom: 60px;
 }
 
 .care-poster-card-contents {
     position: relative;
-    width: 340px;
-    max-width: calc(100vw - 32px);
-    height: 540px;
+    width: 100%;
+    max-width: 540px;
+    height: clamp(480px, 60vh, 560px);
     background-color: #091a13;
-    border-radius: 1.5rem;
+    border-radius: 1.75rem;
     overflow: hidden;
-    border: 2px solid rgba(16, 185, 129, 0.28);
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 16px 36px, rgba(16, 185, 129, 0.18) 0px 0px 24px;
+    border: 1.5px solid rgba(16, 185, 129, 0.32);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 24px rgba(16, 185, 129, 0.15);
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    transition: box-shadow 350ms ease, border-color 350ms ease;
+    transform-origin: center top;
+    will-change: transform, filter, opacity;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
     user-select: none;
     box-sizing: border-box;
 }
 
 .care-poster-card-wrapper:hover .care-poster-card-contents {
     border-color: #10b981;
-    box-shadow: 0 24px 50px rgba(9, 26, 19, 0.5), 0 0 35px rgba(16, 185, 129, 0.35);
+    box-shadow: 0 26px 56px rgba(9, 26, 19, 0.6), 0 0 35px rgba(16, 185, 129, 0.35);
 }
 
-.care-poster-badge {
+.care-poster-top-bar {
     position: absolute;
     top: 1.25rem;
     left: 1.25rem;
+    right: 1.25rem;
     z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.care-poster-badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(9, 26, 19, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(16, 185, 129, 0.4);
-    padding: 4px 10px;
+    background: rgba(9, 26, 19, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(16, 185, 129, 0.45);
+    padding: 5px 12px;
     border-radius: 9999px;
     color: #ffffff;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.06em;
 }
@@ -3809,7 +3811,29 @@ textarea.form-control {
     height: 6px;
     border-radius: 50%;
     background: #10b981;
-    box-shadow: 0 0 6px #10b981;
+    box-shadow: 0 0 8px #10b981;
+    animation: carePulse 2s infinite ease-in-out;
+}
+
+@keyframes carePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.care-poster-index-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 4px 10px;
+    border-radius: 9999px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--font-mono, monospace);
+    letter-spacing: 0.05em;
 }
 
 .care-poster-img {
@@ -3825,31 +3849,48 @@ textarea.form-control {
 }
 
 .care-poster-card-wrapper:hover .care-poster-img {
-    transform: scale(1.08);
+    transform: scale(1.06);
 }
 
 .care-poster-description {
     background: linear-gradient(
         to bottom,
         rgba(9, 26, 19, 0) 0%,
-        rgba(9, 26, 19, 0.4) 25%,
-        rgba(9, 26, 19, 0.88) 65%,
+        rgba(9, 26, 19, 0.45) 20%,
+        rgba(9, 26, 19, 0.9) 60%,
         #091a13 100%
     );
     position: relative;
     z-index: 5;
     color: #ffffff;
     text-align: left;
-    padding: 3rem 1.35rem 1.35rem;
+    padding: 3.5rem 1.75rem 1.6rem;
     width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+}
+
+.care-poster-meta-pill {
+    display: flex;
+    align-items: center;
     gap: 8px;
+    font-size: 0.82rem;
+    color: #a7f3d0;
+    font-weight: 600;
+}
+
+.care-poster-verified-icon {
+    font-size: 0.95rem;
+}
+
+.care-poster-meta-sep {
+    color: rgba(255, 255, 255, 0.35);
 }
 
 .care-description__title {
-    font-size: 1.3rem;
+    font-size: clamp(1.3rem, 2.2vw, 1.6rem);
     font-weight: 800;
     line-height: 1.25;
     margin: 0;
@@ -3861,7 +3902,6 @@ textarea.form-control {
     font-size: 11px;
     font-weight: 600;
     color: #a7f3d0;
-    margin-left: 6px;
     font-family: var(--font-mono, monospace);
     white-space: nowrap;
 }
@@ -3870,11 +3910,11 @@ textarea.form-control {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-top: 4px;
+    margin-top: 2px;
 }
 
 .care-description__genre {
-    padding: 3px 8px;
+    padding: 3px 10px;
     border: 1px solid rgba(16, 185, 129, 0.4);
     background: rgba(16, 185, 129, 0.12);
     border-radius: 9999px;
@@ -3891,10 +3931,10 @@ textarea.form-control {
     align-items: center;
     justify-content: space-between;
     margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
     color: #10b981;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 700;
     transition: color 200ms ease;
 }
@@ -3907,49 +3947,69 @@ textarea.form-control {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: #10b981;
     color: #091a13;
-    transition: transform 250ms ease, background-color 250ms ease;
+    font-size: 14px;
+    font-weight: 800;
+    transition: transform 250ms ease, background-color 250ms ease, color 250ms ease;
 }
 
 .care-poster-card-wrapper:hover .care-read-arrow {
     transform: translateX(4px);
     background: #ffffff;
+    color: #091a13;
 }
 
 .care-poster-spacer {
     width: 100%;
-    height: 65vh;
+    height: 12vh;
     pointer-events: none;
 }
 
+/* Tablet refinements */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .care-poster-stack {
+        max-width: 580px;
+    }
+    .care-poster-card-contents {
+        max-width: 480px;
+        height: clamp(450px, 58vh, 510px);
+    }
+    .care-poster-description {
+        padding: 2.8rem 1.4rem 1.35rem;
+    }
+    .care-description__title {
+        font-size: 1.25rem;
+    }
+}
+
+/* Mobile refinements */
 @media (max-width: 768px) {
     .care-poster-stack {
         max-width: 100% !important;
-        padding: 0 4px !important;
-        overflow: hidden !important;
+        padding: 0 8px !important;
     }
     .care-poster-card-wrapper {
-        margin-top: 18px !important;
-        margin-bottom: 18px !important;
+        position: relative !important;
+        top: auto !important;
+        margin-top: 0 !important;
+        margin-bottom: 20px !important;
         transform: none !important;
         width: 100% !important;
-    }
-    .care-poster-card-wrapper:nth-of-type(2n),
-    .care-poster-card-wrapper:nth-of-type(2n+1),
-    .care-poster-card-wrapper:nth-of-type(3n) {
-        transform: none !important;
     }
     .care-poster-card-contents {
         width: 100% !important;
-        max-width: 360px !important;
+        max-width: 380px !important;
         min-height: 440px !important;
         height: auto !important;
-        border-radius: 1.25rem !important;
+        border-radius: 1.4rem !important;
         margin: 0 auto !important;
+    }
+    .care-poster-description {
+        padding: 2.5rem 1.25rem 1.25rem !important;
     }
     .care-poster-spacer {
         display: none !important;
