@@ -90,17 +90,17 @@
 </div>
 
 <!-- Reading Modal (Preserved Functionality) -->
-<div id="careModal" style="display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(13, 15, 17, 0.65); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 20px;">
-    <div class="card" style="max-width: 600px; width: 100%; max-height: 85vh; overflow-y: auto; box-shadow: var(--shadow-lg); background: var(--white); border-radius: var(--radius-lg);">
-        <div style="padding: 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; background: var(--paper);">
+<div id="careModal" class="fe-modal-overlay" onclick="if(event.target===this) closeArticleModal()">
+    <div class="fe-modal-card">
+        <div class="fe-modal-header">
             <div>
-                <span id="careModalCat" class="meta-label" style="color: var(--emerald); margin-bottom: 6px;">HEALTH</span>
-                <h3 id="careModalTitle" style="font-size: 1.35rem; line-height: 1.3;"></h3>
+                <span id="careModalCat" class="meta-label" style="color: var(--emerald); margin-bottom: 6px; display: inline-block;">HEALTH</span>
+                <h3 id="careModalTitle" style="font-size: 1.25rem; line-height: 1.3; margin: 0;"></h3>
             </div>
-            <button type="button" onclick="closeArticleModal()" style="background: none; border: none; font-size: 1.5rem; color: var(--muted); cursor: pointer;" aria-label="Close article">&times;</button>
+            <button type="button" onclick="closeArticleModal()" class="fe-modal-close" aria-label="Close article">&times;</button>
         </div>
 
-        <div style="padding: 28px; color: var(--ink); line-height: 1.7; font-size: 0.96rem;">
+        <div class="fe-modal-body" style="color: var(--ink); line-height: 1.7; font-size: 0.96rem;">
             <p style="margin-bottom: 14px;">
                 Providing proactive, evidence-based care is the cornerstone of keeping pets lively and disease-free. Regular veterinary examinations, seasonal vaccinations, balanced hydration, and early symptom intervention yield long-lasting wellness.
             </p>
@@ -109,7 +109,7 @@
             </p>
         </div>
 
-        <div style="padding: 16px 24px; border-top: 1px solid var(--border); background: var(--paper); display: flex; justify-content: flex-end;">
+        <div class="fe-modal-footer">
             <button type="button" onclick="closeArticleModal()" class="btn btn-secondary btn-sm">Close</button>
         </div>
     </div>

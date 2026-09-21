@@ -166,64 +166,65 @@
 </div>
 
 <!-- Add Pet Modal (Preserved Functionality) -->
-<div id="addPetModal" style="display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(13, 15, 17, 0.65); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 20px;">
-    <div class="card" style="max-width: 520px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-lg); background: var(--white); border-radius: var(--radius-lg);">
-        <div style="padding: 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--paper);">
-            <h3 style="font-size: 1.25rem;">Register New Pet</h3>
-            <button type="button" onclick="closeAddPetModal()" style="background: none; border: none; font-size: 1.5rem; color: var(--muted); cursor: pointer;" aria-label="Close modal">&times;</button>
+<div id="addPetModal" class="fe-modal-overlay" onclick="if(event.target===this) closeAddPetModal()">
+    <div class="fe-modal-card">
+        <div class="fe-modal-header">
+            <h3 style="font-size: 1.25rem; margin: 0;">Register New Pet</h3>
+            <button type="button" onclick="closeAddPetModal()" class="fe-modal-close" aria-label="Close modal">&times;</button>
         </div>
 
-        <form action="{{ route('pets.store') }}" method="POST" style="padding: 24px;">
+        <form action="{{ route('pets.store') }}" method="POST" class="fe-modal-form">
             @csrf
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-                <div class="form-group">
-                    <label class="form-label">Pet Name *</label>
-                    <input type="text" name="name" required placeholder="e.g. Buddy" class="form-control">
+            <div class="fe-modal-body">
+                <div class="fe-modal-grid">
+                    <div class="form-group">
+                        <label class="form-label">Pet Name *</label>
+                        <input type="text" name="name" required placeholder="e.g. Buddy" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Species *</label>
+                        <select name="species" required class="form-control">
+                            <option value="Dog">Dog</option>
+                            <option value="Cat">Cat</option>
+                            <option value="Bird">Bird</option>
+                            <option value="Rabbit">Rabbit</option>
+                        </select>
+                    </div>
                 </div>
+
+                <div class="fe-modal-grid">
+                    <div class="form-group">
+                        <label class="form-label">Breed</label>
+                        <input type="text" name="breed" placeholder="e.g. Golden Retriever" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Sex / Gender *</label>
+                        <select name="sex" required class="form-control">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="unknown">Unknown</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="fe-modal-grid">
+                    <div class="form-group">
+                        <label class="form-label">Date of Birth</label>
+                        <input type="date" name="date_of_birth" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Weight (kg)</label>
+                        <input type="number" step="0.1" name="weight_kg" placeholder="e.g. 28.5" class="form-control">
+                    </div>
+                </div>
+
                 <div class="form-group">
-                    <label class="form-label">Species *</label>
-                    <select name="species" required class="form-control">
-                        <option value="Dog">Dog</option>
-                        <option value="Cat">Cat</option>
-                        <option value="Bird">Bird</option>
-                        <option value="Rabbit">Rabbit</option>
-                    </select>
+                    <label class="form-label">Health Notes & Characteristics</label>
+                    <textarea name="notes" rows="3" placeholder="Dietary restrictions, allergies, temperament..." class="form-control"></textarea>
                 </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-                <div class="form-group">
-                    <label class="form-label">Breed</label>
-                    <input type="text" name="breed" placeholder="e.g. Golden Retriever" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Sex / Gender *</label>
-                    <select name="sex" required class="form-control">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="unknown">Unknown</option>
-                    </select>
-                </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-                <div class="form-group">
-                    <label class="form-label">Date of Birth</label>
-                    <input type="date" name="date_of_birth" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Weight (kg)</label>
-                    <input type="number" step="0.1" name="weight_kg" placeholder="e.g. 28.5" class="form-control">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Health Notes & Characteristics</label>
-                <textarea name="notes" rows="3" placeholder="Dietary restrictions, allergies, temperament..." class="form-control"></textarea>
-            </div>
-
-            <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+            <div class="fe-modal-footer">
                 <button type="button" onclick="closeAddPetModal()" class="btn btn-secondary btn-sm">Cancel</button>
                 <button type="submit" class="btn btn-primary btn-sm">Save Pet Profile</button>
             </div>

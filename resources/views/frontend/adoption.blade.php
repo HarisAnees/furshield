@@ -139,41 +139,42 @@
 </div>
 
 <!-- Adoption Modal (Preserved Functionality) -->
-<div id="adoptModal" style="display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(13, 15, 17, 0.65); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 20px;">
-    <div class="card" style="max-width: 520px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-lg); background: var(--white); border-radius: var(--radius-lg);">
-        <div style="padding: 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--paper);">
+<div id="adoptModal" class="fe-modal-overlay" onclick="if(event.target===this) closeAdoptModal()">
+    <div class="fe-modal-card">
+        <div class="fe-modal-header">
             <div>
-                <h3 style="font-size: 1.25rem; margin-bottom: 4px;">Adoption Application</h3>
+                <h3 style="font-size: 1.25rem; margin: 0 0 4px 0;">Adoption Application</h3>
                 <p id="modalAdoptName" class="meta-label" style="color: var(--emerald); margin: 0;"></p>
             </div>
-            <button type="button" onclick="closeAdoptModal()" style="background: none; border: none; font-size: 1.5rem; color: var(--muted); cursor: pointer;" aria-label="Close modal">&times;</button>
+            <button type="button" onclick="closeAdoptModal()" class="fe-modal-close" aria-label="Close modal">&times;</button>
         </div>
 
-        <form id="adoptForm" action="" method="POST" style="padding: 24px;">
+        <form id="adoptForm" action="" method="POST" class="fe-modal-form">
             @csrf
-
-            <div class="form-group">
-                <label class="form-label">Full Name *</label>
-                <input type="text" name="applicant_name" required value="Sarah Johnson" class="form-control">
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="fe-modal-body">
                 <div class="form-group">
-                    <label class="form-label">Email Address *</label>
-                    <input type="email" name="applicant_email" required value="sarah@example.com" class="form-control">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" name="applicant_name" required value="Sarah Johnson" class="form-control">
                 </div>
+
+                <div class="fe-modal-grid">
+                    <div class="form-group">
+                        <label class="form-label">Email Address *</label>
+                        <input type="email" name="applicant_email" required value="sarah@example.com" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number *</label>
+                        <input type="text" name="applicant_phone" required value="+1 (555) 019-2834" class="form-control">
+                    </div>
+                </div>
+
                 <div class="form-group">
-                    <label class="form-label">Phone Number *</label>
-                    <input type="text" name="applicant_phone" required value="+1 (555) 019-2834" class="form-control">
+                    <label class="form-label">Household & Experience Details</label>
+                    <textarea name="notes" rows="3" class="form-control" placeholder="Describe your living environment, garden/yard, work schedule, and prior pet experience..."></textarea>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="form-label">Household & Experience Details</label>
-                <textarea name="notes" rows="3" class="form-control" placeholder="Describe your living environment, garden/yard, work schedule, and prior pet experience..."></textarea>
-            </div>
-
-            <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+            <div class="fe-modal-footer">
                 <button type="button" onclick="closeAdoptModal()" class="btn btn-secondary btn-sm">Cancel</button>
                 <button type="submit" class="btn btn-primary btn-sm">Submit Application</button>
             </div>

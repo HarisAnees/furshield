@@ -107,7 +107,7 @@
                         </select>
                     </div>
                 </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                <div class="owner-form-row">
                     <div>
                         <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">Breed</label>
                         <input type="text" name="breed" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px;" placeholder="e.g. French Bulldog">

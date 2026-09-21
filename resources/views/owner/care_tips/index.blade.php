@@ -53,7 +53,7 @@
 
 <!-- Read Article Modal -->
 <div class="owner-modal-overlay" id="readArticleModal">
-    <div class="owner-modal-box" style="max-width: 650px;">
+    <div class="owner-modal-box">
         <div class="owner-modal-header">
             <div>
                 <span id="read_art_cat" style="font-size: 11px; font-weight: 700; color: #10b981; text-transform: uppercase;">CATEGORY</span>

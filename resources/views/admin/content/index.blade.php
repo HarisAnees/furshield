@@ -106,7 +106,7 @@
 
 <!-- Create Article Modal -->
 <div class="modal-overlay" id="createContentModal">
-    <div class="modal-box" style="max-width: 620px;">
+    <div class="modal-box">
         <div class="modal-header">
             <div>
                 <span class="modal-tag">Care Library</span>
@@ -154,7 +154,7 @@
 
 <!-- Edit Article Modal -->
 <div class="modal-overlay" id="editContentModal">
-    <div class="modal-box" style="max-width: 620px;">
+    <div class="modal-box">
         <div class="modal-header">
             <div>
                 <span class="modal-tag">Care Guide CMS</span>
