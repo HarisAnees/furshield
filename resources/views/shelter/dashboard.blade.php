@@ -141,19 +141,19 @@
 <!-- Add Adoptable Animal Modal (SRS 1.6) -->
 <div id="newListingModal" class="shelter-modal-overlay" onclick="if(event.target===this) closeNewListingModal()">
     <div class="shelter-modal-card">
-        <div class="shelter-modal-header">
-            <div class="shelter-modal-header-left">
-                <div class="shelter-modal-icon-badge">🐾</div>
-                <div>
-                    <h3 class="shelter-modal-title">List New Adoptable Companion</h3>
-                    <p class="shelter-modal-subtitle">Publish an animal profile to the sanctuary adoption gallery.</p>
-                </div>
-            </div>
-            <button type="button" class="shelter-modal-close" onclick="closeNewListingModal()" aria-label="Close modal">✕</button>
-        </div>
-
-        <form method="POST" action="{{ route('shelter.listings.store') }}">
+        <form method="POST" action="{{ route('shelter.listings.store') }}" class="shelter-modal-form">
             @csrf
+            <div class="shelter-modal-header">
+                <div class="shelter-modal-header-left">
+                    <div class="shelter-modal-icon-badge">🐾</div>
+                    <div>
+                        <h3 class="shelter-modal-title">List New Adoptable Companion</h3>
+                        <p class="shelter-modal-subtitle">Publish an animal profile to the sanctuary adoption gallery.</p>
+                    </div>
+                </div>
+                <button type="button" class="shelter-modal-close" onclick="closeNewListingModal()" aria-label="Close modal">✕</button>
+            </div>
+
             <div class="shelter-modal-body">
                 <div class="shelter-form-grid">
                     <div class="shelter-form-group">
@@ -177,29 +177,30 @@
                     </div>
                 </div>
 
-                <div class="shelter-form-group">
-                    <label class="shelter-form-label"><span>Gender / Sex</span><span class="req">*</span></label>
-                    <select name="sex" class="shelter-select">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Unknown">Unknown</option>
-                    </select>
-                </div>
-
-                <div class="shelter-form-group">
-                    <label class="shelter-form-label"><span>Health & Vaccination Status</span></label>
-                    <input type="text" name="health_summary" class="shelter-input" placeholder="e.g. Fully vaccinated, dewormed, neutered">
+                <div class="shelter-form-grid">
+                    <div class="shelter-form-group">
+                        <label class="shelter-form-label"><span>Gender / Sex</span><span class="req">*</span></label>
+                        <select name="sex" class="shelter-select">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Unknown">Unknown</option>
+                        </select>
+                    </div>
+                    <div class="shelter-form-group">
+                        <label class="shelter-form-label"><span>Health & Vaccination</span></label>
+                        <input type="text" name="health_summary" class="shelter-input" placeholder="e.g. Vaccinated, neutered">
+                    </div>
                 </div>
 
                 <div class="shelter-form-group" style="margin-bottom: 0;">
                     <label class="shelter-form-label"><span>Care Routine & Temperament</span></label>
-                    <textarea name="care_summary" rows="3" class="shelter-textarea" placeholder="e.g. Gentle with children, needs 30min daily walk, fond of squeaky toys..."></textarea>
+                    <textarea name="care_summary" rows="2" class="shelter-textarea" placeholder="e.g. Gentle with children, needs 30min daily walk, fond of squeaky toys..."></textarea>
                 </div>
             </div>
 
             <div class="shelter-modal-footer">
                 <button type="button" onclick="closeNewListingModal()" class="shelter-btn-cancel">Cancel</button>
-                <button type="submit" class="shelter-btn-submit">Publish to Adoption Gallery ✓</button>
+                <button type="submit" class="shelter-btn-submit">Publish Companion ✓</button>
             </div>
         </form>
     </div>

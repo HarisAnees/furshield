@@ -73,38 +73,40 @@
 <!-- Modal for Recording Daily Care -->
 <div id="careLogModal" class="shelter-modal-overlay" onclick="if(event.target===this) closeCareLogModal()">
     <div class="shelter-modal-card">
-        <div class="shelter-modal-header">
-            <div class="shelter-modal-header-left">
-                <div class="shelter-modal-icon-badge">📋</div>
-                <div>
-                    <h3 class="shelter-modal-title">Record Daily Care Activity</h3>
-                    <p class="shelter-modal-subtitle">Log feeding, grooming, medical care, or observations.</p>
-                </div>
-            </div>
-            <button type="button" class="shelter-modal-close" onclick="closeCareLogModal()" aria-label="Close modal">✕</button>
-        </div>
-
-        <form method="POST" action="{{ route('shelter.care-logs.store') }}">
+        <form method="POST" action="{{ route('shelter.care-logs.store') }}" class="shelter-modal-form">
             @csrf
-            <div class="shelter-modal-body">
-                <div class="shelter-form-group">
-                    <label class="shelter-form-label"><span>Select Animal Companion</span><span class="req">*</span></label>
-                    <select name="adoption_listing_id" required class="shelter-select">
-                        @foreach($listings as $item)
-                            <option value="{{ $item->id }}">{{ $item->pet_name }} ({{ $item->species }} - {{ $item->breed }})</option>
-                        @endforeach
-                    </select>
+            <div class="shelter-modal-header">
+                <div class="shelter-modal-header-left">
+                    <div class="shelter-modal-icon-badge">📋</div>
+                    <div>
+                        <h3 class="shelter-modal-title">Record Daily Care Activity</h3>
+                        <p class="shelter-modal-subtitle">Log feeding, grooming, medical care, or observations.</p>
+                    </div>
                 </div>
+                <button type="button" class="shelter-modal-close" onclick="closeCareLogModal()" aria-label="Close modal">✕</button>
+            </div>
 
-                <div class="shelter-form-group">
-                    <label class="shelter-form-label"><span>Activity Category</span><span class="req">*</span></label>
-                    <select name="category" required class="shelter-select">
-                        <option value="feeding">Feeding (Dietary protocol, meal intake)</option>
-                        <option value="grooming">Grooming (Brushing, bath, coat check)</option>
-                        <option value="medical">Medical Attention (Medication, exam, vitals)</option>
-                        <option value="exercise">Exercise & Enrichment (Play session, walk)</option>
-                        <option value="general">General Observation</option>
-                    </select>
+            <div class="shelter-modal-body">
+                <div class="shelter-form-grid">
+                    <div class="shelter-form-group">
+                        <label class="shelter-form-label"><span>Select Animal Companion</span><span class="req">*</span></label>
+                        <select name="adoption_listing_id" required class="shelter-select">
+                            @foreach($listings as $item)
+                                <option value="{{ $item->id }}">{{ $item->pet_name }} ({{ $item->species }} - {{ $item->breed }})</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="shelter-form-group">
+                        <label class="shelter-form-label"><span>Activity Category</span><span class="req">*</span></label>
+                        <select name="category" required class="shelter-select">
+                            <option value="feeding">Feeding (Dietary intake)</option>
+                            <option value="grooming">Grooming (Brushing, bath)</option>
+                            <option value="medical">Medical (Meds, vitals)</option>
+                            <option value="exercise">Exercise & Play</option>
+                            <option value="general">General Observation</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="shelter-form-group" style="margin-bottom: 0;">

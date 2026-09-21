@@ -162,40 +162,47 @@
 </div>
 
 <!-- Modal for Logging Treatments (SRS 1.6: Symptoms, Diagnosis, Medications, Follow-up) -->
-<div id="treatmentModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; padding: 16px;">
-    <div style="background: #ffffff; border-radius: 20px; max-width: 560px; width: 100%; padding: 28px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); max-height: 90vh; overflow-y: auto;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
-            <h3 style="font-size: 1.3rem; font-weight: 800; color: #091a13; margin: 0;">
-                Log Clinical Treatment for <span id="modalPetName" style="color: #10b981;">Companion</span>
-            </h3>
-            <button type="button" onclick="closeTreatmentModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #64748b;">✕</button>
-        </div>
-
-        <form id="treatmentForm" method="POST" action="">
+<div id="treatmentModal" class="shelter-modal-overlay" onclick="if(event.target===this) closeTreatmentModal()">
+    <div class="shelter-modal-card">
+        <form id="treatmentForm" method="POST" action="" class="shelter-modal-form">
             @csrf
-            <div style="margin-bottom: 14px;">
-                <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Observed Symptoms</label>
-                <input type="text" name="symptoms" id="modalSymptoms" class="owner-form-input" placeholder="e.g. Mild lethargy, dry cough, sensitive paw" style="width: 100%;">
+            <div class="shelter-modal-header">
+                <div class="shelter-modal-header-left">
+                    <div class="shelter-modal-icon-badge">🩺</div>
+                    <div>
+                        <h3 class="shelter-modal-title">Clinical Treatment: <span id="modalPetName" style="color: #059669;">Companion</span></h3>
+                        <p class="shelter-modal-subtitle">Record clinical diagnosis, medication dosage, and follow-up notes.</p>
+                    </div>
+                </div>
+                <button type="button" class="shelter-modal-close" onclick="closeTreatmentModal()" aria-label="Close modal">✕</button>
             </div>
 
-            <div style="margin-bottom: 14px;">
-                <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Clinical Diagnosis <span style="color: #ef4444;">*</span></label>
-                <input type="text" name="diagnosis" id="modalDiagnosis" required class="owner-form-input" placeholder="e.g. Seasonal allergic dermatitis, Grade 1 gingivitis" style="width: 100%;">
+            <div class="shelter-modal-body">
+                <div class="shelter-form-grid">
+                    <div class="shelter-form-group">
+                        <label class="shelter-form-label"><span>Observed Symptoms</span></label>
+                        <input type="text" name="symptoms" id="modalSymptoms" class="shelter-input" placeholder="e.g. Mild lethargy, dry cough">
+                    </div>
+                    <div class="shelter-form-group">
+                        <label class="shelter-form-label"><span>Clinical Diagnosis</span><span class="req">*</span></label>
+                        <input type="text" name="diagnosis" id="modalDiagnosis" required class="shelter-input" placeholder="e.g. Dermatitis, Grade 1 gingivitis">
+                    </div>
+                </div>
+
+                <div class="shelter-form-group">
+                    <label class="shelter-form-label"><span>Prescribed Medication & Dosage</span></label>
+                    <textarea name="medication" id="modalMedication" rows="2" class="shelter-textarea" placeholder="e.g. Amoxicillin 250mg 2x daily for 7 days"></textarea>
+                </div>
+
+                <div class="shelter-form-group" style="margin-bottom: 0;">
+                    <label class="shelter-form-label"><span>Follow-up Actions & Patient Care Notes</span></label>
+                    <textarea name="follow_up_notes" id="modalNotes" rows="2" class="shelter-textarea" placeholder="e.g. Schedule booster in 2 weeks. Keep hydration high."></textarea>
+                </div>
             </div>
 
-            <div style="margin-bottom: 14px;">
-                <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Prescribed Medication & Dosage</label>
-                <textarea name="medication" id="modalMedication" rows="2" class="owner-form-input" placeholder="e.g. Amoxicillin 250mg 2x daily for 7 days; Ear drops 3 drops each ear" style="width: 100%;"></textarea>
-            </div>
-
-            <div style="margin-bottom: 20px;">
-                <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Follow-up Actions & Patient Care Notes</label>
-                <textarea name="follow_up_notes" id="modalNotes" rows="3" class="owner-form-input" placeholder="e.g. Schedule booster vaccination in 2 weeks. Keep hydration high." style="width: 100%;"></textarea>
-            </div>
-
-            <div style="display: flex; justify-content: flex-end; gap: 10px;">
-                <button type="button" onclick="closeTreatmentModal()" class="btn-sm btn-outline">Cancel</button>
-                <button type="submit" class="btn-sm btn-emerald">Save & Record to Passport ✓</button>
+            <div class="shelter-modal-footer">
+                <button type="button" onclick="closeTreatmentModal()" class="shelter-btn-cancel">Cancel</button>
+                <button type="submit" class="shelter-btn-submit">Record to Passport ✓</button>
             </div>
         </form>
     </div>
@@ -211,10 +218,21 @@ function openTreatmentModal(apptId, petName, symptoms, diagnosis, medication, no
     document.getElementById('modalDiagnosis').value = diagnosis || '';
     document.getElementById('modalMedication').value = medication || '';
     document.getElementById('modalNotes').value = notes || '';
-    document.getElementById('treatmentModal').style.display = 'flex';
+    const modal = document.getElementById('treatmentModal');
+    modal.style.display = 'flex';
+    requestAnimationFrame(() => modal.classList.add('active'));
+    document.body.style.overflow = 'hidden';
 }
 function closeTreatmentModal() {
-    document.getElementById('treatmentModal').style.display = 'none';
+    const modal = document.getElementById('treatmentModal');
+    modal.classList.remove('active');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }, 150);
 }
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeTreatmentModal();
+});
 </script>
 @endsection
