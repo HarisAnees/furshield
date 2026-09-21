@@ -74,7 +74,11 @@
                         <div class="brand-icon-shield">
                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="paw-icon">
                                 <circle cx="12" cy="12" r="11" fill="#ecfdf5" stroke="#10b981" stroke-width="1.8"/>
-                                <path d="M3 10l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" fill="#059669"/>
+                                <ellipse cx="12" cy="15" rx="3.2" ry="2.6" fill="#059669"/>
+                                <circle cx="8" cy="10" r="1.6" fill="#059669"/>
+                                <circle cx="10.8" cy="8" r="1.6" fill="#059669"/>
+                                <circle cx="13.2" cy="8" r="1.6" fill="#059669"/>
+                                <circle cx="16" cy="10" r="1.6" fill="#059669"/>
                             </svg>
                         </div>
                         <div class="brand-text">

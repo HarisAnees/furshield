@@ -139,61 +139,67 @@
 </div>
 
 <!-- Add Adoptable Animal Modal (SRS 1.6) -->
-<div id="newListingModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; padding: 16px;">
-    <div style="background: #ffffff; border-radius: 20px; max-width: 580px; width: 100%; padding: 28px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); max-height: 90vh; overflow-y: auto;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
-            <h3 style="font-size: 1.3rem; font-weight: 800; color: #091a13; margin: 0;">
-                List New Adoptable Companion
-            </h3>
-            <button type="button" onclick="closeNewListingModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #64748b;">✕</button>
+<div id="newListingModal" class="shelter-modal-overlay" onclick="if(event.target===this) closeNewListingModal()">
+    <div class="shelter-modal-card">
+        <div class="shelter-modal-header">
+            <div class="shelter-modal-header-left">
+                <div class="shelter-modal-icon-badge">🐾</div>
+                <div>
+                    <h3 class="shelter-modal-title">List New Adoptable Companion</h3>
+                    <p class="shelter-modal-subtitle">Publish an animal profile to the sanctuary adoption gallery.</p>
+                </div>
+            </div>
+            <button type="button" class="shelter-modal-close" onclick="closeNewListingModal()" aria-label="Close modal">✕</button>
         </div>
 
         <form method="POST" action="{{ route('shelter.listings.store') }}">
             @csrf
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
-                <div>
-                    <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Pet Name <span style="color: #ef4444;">*</span></label>
-                    <input type="text" name="pet_name" required class="owner-form-input" placeholder="e.g. Charlie" style="width: 100%;">
+            <div class="shelter-modal-body">
+                <div class="shelter-form-grid">
+                    <div class="shelter-form-group">
+                        <label class="shelter-form-label"><span>Pet Name</span><span class="req">*</span></label>
+                        <input type="text" name="pet_name" required class="shelter-input" placeholder="e.g. Charlie">
+                    </div>
+                    <div class="shelter-form-group">
+                        <label class="shelter-form-label"><span>Species</span><span class="req">*</span></label>
+                        <input type="text" name="species" required class="shelter-input" placeholder="e.g. Dog, Cat, Bird">
+                    </div>
                 </div>
-                <div>
-                    <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Species <span style="color: #ef4444;">*</span></label>
-                    <input type="text" name="species" required class="owner-form-input" placeholder="e.g. Dog, Cat, Bird" style="width: 100%;">
+
+                <div class="shelter-form-grid">
+                    <div class="shelter-form-group">
+                        <label class="shelter-form-label"><span>Breed</span><span class="req">*</span></label>
+                        <input type="text" name="breed" required class="shelter-input" placeholder="e.g. Golden Retriever">
+                    </div>
+                    <div class="shelter-form-group">
+                        <label class="shelter-form-label"><span>Age Representation</span><span class="req">*</span></label>
+                        <input type="text" name="age_text" required class="shelter-input" placeholder="e.g. 2 Years">
+                    </div>
+                </div>
+
+                <div class="shelter-form-group">
+                    <label class="shelter-form-label"><span>Gender / Sex</span><span class="req">*</span></label>
+                    <select name="sex" class="shelter-select">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Unknown">Unknown</option>
+                    </select>
+                </div>
+
+                <div class="shelter-form-group">
+                    <label class="shelter-form-label"><span>Health & Vaccination Status</span></label>
+                    <input type="text" name="health_summary" class="shelter-input" placeholder="e.g. Fully vaccinated, dewormed, neutered">
+                </div>
+
+                <div class="shelter-form-group" style="margin-bottom: 0;">
+                    <label class="shelter-form-label"><span>Care Routine & Temperament</span></label>
+                    <textarea name="care_summary" rows="3" class="shelter-textarea" placeholder="e.g. Gentle with children, needs 30min daily walk, fond of squeaky toys..."></textarea>
                 </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
-                <div>
-                    <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Breed <span style="color: #ef4444;">*</span></label>
-                    <input type="text" name="breed" required class="owner-form-input" placeholder="e.g. Golden Retriever" style="width: 100%;">
-                </div>
-                <div>
-                    <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Age Representation <span style="color: #ef4444;">*</span></label>
-                    <input type="text" name="age_text" required class="owner-form-input" placeholder="e.g. 2 Years" style="width: 100%;">
-                </div>
-            </div>
-
-            <div style="margin-bottom: 14px;">
-                <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Gender / Sex <span style="color: #ef4444;">*</span></label>
-                <select name="sex" class="owner-form-input" style="width: 100%;">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Unknown">Unknown</option>
-                </select>
-            </div>
-
-            <div style="margin-bottom: 14px;">
-                <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Health & Vaccination Status</label>
-                <input type="text" name="health_summary" class="owner-form-input" placeholder="e.g. Fully vaccinated, dewormed, neutered" style="width: 100%;">
-            </div>
-
-            <div style="margin-bottom: 20px;">
-                <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Care Routine & Temperament</label>
-                <textarea name="care_summary" rows="3" class="owner-form-input" placeholder="e.g. Gentle with children, needs 30min daily walk, fond of squeaky toys..." style="width: 100%;"></textarea>
-            </div>
-
-            <div style="display: flex; justify-content: flex-end; gap: 10px;">
-                <button type="button" onclick="closeNewListingModal()" class="btn-sm btn-outline">Cancel</button>
-                <button type="submit" class="btn-sm btn-emerald">Publish to Adoption Gallery ✓</button>
+            <div class="shelter-modal-footer">
+                <button type="button" onclick="closeNewListingModal()" class="shelter-btn-cancel">Cancel</button>
+                <button type="submit" class="shelter-btn-submit">Publish to Adoption Gallery ✓</button>
             </div>
         </form>
     </div>
@@ -203,10 +209,23 @@
 @section('scripts')
 <script>
 function openNewListingModal() {
-    document.getElementById('newListingModal').style.display = 'flex';
+    const modal = document.getElementById('newListingModal');
+    modal.style.display = 'flex';
+    requestAnimationFrame(() => {
+        modal.classList.add('active');
+    });
+    document.body.style.overflow = 'hidden';
 }
 function closeNewListingModal() {
-    document.getElementById('newListingModal').style.display = 'none';
+    const modal = document.getElementById('newListingModal');
+    modal.classList.remove('active');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }, 150);
 }
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeNewListingModal();
+});
 </script>
 @endsection

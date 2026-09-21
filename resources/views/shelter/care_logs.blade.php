@@ -71,45 +71,51 @@
 </div>
 
 <!-- Modal for Recording Daily Care -->
-<div id="careLogModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; padding: 16px;">
-    <div style="background: #ffffff; border-radius: 20px; max-width: 520px; width: 100%; padding: 28px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
-            <h3 style="font-size: 1.3rem; font-weight: 800; color: #091a13; margin: 0;">
-                Record Daily Animal Care Activity
-            </h3>
-            <button type="button" onclick="closeCareLogModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #64748b;">✕</button>
+<div id="careLogModal" class="shelter-modal-overlay" onclick="if(event.target===this) closeCareLogModal()">
+    <div class="shelter-modal-card">
+        <div class="shelter-modal-header">
+            <div class="shelter-modal-header-left">
+                <div class="shelter-modal-icon-badge">📋</div>
+                <div>
+                    <h3 class="shelter-modal-title">Record Daily Care Activity</h3>
+                    <p class="shelter-modal-subtitle">Log feeding, grooming, medical care, or observations.</p>
+                </div>
+            </div>
+            <button type="button" class="shelter-modal-close" onclick="closeCareLogModal()" aria-label="Close modal">✕</button>
         </div>
 
         <form method="POST" action="{{ route('shelter.care-logs.store') }}">
             @csrf
-            <div style="margin-bottom: 14px;">
-                <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Select Animal Companion <span style="color: #ef4444;">*</span></label>
-                <select name="adoption_listing_id" required class="owner-form-input" style="width: 100%;">
-                    @foreach($listings as $item)
-                        <option value="{{ $item->id }}">{{ $item->pet_name }} ({{ $item->species }} - {{ $item->breed }})</option>
-                    @endforeach
-                </select>
+            <div class="shelter-modal-body">
+                <div class="shelter-form-group">
+                    <label class="shelter-form-label"><span>Select Animal Companion</span><span class="req">*</span></label>
+                    <select name="adoption_listing_id" required class="shelter-select">
+                        @foreach($listings as $item)
+                            <option value="{{ $item->id }}">{{ $item->pet_name }} ({{ $item->species }} - {{ $item->breed }})</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="shelter-form-group">
+                    <label class="shelter-form-label"><span>Activity Category</span><span class="req">*</span></label>
+                    <select name="category" required class="shelter-select">
+                        <option value="feeding">Feeding (Dietary protocol, meal intake)</option>
+                        <option value="grooming">Grooming (Brushing, bath, coat check)</option>
+                        <option value="medical">Medical Attention (Medication, exam, vitals)</option>
+                        <option value="exercise">Exercise & Enrichment (Play session, walk)</option>
+                        <option value="general">General Observation</option>
+                    </select>
+                </div>
+
+                <div class="shelter-form-group" style="margin-bottom: 0;">
+                    <label class="shelter-form-label"><span>Notes & Care Observations</span><span class="req">*</span></label>
+                    <textarea name="notes" rows="3" required class="shelter-textarea" placeholder="e.g. Ate full morning kibble portion eagerly. Clean water refreshed."></textarea>
+                </div>
             </div>
 
-            <div style="margin-bottom: 14px;">
-                <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Activity Category <span style="color: #ef4444;">*</span></label>
-                <select name="category" required class="owner-form-input" style="width: 100%;">
-                    <option value="feeding">Feeding (Dietary protocol, meal intake)</option>
-                    <option value="grooming">Grooming (Brushing, bath, coat check)</option>
-                    <option value="medical">Medical Attention (Medication, exam, vitals)</option>
-                    <option value="exercise">Exercise & Enrichment (Play session, walk)</option>
-                    <option value="general">General Observation</option>
-                </select>
-            </div>
-
-            <div style="margin-bottom: 20px;">
-                <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Notes & Care Observations <span style="color: #ef4444;">*</span></label>
-                <textarea name="notes" rows="3" required class="owner-form-input" placeholder="e.g. Ate full morning kibble portion eagerly. Clean water refreshed." style="width: 100%;"></textarea>
-            </div>
-
-            <div style="display: flex; justify-content: flex-end; gap: 10px;">
-                <button type="button" onclick="closeCareLogModal()" class="btn-sm btn-outline">Cancel</button>
-                <button type="submit" class="btn-sm btn-emerald">Save Care Log ✓</button>
+            <div class="shelter-modal-footer">
+                <button type="button" onclick="closeCareLogModal()" class="shelter-btn-cancel">Cancel</button>
+                <button type="submit" class="shelter-btn-submit">Save Care Log ✓</button>
             </div>
         </form>
     </div>
@@ -119,10 +125,23 @@
 @section('scripts')
 <script>
 function openCareLogModal() {
-    document.getElementById('careLogModal').style.display = 'flex';
+    const modal = document.getElementById('careLogModal');
+    modal.style.display = 'flex';
+    requestAnimationFrame(() => {
+        modal.classList.add('active');
+    });
+    document.body.style.overflow = 'hidden';
 }
 function closeCareLogModal() {
-    document.getElementById('careLogModal').style.display = 'none';
+    const modal = document.getElementById('careLogModal');
+    modal.classList.remove('active');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }, 150);
 }
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeCareLogModal();
+});
 </script>
 @endsection
