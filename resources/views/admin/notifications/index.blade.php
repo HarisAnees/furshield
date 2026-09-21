@@ -5,7 +5,7 @@
 @section('page_subtitle', 'Send platform-wide alerts to pet owners, track automated reminders, and review system audit events.')
 
 @section('content')
-<div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px; align-items: start;">
+<div class="admin-split-layout admin-notifications-layout">
     <!-- Send Broadcast Form -->
     <div class="admin-card">
         <div class="admin-card-header">

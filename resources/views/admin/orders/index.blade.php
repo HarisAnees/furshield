@@ -76,10 +76,13 @@
                             <div style="font-size: 12px; color: #334155;">
                                 @if($order->items && $order->items->count() > 0)
                                     @foreach($order->items as $it)
-                                        <div style="margin-bottom: 2px;">
-                                            <span style="font-weight: 600;">{{ $it->quantity }}x</span> 
-                                            {{ $it->product_name ?? 'Item' }}
-                                            <small style="color: #64748b;">(${{ number_format($it->unit_price, 2) }})</small>
+                                        @php
+                                            $lineTotal = (float)($it->line_total ?? (($it->unit_price ?? 0) * ($it->quantity ?? 1)));
+                                        @endphp
+                                        <div style="margin-bottom: 3px; display: flex; align-items: baseline; gap: 4px; flex-wrap: wrap;">
+                                            <span style="font-weight: 700; color: #0f172a; font-family: var(--font-mono, monospace);">{{ $it->quantity }}x</span> 
+                                            <span style="font-weight: 600; color: #1e293b;">{{ $it->product_name ?? 'Product' }}</span>
+                                            <small style="color: #64748b; font-family: var(--font-mono, monospace);">(${{ number_format($it->unit_price, 2) }} &bull; <strong style="color: #059669;">${{ number_format($lineTotal, 2) }}</strong>)</small>
                                         </div>
                                     @endforeach
                                 @else
@@ -88,7 +91,15 @@
                             </div>
                         </td>
                         <td>
-                            <strong style="font-size: 13.5px; color: #0d9488;">${{ number_format($order->total_amount, 2) }}</strong>
+                            @php
+                                $finalTotal = (float)($order->total_amount ?? $order->subtotal ?? 0);
+                                if ($finalTotal <= 0 && $order->items && $order->items->count() > 0) {
+                                    $finalTotal = (float)$order->items->sum(function($i){ return ($i->line_total ?: ($i->unit_price * $i->quantity)); });
+                                }
+                            @endphp
+                            <strong style="font-size: 14px; color: #059669; font-weight: 800; font-family: var(--font-mono, monospace); display: inline-block; padding: 2px 8px; background: #ecfdf5; border-radius: 6px; border: 1px solid #a7f3d0;">
+                                ${{ number_format($finalTotal, 2) }}
+                            </strong>
                         </td>
                         <td>
                             <form method="POST" action="{{ route('admin.orders.status', $order) }}">
