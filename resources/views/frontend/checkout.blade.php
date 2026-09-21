@@ -32,7 +32,7 @@
     <form action="{{ route('checkout.process') }}" method="POST">
         @csrf
         
-        <div style="display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: start;" class="reveal delay-2">
+        <div class="fe-checkout-layout reveal delay-2">
             
             <!-- Left Column: Shipping Address & Instructions -->
             <div>

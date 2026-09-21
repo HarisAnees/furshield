@@ -35,7 +35,7 @@
         }
     @endphp
 
-    <div style="display: grid; grid-template-columns: 1fr 380px; gap: 36px; align-items: start;" class="reveal delay-1">
+    <div class="fe-cart-layout reveal delay-1">
         
         <!-- Cart Line Items List -->
         <div class="card" style="overflow: hidden;">

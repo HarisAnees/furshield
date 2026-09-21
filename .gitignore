@@ -18,5 +18,6 @@
 !/bootstrap/cache/.gitkeep
 database/*.sqlite
 *.zip
+cloudflared.exe
 .vscode/
 .idea/

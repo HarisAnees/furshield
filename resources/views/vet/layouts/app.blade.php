@@ -83,6 +83,7 @@
                             <small>Clinical Portal</small>
                         </div>
                     </a>
+                    <button type="button" class="owner-sidebar-close" id="ownerSidebarClose" aria-label="Close navigation">&times;</button>
                 </div>
 
                 <nav class="owner-nav-list" aria-label="Veterinarian navigation">
@@ -127,6 +128,7 @@
         <div class="owner-main-area">
             <header class="owner-topbar">
                 <div style="display: flex; align-items: center; gap: 12px;">
+                    <button type="button" class="owner-menu-toggle" id="ownerMenuToggle" aria-label="Open sidebar navigation">☰</button>
                     <span class="vet-badge">
                         <span style="width: 8px; height: 8px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
                         LICENSED VETERINARY CLINIC
@@ -164,6 +166,8 @@
     </div>
 </div>
 
+<div class="owner-mobile-overlay" id="ownerMobileOverlay"></div>
+<script src="/owner/owner.js"></script>
 @yield('scripts')
 </body>
 </html>

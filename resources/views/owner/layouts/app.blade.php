@@ -55,6 +55,7 @@
                             <small>Owner Portal</small>
                         </div>
                     </a>
+                    <button type="button" class="owner-sidebar-close" id="ownerSidebarClose" aria-label="Close navigation">&times;</button>
                 </div>
 
                 <nav class="owner-nav-list" aria-label="Owner navigation">
@@ -123,6 +124,8 @@
         <div class="owner-main-area">
             <!-- Header Top Bar -->
             <header class="owner-topbar">
+                <button type="button" class="owner-menu-toggle" id="ownerMenuToggle" aria-label="Open sidebar navigation">☰</button>
+
                 <div class="search-input-wrap">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
@@ -182,5 +185,7 @@ function closeOwnerModal(id) {
 }
 </script>
 
+<div class="owner-mobile-overlay" id="ownerMobileOverlay"></div>
+<script src="/owner/owner.js"></script>
 </body>
 </html>

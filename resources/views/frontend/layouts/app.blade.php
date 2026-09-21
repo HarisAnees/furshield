@@ -53,15 +53,17 @@
                     </a>
                 @endif
             @else
-                <span class="fe-portal-link" style="color: rgba(255,255,255,0.55); pointer-events: none;">
+                <span class="fe-portal-link fe-portal-desc" style="color: rgba(255,255,255,0.55); pointer-events: none;">
                     Clinical Care • Vet Network • Shelter Adoption Sanctuary
                 </span>
             @endauth
         </div>
         <div class="fe-portal-bar-right" style="display: flex; align-items: center; gap: 16px;">
-            <div class="fe-portal-emergency">
-                Emergency Care: <strong>+1 (555) 0199-PETS</strong>
-            </div>
+            <a href="tel:+15550199738" class="fe-portal-emergency" title="24/7 Emergency Hospital Dispatch">
+                <span class="fe-emergency-icon">🚨</span>
+                <span class="fe-emergency-label">Emergency Care:</span>
+                <strong>+1 (555) 0199-PETS</strong>
+            </a>
             @auth
                 <div class="fe-portal-auth-status" style="display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: var(--font-mono, monospace);">
                     <span style="background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.4); color: #10b981; padding: 2px 7px; border-radius: 4px; font-weight: 700; text-transform: uppercase;">
@@ -184,36 +186,99 @@
         </nav>
     </header>
 
-    <!-- Mobile Navigation Drawer -->
+    <!-- Mobile Navigation Drawer (Sleek Obsidian Forest & Emerald Glassmorphism) -->
     <div class="fe-mobile-menu-backdrop" id="feMobileBackdrop"></div>
-    <aside class="fe-mobile-menu" id="feMobileMenu" aria-hidden="true">
-        <button type="button" class="fe-close-menu" id="feCloseMenu" aria-label="Close navigation">&times;</button>
-        <nav class="fe-mobile-nav" aria-label="Mobile navigation">
-            <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
-            <a href="{{ route('pets.index') }}" class="{{ request()->routeIs('pets.*') ? 'active' : '' }}">Pets</a>
-            <a href="{{ route('products.index') }}" class="{{ request()->routeIs('products.*') ? 'active' : '' }}">Products</a>
-            <a href="{{ route('appointments.index') }}" class="{{ request()->routeIs('appointments.*') ? 'active' : '' }}">Appointments</a>
-            <a href="{{ route('care-tips.index') }}" class="{{ request()->routeIs('care-tips.*') ? 'active' : '' }}">Care Tips</a>
-            <a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">About</a>
-            <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
-        </nav>
-        <div class="fe-mobile-footer">
-            @auth
-                <div style="display: flex; flex-direction: column; gap: 8px;">
-                    <a href="{{ route('owner.dashboard') }}" class="btn btn-emerald btn-block">Owner Portal ({{ Auth::user()->name }}) ↗</a>
-                    <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
-                        @csrf
-                        <button type="submit" class="btn btn-block" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3);">
-                            Sign Out ⏻
-                        </button>
-                    </form>
+    <aside class="fe-mobile-menu" id="feMobileMenu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+        <div class="fe-mobile-menu-inner">
+            <div class="fe-mobile-header">
+                <div class="fe-mobile-brand">
+                    <div class="fe-mugsy-brand-badge" style="width: 34px; height: 34px; border-radius: 8px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="12" cy="15" rx="3.5" ry="2.8" fill="#090909"/>
+                            <circle cx="7.8" cy="9.8" r="1.8" fill="#090909"/>
+                            <circle cx="10.8" cy="7.2" r="1.8" fill="#090909"/>
+                            <circle cx="13.2" cy="7.2" r="1.8" fill="#090909"/>
+                            <circle cx="16.2" cy="9.8" r="1.8" fill="#090909"/>
+                        </svg>
+                    </div>
+                    <span class="fe-mugsy-brand-text font-anton" style="font-size: 1.35rem; color: #ffffff;">FURSHIELD</span>
                 </div>
-            @else
-                <div style="display: flex; gap: 8px;">
-                    <a href="{{ route('login') }}" class="btn btn-sm" style="flex: 1; background: #ffffff; color: #091a13; border: 1px solid #e5e7eb; text-align: center; text-decoration: none;">Sign In</a>
-                    <a href="{{ route('register') }}" class="btn btn-emerald btn-sm" style="flex: 1; text-align: center; text-decoration: none;">Sign Up ↗</a>
-                </div>
-            @endauth
+                <button type="button" class="fe-close-menu" id="feCloseMenu" aria-label="Close navigation">&times;</button>
+            </div>
+
+            <nav class="fe-mobile-nav" aria-label="Mobile navigation">
+                <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">
+                    <span class="fe-mob-icon">🏠</span>
+                    <span>Home</span>
+                </a>
+                <a href="{{ route('pets.index') }}" class="{{ request()->routeIs('pets.*') ? 'active' : '' }}">
+                    <span class="fe-mob-icon">🐾</span>
+                    <span>Pets & Adoption</span>
+                </a>
+                <a href="{{ route('products.index') }}" class="{{ request()->routeIs('products.*') ? 'active' : '' }}">
+                    <span class="fe-mob-icon">🛍️</span>
+                    <span>Pet Pharmacy & Store</span>
+                </a>
+                <a href="{{ route('appointments.index') }}" class="{{ request()->routeIs('appointments.*') ? 'active' : '' }}">
+                    <span class="fe-mob-icon">🩺</span>
+                    <span>Book Clinician</span>
+                </a>
+                <a href="{{ route('care-tips.index') }}" class="{{ request()->routeIs('care-tips.*') ? 'active' : '' }}">
+                    <span class="fe-mob-icon">💡</span>
+                    <span>Care & Clinical Tips</span>
+                </a>
+                <a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">
+                    <span class="fe-mob-icon">✨</span>
+                    <span>About Sanctuary</span>
+                </a>
+                <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">
+                    <span class="fe-mob-icon">📬</span>
+                    <span>Emergency & Contact</span>
+                </a>
+            </nav>
+
+            <div class="fe-mobile-footer">
+                @auth
+                    @php
+                        $mPortal = match(Auth::user()->role) {
+                            'admin' => route('admin.dashboard'),
+                            'vet' => route('vet.dashboard'),
+                            'shelter' => route('shelter.dashboard'),
+                            default => route('owner.dashboard'),
+                        };
+                        $mLabel = match(Auth::user()->role) {
+                            'admin' => 'Admin Panel',
+                            'vet' => 'Clinician Portal',
+                            'shelter' => 'Shelter Portal',
+                            default => 'Pet Owner Portal',
+                        };
+                    @endphp
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="{{ $mPortal }}" class="btn btn-emerald btn-block" style="display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; padding: 12px 18px; border-radius: 12px; font-size: 14px;">
+                            <span>{{ $mLabel }}</span>
+                            <span style="font-size: 11px; opacity: 0.8;">({{ Auth::user()->name }})</span>
+                            <span>↗</span>
+                        </a>
+                        <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
+                            @csrf
+                            <button type="submit" class="btn btn-block" style="background: rgba(239, 68, 68, 0.12); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); font-size: 13px; font-weight: 600; padding: 10px; border-radius: 12px; cursor: pointer;">
+                                Sign Out ⏻
+                            </button>
+                        </form>
+                    </div>
+                @else
+                    <div style="display: flex; gap: 10px;">
+                        <a href="{{ route('login') }}" class="btn btn-sm" style="flex: 1; background: rgba(255, 255, 255, 0.08); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.18); text-align: center; text-decoration: none; padding: 12px 0; border-radius: 12px; font-weight: 700; font-size: 14px;">Sign In</a>
+                        <a href="{{ route('register') }}" class="btn btn-emerald btn-sm" style="flex: 1; text-align: center; text-decoration: none; padding: 12px 0; border-radius: 12px; font-weight: 700; font-size: 14px;">Sign Up ↗</a>
+                    </div>
+                @endauth
+
+                <!-- Emergency Dispatch Link -->
+                <a href="tel:+15550199738" class="fe-mobile-emergency-pill">
+                    <span style="font-size: 14px;">🚨</span>
+                    <span>24/7 Emergency Care: <strong>+1 (555) 0199-PETS</strong></span>
+                </a>
+            </div>
         </div>
     </aside>
 
@@ -686,5 +751,8 @@
             }
         }
     </script>
+
+    <!-- Main Frontend Modern Interactive Engine (Navigation, Swiper, Drawer, Magnetic Effects) -->
+    <script src="/js/frontend-modern.js"></script>
 </body>
 </html>
