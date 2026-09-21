@@ -43,7 +43,7 @@
     </div>
 
     <!-- 2. Two-Column Layout (Details & Health History vs Quick Actions) -->
-    <div style="display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 32px; align-items: start;" class="reveal delay-1">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px; align-items: start;" class="reveal delay-1">
         
         <!-- Left: Details & History -->
         <div style="display: flex; flex-direction: column; gap: 28px;">
@@ -54,7 +54,7 @@
                     {{ $pet->notes ?? 'Documented companion profile with verified vaccination status and recorded veterinary visits.' }}
                 </p>
 
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 14px;">
                     <div style="background: var(--paper); padding: 14px 18px; border-radius: var(--radius-sm); border: 1px solid var(--border);">
                         <span class="meta-label" style="font-size: 10px; display: block; margin-bottom: 2px;">Species / Breed</span>
                         <strong style="color: var(--ink); font-size: 0.95rem;">{{ $pet->breed ?? ucfirst($pet->species) }}</strong>

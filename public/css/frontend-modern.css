@@ -2110,8 +2110,8 @@ textarea.form-control {
 
 .fe-adopt-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    gap: 1.75rem;
     margin-top: 2rem;
 }
 
@@ -2360,8 +2360,8 @@ textarea.form-control {
 
 .fe-store-glow-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    gap: 1.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+    gap: 1.5rem;
     margin-top: 1.75rem;
 }
 
@@ -2616,9 +2616,9 @@ textarea.form-control {
    ========================================================================== */
 .pet-directory-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 28px;
-    margin-bottom: 64px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
     align-items: start;
 }
 
@@ -3627,6 +3627,40 @@ textarea.form-control {
     width: 100%;
     height: 65vh;
     pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .care-poster-stack {
+        max-width: 100% !important;
+        padding: 0 4px !important;
+        overflow: hidden !important;
+    }
+    .care-poster-card-wrapper {
+        margin-top: 18px !important;
+        margin-bottom: 18px !important;
+        transform: none !important;
+        width: 100% !important;
+    }
+    .care-poster-card-wrapper:nth-of-type(2n),
+    .care-poster-card-wrapper:nth-of-type(2n+1),
+    .care-poster-card-wrapper:nth-of-type(3n) {
+        transform: none !important;
+    }
+    .care-poster-card-contents {
+        width: 100% !important;
+        max-width: 360px !important;
+        min-height: 440px !important;
+        height: auto !important;
+        border-radius: 1.25rem !important;
+        margin: 0 auto !important;
+    }
+    .care-poster-spacer {
+        display: none !important;
+        height: 0 !important;
+    }
+    .care-description__title {
+        font-size: 1.18rem !important;
+    }
 }
 
 /* ==========================================================================
@@ -6022,27 +6056,64 @@ nav[role="navigation"] svg,
     }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 991px) {
+    .fe-sticky-footer {
+        min-height: auto !important;
+        height: auto !important;
+        clip-path: none !important;
+        position: static !important;
+        pointer-events: auto !important;
+        z-index: 1 !important;
+    }
+    .fe-sticky-footer-fixed {
+        position: static !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+    .fe-sticky-footer-scroll {
+        position: static !important;
+        height: auto !important;
+        overflow: visible !important;
+        top: auto !important;
+    }
     .fe-sticky-footer-main {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+        grid-template-columns: 1fr !important;
+        gap: 2.25rem !important;
     }
     .fe-sticky-brand {
-        max-width: 100%;
+        max-width: 100% !important;
+    }
+    .fe-sticky-animated {
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+    }
+    .fe-sticky-ambient-mesh {
+        max-width: 100% !important;
+        overflow: hidden !important;
     }
 }
 
 @media (max-width: 640px) {
     .fe-sticky-columns {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        grid-template-columns: 1fr !important;
+        gap: 1.75rem !important;
     }
     .fe-sticky-footer-content {
-        padding: 2.5rem 1.25rem 2rem;
+        padding: 2.25rem 1.15rem 1.75rem !important;
+        gap: 2rem !important;
     }
     .fe-sticky-footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1.25rem !important;
+    }
+    .fe-footer-bottom-actions {
+        width: 100% !important;
+        justify-content: space-between !important;
+        flex-wrap: wrap !important;
+        gap: 10px !important;
     }
 }
 
@@ -6069,6 +6140,123 @@ nav[role="navigation"] svg,
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     margin-bottom: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Contact & Emergency Responsive Layouts
+   -------------------------------------------------------------------------- */
+.fe-contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 36px;
+    align-items: start;
+}
+
+@media (max-width: 860px) {
+    .fe-contact-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+.fe-contact-emergency-card {
+    background: #091a13;
+    border: 1.5px solid rgba(239, 68, 68, 0.45);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    color: #ffffff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.fe-contact-emergency-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #fca5a5;
+    font-size: 11px;
+    font-weight: 800;
+    font-family: var(--font-mono, monospace);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    margin-bottom: 10px;
+}
+
+.fe-contact-emergency-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #ef4444;
+    color: #ffffff !important;
+    padding: 10px 18px;
+    border-radius: 9999px;
+    font-weight: 800;
+    font-family: var(--font-mono, monospace);
+    font-size: 1rem;
+    text-decoration: none;
+    margin-top: 12px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+}
+
+.fe-contact-emergency-phone:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(239, 68, 68, 0.5);
+    color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   Global Mobile Hardening & Fluid Adaptability
+   -------------------------------------------------------------------------- */
+html, body, .fe-site-shell {
+    max-width: 100vw;
+    overflow-x: hidden !important;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 56px 0;
+    }
+    .section-head {
+        margin-bottom: 36px;
+    }
+    .section-head h1 {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+    }
+    .section-head h2 {
+        font-size: clamp(1.6rem, 6.5vw, 2.2rem);
+    }
+    .fe-portal-desc {
+        display: none !important;
+    }
+    .form-control, input, select, textarea {
+        font-size: 16px !important; /* Prevents auto-zoom on iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    .container, .container-narrow {
+        width: calc(100% - 24px) !important;
+    }
+    .section {
+        padding: 40px 0;
+    }
+    .section-head {
+        margin-bottom: 28px;
+    }
+    .card-padded {
+        padding: 18px 16px !important;
+    }
+    .btn {
+        padding: 10px 18px;
+        font-size: 12.5px;
+    }
 }
 
 

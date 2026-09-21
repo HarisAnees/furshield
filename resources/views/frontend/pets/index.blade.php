@@ -19,7 +19,7 @@
     </div>
 
     <!-- 2. Pets Grid -->
-    <div class="pet-directory-grid reveal delay-1" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; margin-bottom: 64px; align-items: start;">
+    <div class="pet-directory-grid reveal delay-1" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 24px; margin-bottom: 48px; align-items: start;">
         @forelse($pets as $index => $pet)
             @php
                 $petImages = ['/images/buddy.jpg', '/images/luna.jpg', '/images/max.jpg'];

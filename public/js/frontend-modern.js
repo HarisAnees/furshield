@@ -231,7 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const careCards = gsap.utils.toArray('.care-poster-card-wrapper');
 
-        if (careCards.length > 0) {
+        // Only apply card pinning on desktop screens (>768px) to prevent mobile scroll locks
+        if (careCards.length > 0 && window.innerWidth > 768) {
             const stickDistance = 120;
             const lastCard = careCards[careCards.length - 1];
 

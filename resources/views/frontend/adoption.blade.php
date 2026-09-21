@@ -86,7 +86,7 @@
             </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 28px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 24px;">
             @php
                 $samplePets = [
                     ['name' => 'Charlie', 'sub' => '2 years • Dog', 'traits' => 'Loyal & Friendly', 'img' => '/images/charlie.jpg'],

@@ -18,10 +18,10 @@
             </p>
 
             <!-- Working Search Form -->
-            <form action="{{ route('appointments.index') }}" method="GET" style="display: flex; gap: 8px; max-width: 480px; margin-top: 8px;">
+            <form action="{{ route('appointments.index') }}" method="GET" style="display: flex; gap: 8px; max-width: 480px; margin-top: 8px; flex-wrap: wrap;">
                 <input type="text" name="search" value="{{ request('search') }}" 
                        placeholder="Search vets by name, clinic, or location..." 
-                       class="form-control" style="border-radius: var(--radius-pill); padding-left: 20px;" aria-label="Search veterinarians">
+                       class="form-control" style="border-radius: var(--radius-pill); padding-left: 20px; flex: 1; min-width: 200px;" aria-label="Search veterinarians">
                 <button type="submit" class="btn btn-primary btn-sm">
                     Search
                 </button>
@@ -99,7 +99,7 @@
             </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 24px;">
             @php
                 $defaultDoctors = [
                     [
