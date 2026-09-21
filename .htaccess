@@ -1,6 +1,9 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # Prevent mod_dir from redirecting directories like /admin to /admin/
+    DirectorySlash Off
+
     # Block direct browser access to sensitive files
     RewriteRule ^\.env - [F,L,NC]
     RewriteRule ^composer\.(json|lock) - [F,L,NC]

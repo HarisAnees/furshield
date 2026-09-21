@@ -1,9 +1,19 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # Prevent mod_dir from redirecting directories like /admin to /admin/
+    DirectorySlash Off
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # 1. If the request is for a real existing file, serve it directly
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    # 2. Force portal and application routes to index.php (bypass directory checks)
+    RewriteRule ^(admin|owner|vet|shelter)(/.*)?$ index.php [L,QSA]
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
