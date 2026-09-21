@@ -220,6 +220,11 @@ img {
 .sidebar-bottom {
     padding: 16px;
     border-top: 1px solid var(--border-dark);
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    background: var(--sidebar-bg);
+    z-index: 10;
 }
 
 .switch-view-link {
@@ -415,6 +420,46 @@ img {
     font-size: 11px;
     color: var(--muted);
     font-family: var(--font-mono);
+}
+
+.admin-topbar-logout-form {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+}
+
+.admin-topbar-signout-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s var(--ease);
+    min-height: 36px;
+    white-space: nowrap;
+}
+
+.admin-topbar-signout-btn:hover {
+    background: #fef2f2;
+    border-color: #fca5a5;
+    color: #dc2626;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.1);
+}
+
+.admin-topbar-signout-btn:active {
+    transform: translateY(0);
+}
+
+.admin-topbar-signout-btn svg {
+    stroke: currentColor;
+    flex-shrink: 0;
 }
 
 /* Content Container */
@@ -1914,5 +1959,25 @@ img {
     }
     input, select, textarea {
         font-size: 16px !important;
+    }
+    .admin-topbar-signout-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+        min-height: 32px;
+        gap: 4px;
+    }
+}
+
+@media (max-width: 420px) {
+    .admin-signout-text {
+        display: none !important;
+    }
+    .admin-topbar-signout-btn {
+        width: 36px !important;
+        height: 36px !important;
+        min-height: 36px !important;
+        padding: 0 !important;
+        border-radius: 50% !important;
+        justify-content: center !important;
     }
 }

@@ -69,7 +69,7 @@
     <div class="layout-main-row">
         <!-- Sidebar -->
         <aside class="owner-sidebar" id="sidebar">
-            <div>
+            <div class="owner-sidebar-content-scroll">
                 <div class="sidebar-top">
                     <a class="brand-lockup" href="{{ route('vet.dashboard') }}">
                         <div class="brand-icon-shield">
@@ -115,10 +115,16 @@
             </div>
 
             <div class="sidebar-theme-toggle">
-                <form method="POST" action="{{ route('logout') }}" style="width: 100%;">
+                <form method="POST" action="{{ route('logout') }}" style="width: 100%; margin: 0;">
                     @csrf
-                    <button type="submit" class="owner-btn owner-btn-secondary" style="width: 100%; justify-content: center; font-size: 11.5px; color: #ef4444; border-color: rgba(239,68,68,0.3);">
-                        Sign Out ⏻
+                    <button type="submit" class="owner-sidebar-signout-btn" title="Sign Out of Clinical Portal" aria-label="Sign Out">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>Sign Out</span>
+                        <span class="signout-arrow">↗</span>
                     </button>
                 </form>
             </div>
@@ -139,10 +145,15 @@
                 </div>
 
                 <div class="header-right-actions">
-                    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                    <form method="POST" action="{{ route('logout') }}" class="owner-topbar-logout-form">
                         @csrf
-                        <button type="submit" class="btn-sm btn-outline" style="border-radius: 9999px;">
-                            Sign Out
+                        <button type="submit" class="owner-topbar-signout-btn" title="Sign Out of Clinical Portal" aria-label="Sign Out">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                            <span class="owner-signout-label">Sign Out</span>
                         </button>
                     </form>
                 </div>
