@@ -121,7 +121,7 @@
 
                 <!-- Actions -->
                 <div class="fe-mugsy-nav-actions">
-                    <a href="{{ route('cart.index') }}" class="fe-mugsy-cart-btn" title="Shopping Cart" aria-label="Shopping Cart">
+                    <a href="{{ route('cart.index') }}" class="fe-mugsy-cart-btn" title="Shopping Cart" aria-label="Shopping Cart" data-auth-cart="view" onclick="if(!window.FurShieldAuth){event.preventDefault();event.stopPropagation();window.openAuthCartModal({mode:'view',redirect:'{{ route('cart.index') }}'});return false;}">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="9" cy="21" r="1"></circle>
                             <circle cx="20" cy="21" r="1"></circle>
@@ -222,6 +222,15 @@
                 <a href="{{ route('products.index') }}" class="{{ request()->routeIs('products.*') ? 'active' : '' }}">
                     <span class="fe-mob-icon">🛍️</span>
                     <span>Pet Pharmacy & Store</span>
+                </a>
+                <a href="{{ route('cart.index') }}" class="fe-mobile-cart-link {{ request()->routeIs('cart.*') ? 'active' : '' }}" data-auth-cart="view" onclick="if(!window.FurShieldAuth){event.preventDefault();event.stopPropagation();if(typeof window.closeFurShieldMobileMenu==='function')window.closeFurShieldMobileMenu();window.openAuthCartModal({mode:'view',redirect:'{{ route('cart.index') }}'});return false;}">
+                    <span class="fe-mob-icon">🛒</span>
+                    <span style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                        <span>Shopping Cart</span>
+                        @if($cartCount > 0)
+                            <span class="fe-cart-badge" style="position: static; transform: none; margin-left: 8px;">{{ $cartCount }}</span>
+                        @endif
+                    </span>
                 </a>
                 <a href="{{ route('appointments.index') }}" class="{{ request()->routeIs('appointments.*') ? 'active' : '' }}">
                     <span class="fe-mob-icon">🩺</span>
@@ -415,7 +424,7 @@
                                         <li><a href="{{ route('contact') }}"><i class="fa fa-angle-right"></i> Contact Support</a></li>
                                         <li><a href="{{ route('about') }}"><i class="fa fa-angle-right"></i> Mission & Values</a></li>
                                         <li><a href="{{ route('products.index') }}"><i class="fa fa-angle-right"></i> Order Delivery</a></li>
-                                        <li><a href="{{ route('cart.index') }}"><i class="fa fa-angle-right"></i> Cart & Checkout</a></li>
+                                        <li><a href="{{ route('cart.index') }}" data-auth-cart="view" onclick="if(!window.FurShieldAuth){event.preventDefault();event.stopPropagation();window.openAuthCartModal({mode:'view',redirect:'{{ route('cart.index') }}'});return false;}"><i class="fa fa-angle-right"></i> Cart & Checkout</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -464,12 +473,12 @@
         <div class="fe-modal-body fe-auth-modal-body">
             <div class="fe-auth-modal-badge">
                 <span class="care-badge-dot"></span>
-                <span>AUTHENTICATION REQUIRED</span>
+                <span id="authModalBadgeText">AUTHENTICATION REQUIRED</span>
             </div>
 
             <h3 id="authModalTitle" class="fe-auth-modal-title">Sign In to Add to Cart</h3>
             
-            <p class="fe-auth-modal-desc">
+            <p id="authModalDesc" class="fe-auth-modal-desc">
                 Please sign in to your FurShield account to add clinical pet care items to your shopping cart, access order tracking, and manage wellness deliveries.
             </p>
 
@@ -510,6 +519,7 @@
     window.FurShieldAuth = @json(auth()->check());
     window.FurShieldLoginUrl = "{{ route('login') }}";
     window.FurShieldRegisterUrl = "{{ route('register') }}";
+    window.FurShieldCartUrl = "{{ route('cart.index') }}";
 </script>
 
 <!-- GSAP & ScrollTrigger -->

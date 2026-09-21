@@ -263,6 +263,11 @@ class WebController extends Controller
     // 7. Shopping Cart (Panel 8)
     public function cart()
     {
+        if (!auth()->check()) {
+            return redirect()->route('login', ['redirect' => route('cart.index')])
+                ->with('info', 'Please sign in to your FurShield account to access your shopping cart.');
+        }
+
         $cart = session()->get('cart', []);
         $subtotal = 0;
 
@@ -347,12 +352,17 @@ class WebController extends Controller
     // 8. Checkout (Panel 13)
     public function checkout()
     {
+        if (!auth()->check()) {
+            return redirect()->route('login', ['redirect' => route('checkout.index')])
+                ->with('info', 'Please sign in to your FurShield account to proceed to checkout.');
+        }
+
         $cart = session()->get('cart', []);
         if (empty($cart)) {
             return redirect()->route('products.index')->with('error', 'Your cart is empty. Please add items to proceed.');
         }
 
-        $user = $this->getCurrentUser();
+        $user = Auth::user() ?: $this->getCurrentUser();
         $subtotal = 0;
         foreach ($cart as $item) {
             $subtotal += $item['price'] * $item['quantity'];

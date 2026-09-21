@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
         }
     };
+    window.closeFurShieldMobileMenu = closeMenu;
 
     if (menuBtn) menuBtn.addEventListener('click', openMenu);
     if (closeBtn) closeBtn.addEventListener('click', closeMenu);
@@ -608,13 +609,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // 18. Global Cart Authentication Interceptor & Modal
     // ==========================================================================
-    window.openAuthCartModal = function() {
+    window.openAuthCartModal = function(options) {
         const modal = document.getElementById('authRequiredCartModal');
         if (!modal) return;
 
-        const returnUrl = encodeURIComponent(window.location.href);
+        options = options || {};
+        const mode = options.mode || 'view'; // 'view' or 'add'
+        const customRedirect = options.redirect || (mode === 'view' ? (window.FurShieldCartUrl || '/cart') : window.location.href);
+        const returnUrl = encodeURIComponent(customRedirect);
+
+        const titleEl = document.getElementById('authModalTitle');
+        const descEl = document.getElementById('authModalDesc');
+        const badgeEl = document.getElementById('authModalBadgeText');
         const loginBtn = document.getElementById('authModalLoginBtn');
         const registerBtn = document.getElementById('authModalRegisterBtn');
+
+        if (mode === 'add') {
+            if (titleEl) titleEl.textContent = "Sign In to Add to Cart";
+            if (descEl) descEl.textContent = "Please sign in to your FurShield account to add clinical pet care items to your shopping cart, access order tracking, and manage wellness deliveries.";
+            if (badgeEl) badgeEl.textContent = "AUTHENTICATION REQUIRED";
+        } else {
+            if (titleEl) titleEl.textContent = "Sign In to Access Your Cart";
+            if (descEl) descEl.textContent = "Please sign in to your FurShield account to access your companion's cart, review prescription refills, and proceed to clinical checkout.";
+            if (badgeEl) badgeEl.textContent = "CART ACCESS REQUIRED";
+        }
 
         if (loginBtn && window.FurShieldLoginUrl) {
             loginBtn.href = window.FurShieldLoginUrl + '?redirect=' + returnUrl;
@@ -634,16 +652,41 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     };
 
-    // Intercept clicks on any Add to Cart button when user is logged out
+    // Intercept clicks on cart icons/links or add-to-cart buttons when user is logged out
     document.addEventListener('click', function(e) {
         const target = e.target;
-        const cartBtn = target.closest('.fe-parallax-cart-btn, .card-btn.primary, [data-action="add-to-cart"]');
+        if (!target) return;
 
-        if (cartBtn) {
-            if (window.FurShieldAuth === false || window.FurShieldAuth === 'false') {
+        const isLoggedOut = (window.FurShieldAuth === false || window.FurShieldAuth === 'false');
+        if (!isLoggedOut) return;
+
+        // 1. Add to Cart buttons
+        const addToCartBtn = target.closest('.fe-parallax-cart-btn, .card-btn.primary, [data-action="add-to-cart"]');
+        if (addToCartBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.openAuthCartModal({ mode: 'add', redirect: window.location.href });
+            return false;
+        }
+
+        // 2. Navbar Cart button, Mobile Drawer Cart link, or any link targeting cart
+        const cartLink = target.closest('.fe-mugsy-cart-btn, .fe-mobile-cart-link, [data-auth-cart], a[href*="/cart"]');
+        if (cartLink) {
+            const href = cartLink.getAttribute('href') || '';
+            // Do not intercept if it's a remove or quantity change form
+            if (!href.includes('/cart/remove') && !href.includes('/cart/update')) {
                 e.preventDefault();
                 e.stopPropagation();
-                window.openAuthCartModal();
+
+                // Close mobile drawer if currently open
+                if (typeof window.closeFurShieldMobileMenu === 'function') {
+                    window.closeFurShieldMobileMenu();
+                }
+
+                window.openAuthCartModal({
+                    mode: 'view',
+                    redirect: window.FurShieldCartUrl || '/cart'
+                });
                 return false;
             }
         }
@@ -656,7 +699,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.FurShieldAuth === false || window.FurShieldAuth === 'false') {
                 e.preventDefault();
                 e.stopPropagation();
-                window.openAuthCartModal();
+                window.openAuthCartModal({ mode: 'add', redirect: window.location.href });
                 return false;
             }
         }
