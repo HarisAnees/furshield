@@ -41,6 +41,7 @@
             min-height: 100vh;
             width: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 24px;
@@ -672,34 +673,55 @@
            ------------------------------------------------------------- */
         @media (max-width: 920px) {
             body {
-                padding: 16px 12px 32px;
-                align-items: flex-start;
-                min-height: 100vh;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                align-items: center !important;
+                padding: 16px 14px 40px !important;
+                min-height: 100vh !important;
+                width: 100% !important;
+                overflow-x: hidden !important;
             }
 
             .auth-top-bar {
-                position: static;
-                margin-bottom: 20px;
-                width: 100%;
-                max-width: 520px;
+                position: static !important;
+                width: 100% !important;
+                max-width: 480px !important;
+                margin: 0 auto 16px auto !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                flex-shrink: 0 !important;
+            }
+
+            .auth-back-link {
+                padding: 7px 14px !important;
+                font-size: 0.8rem !important;
+            }
+
+            .auth-top-brand-name {
+                font-size: 1.25rem !important;
             }
 
             .auth-container {
                 position: relative !important;
                 min-height: auto !important;
                 height: auto !important;
-                max-width: 520px !important;
+                max-width: 480px !important;
                 width: 100% !important;
                 border-radius: 24px !important;
-                padding: 24px 20px 28px !important;
+                padding: 24px 18px 28px !important;
                 overflow: visible !important;
                 margin: 0 auto !important;
                 box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(16, 185, 129, 0.25) !important;
+                flex-shrink: 0 !important;
             }
 
             /* Disable sliding circular overlay completely on mobile/tablet to avoid intercepting touches */
-            .auth-container:before {
+            .auth-container:before,
+            .auth-container.sign-up-mode:before {
                 display: none !important;
+                content: none !important;
             }
 
             /* Hide sliding desktop panels */
@@ -725,19 +747,20 @@
                 flex: 1;
                 border: none;
                 background: transparent;
-                padding: 10px 14px;
+                padding: 9px 12px;
                 border-radius: 9999px;
                 font-family: 'Manrope', sans-serif;
                 font-weight: 700;
-                font-size: 0.88rem;
+                font-size: 0.82rem;
                 color: var(--gray-600);
                 cursor: pointer;
                 transition: all 0.25s ease;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                gap: 8px;
+                gap: 6px;
                 touch-action: manipulation;
+                white-space: nowrap;
             }
 
             .mobile-switch-tab.active {
@@ -760,7 +783,6 @@
                 font-size: 0.82rem;
                 color: var(--gray-600);
                 width: 100%;
-                max-width: 380px;
                 text-align: center;
                 flex-wrap: wrap;
             }
@@ -791,17 +813,22 @@
                 height: auto !important;
             }
 
-            .signin-signup {
+            .signin-signup,
+            .auth-container.sign-up-mode .signin-signup {
                 position: static !important;
                 width: 100% !important;
                 transform: none !important;
                 left: auto !important;
+                right: auto !important;
                 top: auto !important;
+                bottom: auto !important;
                 display: block !important;
                 z-index: 10 !important;
             }
 
-            form {
+            form,
+            form.sign-in-form,
+            form.sign-up-form {
                 position: static !important;
                 width: 100% !important;
                 max-width: 100% !important;
@@ -809,7 +836,11 @@
                 padding: 0 !important;
                 grid-column: auto !important;
                 grid-row: auto !important;
+                overflow: visible !important;
                 transition: opacity 0.25s ease !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
             }
 
             /* Display correct form based on mode */
@@ -833,9 +864,17 @@
                 display: none !important;
             }
 
+            .form-header {
+                width: 100% !important;
+                margin-bottom: 1rem !important;
+                text-align: center !important;
+            }
+
             .input-field {
                 max-width: 100% !important;
+                width: 100% !important;
                 grid-template-columns: 44px 1fr 40px !important;
+                margin: 6px 0 !important;
             }
 
             .input-field.two-col {
@@ -844,63 +883,105 @@
 
             .input-field input {
                 font-size: 16px !important; /* Prevents auto-zoom in iOS Safari */
+                width: 100% !important;
             }
 
             .btn-submit {
                 max-width: 100% !important;
-                height: 50px !important;
+                width: 100% !important;
+                height: 48px !important;
+                margin: 10px 0 !important;
             }
 
             .role-selector-wrap {
                 max-width: 100% !important;
+                width: 100% !important;
+                margin: 6px 0 !important;
             }
 
             .role-pills {
+                display: grid !important;
                 grid-template-columns: repeat(3, 1fr) !important;
-                gap: 6px;
+                gap: 6px !important;
+                width: 100% !important;
             }
 
             .role-pill-label {
-                padding: 8px 4px;
-                min-height: 44px;
-                font-size: 0.72rem;
+                padding: 8px 4px !important;
+                min-height: 44px !important;
+                font-size: 0.72rem !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
             }
 
             .form-helpers {
                 max-width: 100% !important;
+                width: 100% !important;
+                margin: 6px 0 10px !important;
             }
 
             .demo-bar {
                 max-width: 100% !important;
+                width: 100% !important;
+                margin-top: 12px !important;
+                padding-top: 10px !important;
             }
 
             .demo-pills {
-                flex-wrap: wrap;
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 6px !important;
+                justify-content: center !important;
+            }
+
+            .demo-pill {
+                padding: 6px 10px !important;
+                font-size: 0.72rem !important;
+            }
+
+            .auth-errors,
+            .auth-success {
+                max-width: 100% !important;
+                width: 100% !important;
             }
         }
 
         @media (max-width: 480px) {
+            body {
+                padding: 12px 10px 32px !important;
+            }
+
+            .auth-top-bar {
+                margin-bottom: 12px !important;
+            }
+
             .auth-container {
-                padding: 20px 16px 24px !important;
+                padding: 18px 14px 22px !important;
                 border-radius: 20px !important;
             }
 
             .form-title {
-                font-size: 1.6rem !important;
+                font-size: 1.55rem !important;
             }
 
             .form-subtitle {
                 font-size: 0.78rem !important;
             }
 
+            .mobile-switch-tab {
+                font-size: 0.76rem !important;
+                padding: 8px 8px !important;
+            }
+
             .role-pills {
                 grid-template-columns: 1fr 1fr 1fr !important;
-                gap: 4px;
+                gap: 4px !important;
             }
 
             .role-pill-label {
-                font-size: 0.68rem;
-                padding: 6px 2px;
+                font-size: 0.66rem !important;
+                padding: 6px 2px !important;
             }
         }
     </style>
