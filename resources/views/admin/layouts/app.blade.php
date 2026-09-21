@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/admin/admin.css">
+    <link rel="stylesheet" href="/admin/admin.css?v=2.6">
     <style>
         .flash-alert {
             padding: 14px 20px;
@@ -246,6 +246,6 @@
 </div>
 
 <div class="mobile-overlay" id="mobileOverlay"></div>
-<script src="/admin/admin.js"></script>
+<script src="/admin/admin.js?v=2.6"></script>
 </body>
 </html>

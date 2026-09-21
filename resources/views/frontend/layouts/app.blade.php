@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Design System Stylesheet -->
-    <link rel="stylesheet" href="/css/frontend-modern.css">
+    <link rel="stylesheet" href="/css/frontend-modern.css?v=2.6">
 
     <!-- Swiper Slider Bundle (Cards Effect) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -835,6 +835,6 @@
     </script>
 
     <!-- Main Frontend Modern Interactive Engine (Navigation, Swiper, Drawer, Magnetic Effects) -->
-    <script src="/js/frontend-modern.js"></script>
+    <script src="/js/frontend-modern.js?v=2.6"></script>
 </body>
 </html>

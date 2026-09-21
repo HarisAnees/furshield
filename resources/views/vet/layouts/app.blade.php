@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/owner/owner.css">
+    <link rel="stylesheet" href="/owner/owner.css?v=2.6">
     <style>
         .vet-badge {
             background: #ecfdf5;
@@ -178,7 +178,7 @@
 </div>
 
 <div class="owner-mobile-overlay" id="ownerMobileOverlay"></div>
-<script src="/owner/owner.js"></script>
+<script src="/owner/owner.js?v=2.6"></script>
 @yield('scripts')
 </body>
 </html>
