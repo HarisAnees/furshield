@@ -79,12 +79,6 @@
                         <button type="submit" class="fe-portal-signout-btn">Sign Out</button>
                     </form>
                 </div>
-            @else
-                <div class="fe-portal-auth-status" style="display: flex; align-items: center; gap: 10px; font-size: 11px; font-family: var(--font-mono, monospace);">
-                    <a href="{{ route('login') }}" class="fe-portal-link" style="color: #d1fae5;">Sign In</a>
-                    <span style="color: rgba(255,255,255,0.25);">|</span>
-                    <a href="{{ route('register') }}" class="fe-portal-link" style="color: #10b981; font-weight: 700;">Sign Up</a>
-                </div>
             @endauth
         </div>
     </div>
@@ -370,16 +364,16 @@
 
                                 <!-- Social Media Icon Buttons -->
                                 <div class="fe-footer-social-row">
-                                    <a href="#" class="fe-footer-social-btn" aria-label="Facebook" title="Facebook">
+                                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="fe-footer-social-btn" aria-label="Facebook" title="Facebook">
                                         <i class="fa-brands fa-facebook-f"></i>
                                     </a>
-                                    <a href="#" class="fe-footer-social-btn" aria-label="Instagram" title="Instagram">
+                                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="fe-footer-social-btn" aria-label="Instagram" title="Instagram">
                                         <i class="fa-brands fa-instagram"></i>
                                     </a>
-                                    <a href="#" class="fe-footer-social-btn" aria-label="YouTube" title="YouTube">
+                                    <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="fe-footer-social-btn" aria-label="YouTube" title="YouTube">
                                         <i class="fa-brands fa-youtube"></i>
                                     </a>
-                                    <a href="#" class="fe-footer-social-btn" aria-label="LinkedIn" title="LinkedIn">
+                                    <a href="https://www.linkedin.com/in/haris-anees-0b9925285" target="_blank" rel="noopener noreferrer" class="fe-footer-social-btn" aria-label="LinkedIn" title="LinkedIn">
                                         <i class="fa-brands fa-linkedin-in"></i>
                                     </a>
                                 </div>

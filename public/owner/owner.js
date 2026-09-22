@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const navLinks = sidebar.querySelectorAll('.owner-nav-item, a');
         navLinks.forEach(function (link) {
             link.addEventListener('click', function () {
-                if (window.innerWidth <= 900) {
+                if (window.innerWidth <= 1024) {
                     closeSidebar();
                 }
             });

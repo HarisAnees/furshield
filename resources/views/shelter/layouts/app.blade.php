@@ -143,7 +143,13 @@
         <div class="owner-main-area">
             <header class="owner-topbar">
                 <div style="display: flex; align-items: center; gap: 12px;">
-                    <button type="button" class="owner-menu-toggle" id="ownerMenuToggle" aria-label="Open sidebar navigation">☰</button>
+                    <button type="button" class="owner-menu-toggle" id="ownerMenuToggle" aria-label="Open sidebar navigation">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
                     <span class="shelter-badge">
                         <span style="width: 8px; height: 8px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
                         VERIFIED ANIMAL SHELTER
@@ -154,17 +160,10 @@
                 </div>
 
                 <div class="header-right-actions">
-                    <form method="POST" action="{{ route('logout') }}" class="owner-topbar-logout-form">
-                        @csrf
-                        <button type="submit" class="owner-topbar-signout-btn" title="Sign Out of Shelter Portal" aria-label="Sign Out">
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                                <polyline points="16 17 21 12 16 7"></polyline>
-                                <line x1="21" y1="12" x2="9" y2="12"></line>
-                            </svg>
-                            <span class="owner-signout-label">Sign Out</span>
-                        </button>
-                    </form>
+                    <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: #059669; background: #ecfdf5; border: 1px solid rgba(16, 185, 129, 0.25); padding: 5px 12px; border-radius: 20px;">
+                        <span style="width: 6px; height: 6px; border-radius: 50%; background: #10b981;"></span>
+                        Rescue Intake Active
+                    </span>
                 </div>
             </header>
 

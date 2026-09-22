@@ -28,9 +28,6 @@
             <a href="{{ route('owner.dashboard') }}" class="switcher-btn active">
                 <span class="dot-status"></span> Pet Owner Dashboard
             </a>
-            <a href="{{ route('admin.dashboard') }}" class="switcher-btn">
-                Admin Dashboard
-            </a>
         </div>
     </div>
 
@@ -130,7 +127,13 @@
         <div class="owner-main-area">
             <!-- Header Top Bar -->
             <header class="owner-topbar">
-                <button type="button" class="owner-menu-toggle" id="ownerMenuToggle" aria-label="Open sidebar navigation">☰</button>
+                <button type="button" class="owner-menu-toggle" id="ownerMenuToggle" aria-label="Open sidebar navigation">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
 
                 <div class="search-input-wrap">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -155,17 +158,6 @@
                             <small>{{ ucfirst(auth()->user()->role ?? 'Pet Owner') }}</small>
                         </div>
                     </a>
-                    <form method="POST" action="{{ route('logout') }}" class="owner-topbar-logout-form">
-                        @csrf
-                        <button type="submit" class="owner-topbar-signout-btn" title="Sign Out of FurShield" aria-label="Sign Out">
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                                <polyline points="16 17 21 12 16 7"></polyline>
-                                <line x1="21" y1="12" x2="9" y2="12"></line>
-                            </svg>
-                            <span class="owner-signout-label">Sign Out</span>
-                        </button>
-                    </form>
                 </div>
             </header>
 

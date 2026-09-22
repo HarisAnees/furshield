@@ -360,11 +360,32 @@ img {
 
 .menu-toggle {
     display: none;
-    background: none;
-    border: none;
-    font-size: 22px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: 42px;
+    height: 42px;
     color: var(--ink);
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s var(--ease);
+}
+
+.menu-toggle svg {
+    display: block;
+    color: var(--ink);
+    transition: color 0.2s ease;
+}
+
+.menu-toggle:hover {
+    background: #f8fafc;
+    border-color: var(--emerald);
+}
+
+.menu-toggle:hover svg {
+    color: var(--emerald);
 }
 
 .page-title-block h1 {
@@ -1991,7 +2012,7 @@ nav[role="navigation"] svg,
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .image-label-badge {
         display: none !important;
     }
@@ -2010,7 +2031,7 @@ nav[role="navigation"] svg,
         width: 100%;
     }
     .menu-toggle {
-        display: block;
+        display: inline-flex;
     }
     .kpi-grid {
         grid-template-columns: 1fr;

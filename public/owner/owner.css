@@ -989,14 +989,23 @@ textarea.owner-form-input {
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    font-size: 19px;
     flex-shrink: 0;
     transition: all 0.2s var(--ease);
+}
+
+.owner-menu-toggle svg {
+    display: block;
+    color: var(--ink);
+    transition: color 0.2s var(--ease);
 }
 
 .owner-menu-toggle:hover {
     background: var(--paper-subtle);
     border-color: var(--emerald);
+    color: var(--emerald-dark);
+}
+
+.owner-menu-toggle:hover svg {
     color: var(--emerald-dark);
 }
 
@@ -1178,7 +1187,7 @@ textarea.owner-form-input {
 /* ==========================================================================
    Responsive Breakpoints (Tablets & Mobile Viewports)
    ========================================================================== */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     html, body.owner-body, .owner-shell {
         max-width: 100vw !important;
         overflow-x: hidden !important;
