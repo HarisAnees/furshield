@@ -117,7 +117,7 @@
                     <tr>
                         <td colspan="6">
                             <div class="empty-state">
-                                <span class="empty-state-icon">👥</span>
+                                <span class="empty-state-icon"><i class="fa-solid fa-users" style="color: #059669;"></i></span>
                                 <h4>No users found</h4>
                                 <p>Try adjusting your search criteria or register a new user.</p>
                             </div>

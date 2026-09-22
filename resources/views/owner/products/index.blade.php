@@ -7,7 +7,7 @@
 <div class="owner-subpage-card">
     <div class="owner-subpage-header">
         <div class="owner-subpage-title">
-            <span>🛍️</span> Recommended Food, Supplies & Pharmacy
+            <i class="fa-solid fa-bag-shopping" style="color: #10b981;"></i> Recommended Food, Supplies & Pharmacy
         </div>
         <span style="font-size: 12px; color: #64748b;">{{ $products->count() }} Products Available</span>
     </div>
@@ -25,7 +25,9 @@
                         @elseif(stripos($prod->name, 'toy') !== false || stripos($prod->name, 'rope') !== false)
                             <img src="/images/dog-toys.jpg" alt="{{ $prod->name }}" style="width: 100%; height: 100%; object-fit: cover;">
                         @else
-                            <span style="font-size: 48px;">📦</span>
+                            <div style="width: 56px; height: 56px; border-radius: 50%; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                                <i class="fa-solid fa-box-open"></i>
+                            </div>
                         @endif
                         <span style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 12px; color: #0f172a;">
                             {{ $prod->category }}
@@ -69,7 +71,7 @@
 <div class="owner-subpage-card">
     <div class="owner-subpage-header">
         <div class="owner-subpage-title">
-            <span>📦</span> My Order History ({{ $myOrders->count() }})
+            <i class="fa-solid fa-receipt" style="color: #10b981;"></i> My Order History ({{ $myOrders->count() }})
         </div>
     </div>
     <div class="owner-subpage-body no-padding" style="padding: 0;">

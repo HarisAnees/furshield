@@ -110,10 +110,10 @@
                                     @elseif($order->status === 'processing') background: #e0f2fe; color: #0369a1; border-color: #bae6fd;
                                     @elseif($order->status === 'cancelled') background: #fee2e2; color: #b91c1c; border-color: #fecaca;
                                     @else background: #fef3c7; color: #b45309; border-color: #fde68a; @endif">
-                                    <option value="requested" {{ $order->status === 'requested' ? 'selected' : '' }}>⏳ Requested</option>
-                                    <option value="processing" {{ $order->status === 'processing' ? 'selected' : '' }}>⚙️ Processing</option>
-                                    <option value="completed" {{ $order->status === 'completed' ? 'selected' : '' }}>✅ Completed</option>
-                                    <option value="cancelled" {{ $order->status === 'cancelled' ? 'selected' : '' }}>❌ Cancelled</option>
+                                    <option value="requested" {{ $order->status === 'requested' ? 'selected' : '' }}>Requested</option>
+                                    <option value="processing" {{ $order->status === 'processing' ? 'selected' : '' }}>Processing</option>
+                                    <option value="completed" {{ $order->status === 'completed' ? 'selected' : '' }}>Completed</option>
+                                    <option value="cancelled" {{ $order->status === 'cancelled' ? 'selected' : '' }}>Cancelled</option>
                                 </select>
                             </form>
                         </td>
@@ -129,7 +129,7 @@
                     <tr>
                         <td colspan="7">
                             <div class="empty-state">
-                                <span class="empty-state-icon">🛒</span>
+                                <span class="empty-state-icon"><i class="fa-solid fa-cart-shopping" style="color: #059669;"></i></span>
                                 <h4>No orders found</h4>
                                 <p>Customer orders from the marketplace will show up here in real time.</p>
                             </div>

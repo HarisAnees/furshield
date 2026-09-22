@@ -152,7 +152,7 @@
                     <p style="font-size: 12.5px; color: #475569; margin: 0 0 8px; line-height: 1.4;">{{ $rec->description }}</p>
                     @if($rec->medication)
                         <div style="font-size: 11.5px; background: #ecfdf5; border-radius: 6px; padding: 4px 8px; color: #064e3b; display: inline-block;">
-                            💊 <strong>Rx:</strong> {{ $rec->medication }}
+                            <i class="fa-solid fa-pills" style="margin-right: 4px;"></i> <strong>Rx:</strong> {{ $rec->medication }}
                         </div>
                     @endif
                 </div>
@@ -168,13 +168,13 @@
             @csrf
             <div class="shelter-modal-header">
                 <div class="shelter-modal-header-left">
-                    <div class="shelter-modal-icon-badge">🩺</div>
+                    <div class="shelter-modal-icon-badge"><i class="fa-solid fa-stethoscope"></i></div>
                     <div>
                         <h3 class="shelter-modal-title">Clinical Treatment: <span id="modalPetName" style="color: #059669;">Companion</span></h3>
                         <p class="shelter-modal-subtitle">Record clinical diagnosis, medication dosage, and follow-up notes.</p>
                     </div>
                 </div>
-                <button type="button" class="shelter-modal-close" onclick="closeTreatmentModal()" aria-label="Close modal">✕</button>
+                <button type="button" class="shelter-modal-close" onclick="closeTreatmentModal()" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
             <div class="shelter-modal-body">
@@ -202,7 +202,7 @@
 
             <div class="shelter-modal-footer">
                 <button type="button" onclick="closeTreatmentModal()" class="shelter-btn-cancel">Cancel</button>
-                <button type="submit" class="shelter-btn-submit">Record to Passport ✓</button>
+                <button type="submit" class="shelter-btn-submit"><i class="fa-solid fa-file-medical" style="margin-right: 6px;"></i>Record to Passport</button>
             </div>
         </form>
     </div>

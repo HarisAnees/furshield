@@ -11,13 +11,13 @@
             All Pets
         </a>
         <a href="{{ route('admin.pets.index', ['species' => 'Dog']) }}" class="filter-pill-link {{ request('species') === 'Dog' ? 'active' : '' }}">
-            🐕 Dogs
+            <i class="fa-solid fa-dog" style="color: #059669; margin-right: 4px;"></i> Dogs
         </a>
         <a href="{{ route('admin.pets.index', ['species' => 'Cat']) }}" class="filter-pill-link {{ request('species') === 'Cat' ? 'active' : '' }}">
-            🐈 Cats
+            <i class="fa-solid fa-cat" style="color: #059669; margin-right: 4px;"></i> Cats
         </a>
         <a href="{{ route('admin.pets.index', ['species' => 'Bird']) }}" class="filter-pill-link {{ request('species') === 'Bird' ? 'active' : '' }}">
-            🦜 Birds
+            <i class="fa-solid fa-dove" style="color: #059669; margin-right: 4px;"></i> Birds
         </a>
     </div>
 
@@ -56,11 +56,32 @@
             </thead>
             <tbody>
                 @forelse($pets as $pet)
+                    @php
+                        $pName = strtolower(trim($pet->name));
+                        $pSpecies = strtolower(trim($pet->species));
+                        $imageMap = [
+                            'buddy' => '/images/buddy.jpg',
+                            'luna' => '/images/luna.jpg',
+                            'max' => '/images/max.jpg',
+                            'bella' => '/images/bella.jpg',
+                            'charlie' => '/images/charlie.jpg',
+                            'rocky' => '/images/rocky.jpg',
+                        ];
+                        $imgSrc = $imageMap[$pName] ?? null;
+                        if (!$imgSrc) {
+                            if ($pSpecies === 'dog') $imgSrc = '/images/buddy.jpg';
+                            elseif ($pSpecies === 'cat') $imgSrc = '/images/luna.jpg';
+                        }
+                    @endphp
                     <tr>
                         <td>
                             <div class="user-info-cell">
-                                <div class="user-avatar-sm" style="background: #e0f2fe; color: #0369a1; font-size: 16px;">
-                                    @if(strtolower($pet->species) === 'dog') 🐕 @elseif(strtolower($pet->species) === 'cat') 🐈 @else 🐾 @endif
+                                <div class="user-avatar-sm" style="overflow: hidden; background: #ecfdf5; color: #059669; font-size: 14px; border: 1px solid #e2e8f0;">
+                                    @if($imgSrc)
+                                        <img src="{{ $imgSrc }}" alt="{{ $pet->name }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                    @else
+                                        <i class="fa-solid fa-shield-cat"></i>
+                                    @endif
                                 </div>
                                 <div class="user-info-meta">
                                     <strong>{{ $pet->name }}</strong>
@@ -75,29 +96,29 @@
                             <small style="color: #64748b;">{{ $pet->user->email ?? '' }}</small>
                         </td>
                         <td>
-                            <span class="badge badge-teal">{{ $pet->species }}</span>
-                            <div style="font-size: 11.5px; color: #475569; margin-top: 3px;">{{ $pet->breed ?? 'Mixed Breed' }}</div>
+                            <div><strong>{{ $pet->species }}</strong></div>
+                            <small style="color: #64748b;">{{ $pet->breed ?? 'Mixed' }}</small>
                         </td>
                         <td>
-                            <span class="badge {{ $pet->sex === 'male' ? 'badge-info' : 'badge-purple' }}" style="text-transform: capitalize;">
-                                {{ $pet->sex }}
+                            <span class="badge" style="background: #f1f5f9; color: #334155; font-size: 11px;">
+                                {{ ucfirst($pet->sex ?? 'unknown') }}
                             </span>
                         </td>
-                        <td style="font-size: 12px; color: #334155;">
-                            {{ $pet->weight_kg ? $pet->weight_kg . ' kg' : '—' }}
-                        </td>
-                        <td style="font-size: 11px; font-family: monospace; color: #64748b;">
-                            {{ $pet->microchip_number ?? 'Not Chipped' }}
+                        <td>{{ $pet->weight_kg ? $pet->weight_kg . ' kg' : '—' }}</td>
+                        <td>
+                            <span style="font-family: var(--font-mono); font-size: 11.5px; color: #475569;">
+                                {{ $pet->microchip_number ?? 'Not registered' }}
+                            </span>
                         </td>
                         <td style="text-align: right;">
-                            <div class="action-buttons">
-                                <button type="button" class="btn btn-secondary btn-sm" onclick='editPet(@json($pet))' title="Edit Pet">
+                            <div class="action-btn-group" style="justify-content: flex-end;">
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="editPet({{ $pet->toJson() }})">
                                     Edit
                                 </button>
-                                <form method="POST" action="{{ route('admin.pets.destroy', $pet) }}" onsubmit="return confirm('Are you sure you want to delete {{ $pet->name }}?');" style="display: inline;">
+                                <form method="POST" action="{{ route('admin.pets.destroy', $pet) }}" onsubmit="return confirm('Delete this pet record permanently?');" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete Pet">Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                 </form>
                             </div>
                         </td>
@@ -106,7 +127,7 @@
                     <tr>
                         <td colspan="7">
                             <div class="empty-state">
-                                <span class="empty-state-icon">🐾</span>
+                                <span class="empty-state-icon"><i class="fa-solid fa-paw" style="color: #059669;"></i></span>
                                 <h4>No pets registered yet</h4>
                                 <p>Add pet profiles to start tracking their medical histories and appointments.</p>
                             </div>

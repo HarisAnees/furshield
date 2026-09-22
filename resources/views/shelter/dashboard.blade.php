@@ -145,13 +145,13 @@
             @csrf
             <div class="shelter-modal-header">
                 <div class="shelter-modal-header-left">
-                    <div class="shelter-modal-icon-badge">🐾</div>
+                    <div class="shelter-modal-icon-badge"><i class="fa-solid fa-paw"></i></div>
                     <div>
                         <h3 class="shelter-modal-title">List New Adoptable Companion</h3>
                         <p class="shelter-modal-subtitle">Publish an animal profile to the sanctuary adoption gallery.</p>
                     </div>
                 </div>
-                <button type="button" class="shelter-modal-close" onclick="closeNewListingModal()" aria-label="Close modal">✕</button>
+                <button type="button" class="shelter-modal-close" onclick="closeNewListingModal()" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
             <div class="shelter-modal-body">
@@ -200,7 +200,7 @@
 
             <div class="shelter-modal-footer">
                 <button type="button" onclick="closeNewListingModal()" class="shelter-btn-cancel">Cancel</button>
-                <button type="submit" class="shelter-btn-submit">Publish Companion ✓</button>
+                <button type="submit" class="shelter-btn-submit"><i class="fa-solid fa-shield-cat" style="margin-right: 6px;"></i>Publish Companion</button>
             </div>
         </form>
     </div>

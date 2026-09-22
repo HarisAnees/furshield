@@ -10,7 +10,7 @@
     <div class="admin-card">
         <div class="admin-card-header">
             <h3 class="admin-card-title">
-                <span>📢</span> Send Broadcast Alert
+                <i class="fa-solid fa-bullhorn" style="color: #059669; margin-right: 6px;"></i> Send Broadcast Alert
             </h3>
         </div>
         <div class="admin-card-body">
@@ -45,7 +45,7 @@
     <div class="admin-card">
         <div class="admin-card-header">
             <h3 class="admin-card-title">
-                <span>📜</span> Broadcast & System Activity Logs
+                <i class="fa-solid fa-clock-rotate-left" style="color: #059669; margin-right: 6px;"></i> Broadcast & System Activity Logs
             </h3>
             <span class="badge badge-teal">{{ $activities->total() }} Logged Events</span>
         </div>
@@ -89,7 +89,7 @@
                         <tr>
                             <td colspan="4">
                                 <div class="empty-state">
-                                    <span class="empty-state-icon">🔔</span>
+                                    <span class="empty-state-icon"><i class="fa-solid fa-bell" style="color: #059669;"></i></span>
                                     <h4>No activity logs yet</h4>
                                     <p>Broadcasts and administrative events will be recorded here.</p>
                                 </div>

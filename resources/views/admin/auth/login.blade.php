@@ -8,6 +8,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/frontend-modern.css?v=2.6">
+
+    <!-- Favicon Suite -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#0d0f11">
+
+    <!-- FontAwesome 6 Pro-grade Vectors -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             background-color: var(--color-paper, #fbfbfa);
@@ -361,7 +374,7 @@
                                value="password" 
                                placeholder="Enter your password" 
                                class="fe-input" style="padding-right: 2.5rem;">
-                        <span onclick="togglePassword()" style="position: absolute; right: 0.85rem; top: 50%; transform: translateY(-50%); cursor: pointer; color: #9ca3af; font-size: 1rem;">👁️</span>
+                        <span onclick="togglePassword()" style="position: absolute; right: 0.85rem; top: 50%; transform: translateY(-50%); cursor: pointer; color: #9ca3af; font-size: 0.95rem;"><i class="fa-solid fa-eye" id="passwordToggleIcon"></i></span>
                     </div>
                 </div>
 

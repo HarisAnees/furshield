@@ -9,8 +9,17 @@
     <!-- Google Fonts: Anton (Display), Manrope (Sans), DM Mono (Monospace) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon Suite -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#091a13">
 
     <style>
         *, *::before, *::after {
@@ -1104,16 +1113,16 @@
                         <span class="demo-title">Quick Demo Logins</span>
                         <div class="demo-pills">
                             <button type="button" class="demo-pill" onclick="fillDemo('sarah@example.com', 'password')">
-                                🐾 Sarah (Owner)
+                                <i class="fa-solid fa-paw" style="color: #10b981; margin-right: 4px;"></i> Sarah (Owner)
                             </button>
                             <button type="button" class="demo-pill" onclick="fillDemo('emily@vet.com', 'password')">
-                                🩺 Dr. Emily (Vet)
+                                <i class="fa-solid fa-stethoscope" style="color: #10b981; margin-right: 4px;"></i> Dr. Emily (Vet)
                             </button>
                             <button type="button" class="demo-pill" onclick="fillDemo('shelter@furshield.com', 'password')">
-                                🏡 Shelter
+                                <i class="fa-solid fa-shield-heart" style="color: #10b981; margin-right: 4px;"></i> Shelter
                             </button>
                             <button type="button" class="demo-pill" onclick="fillDemo('admin@furshield.test', 'password')">
-                                🛡️ Admin
+                                <i class="fa-solid fa-shield-halved" style="color: #10b981; margin-right: 4px;"></i> Admin
                             </button>
                         </div>
                     </div>
@@ -1191,15 +1200,15 @@
                         <div class="role-pills">
                             <label class="role-pill-label">
                                 <input type="radio" name="role" value="owner" {{ old('role', 'owner') === 'owner' ? 'checked' : '' }}>
-                                <span>🐾 Pet Owner</span>
+                                <span><i class="fa-solid fa-paw" style="color: #10b981; margin-right: 4px;"></i> Pet Owner</span>
                             </label>
                             <label class="role-pill-label">
                                 <input type="radio" name="role" value="vet" {{ old('role') === 'vet' ? 'checked' : '' }}>
-                                <span>🩺 Clinician</span>
+                                <span><i class="fa-solid fa-stethoscope" style="color: #10b981; margin-right: 4px;"></i> Clinician</span>
                             </label>
                             <label class="role-pill-label">
                                 <input type="radio" name="role" value="shelter" {{ old('role') === 'shelter' ? 'checked' : '' }}>
-                                <span>🏠 Shelter</span>
+                                <span><i class="fa-solid fa-shield-heart" style="color: #10b981; margin-right: 4px;"></i> Shelter</span>
                             </label>
                         </div>
                     </div>

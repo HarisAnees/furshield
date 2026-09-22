@@ -6,15 +6,15 @@
 <div class="owner-subpage-card" style="max-width: 800px;">
     <div class="owner-subpage-header">
         <div class="owner-subpage-title">
-            <span>🔔</span> Activity Alerts & Care Reminders
+            <i class="fa-solid fa-bell" style="color: #10b981;"></i> Activity Alerts & Care Reminders
         </div>
     </div>
     <div class="owner-subpage-body no-padding" style="padding: 0;">
         <div style="display: flex; flex-direction: column;">
             <!-- Notification Item 1 -->
             <div class="owner-activity-row" style="display: flex; align-items: flex-start; gap: 14px; background: #f8fafc;">
-                <div style="width: 38px; height: 38px; border-radius: 50%; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
-                    💉
+                <div style="width: 38px; height: 38px; border-radius: 50%; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;">
+                    <i class="fa-solid fa-syringe"></i>
                 </div>
                 <div style="flex: 1; min-width: 0;">
                     <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
@@ -29,8 +29,8 @@
 
             <!-- Notification Item 2 -->
             <div class="owner-activity-row" style="display: flex; align-items: flex-start; gap: 14px;">
-                <div style="width: 38px; height: 38px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
-                    📅
+                <div style="width: 38px; height: 38px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;">
+                    <i class="fa-solid fa-calendar-check"></i>
                 </div>
                 <div style="flex: 1; min-width: 0;">
                     <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
@@ -45,8 +45,8 @@
 
             <!-- Notification Item 3 -->
             <div class="owner-activity-row" style="display: flex; align-items: flex-start; gap: 14px;">
-                <div style="width: 38px; height: 38px; border-radius: 50%; background: #fef3c7; color: #b45309; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
-                    📦
+                <div style="width: 38px; height: 38px; border-radius: 50%; background: #fef3c7; color: #b45309; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;">
+                    <i class="fa-solid fa-box-open"></i>
                 </div>
                 <div style="flex: 1; min-width: 0;">
                     <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">

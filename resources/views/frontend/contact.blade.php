@@ -21,7 +21,7 @@
             <!-- Dedicated 24/7 Emergency Hospital Dispatch Card -->
             <div class="fe-contact-emergency-card">
                 <div class="fe-contact-emergency-badge">
-                    <span>🚨</span>
+                    <i class="fa-solid fa-truck-medical"></i>
                     <span>24/7 Emergency Dispatch</span>
                 </div>
                 <h3 style="font-size: 1.25rem; margin-bottom: 6px; color: #ffffff;">Immediate Clinical Triage</h3>
@@ -30,10 +30,10 @@
                 </p>
                 <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 14px;">
                     <a href="tel:+15550199738" class="fe-contact-emergency-phone">
-                        <span>📞 Call Emergency: +1 (555) 0199-PETS</span>
+                        <span><i class="fa-solid fa-phone-volume" style="margin-right: 6px;"></i>Call Emergency: +1 (555) 0199-PETS</span>
                     </a>
                     <a href="tel:+923001234567" class="fe-contact-emergency-phone" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);">
-                        <span>Lahore Dispatch: +92 300 1234567</span>
+                        <span><i class="fa-solid fa-phone" style="margin-right: 6px;"></i>Lahore Dispatch: +92 300 1234567</span>
                     </a>
                 </div>
             </div>
@@ -93,8 +93,8 @@
                 <span class="meta-label">Campus Geolocation Services</span>
                 <h3 style="font-size: 1.15rem; margin: 4px 0 0; color: #091a13;">FurShield Clinical Center & Shelter Sanctuary</h3>
             </div>
-            <span style="font-size: 12px; color: var(--emerald-dark); font-weight: 700; background: #ecfdf5; border: 1px solid rgba(16,185,129,0.3); padding: 4px 12px; border-radius: 9999px;">
-                📍 Interactive Google Map
+            <span style="font-size: 12px; color: var(--emerald-dark); font-weight: 700; background: #ecfdf5; border: 1px solid rgba(16,185,129,0.3); padding: 4px 12px; border-radius: 9999px; display: inline-flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-location-dot"></i> Interactive Campus Map
             </span>
         </div>
         <div style="width: 100%; height: clamp(240px, 45vh, 360px); border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0;">

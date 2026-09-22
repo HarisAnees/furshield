@@ -38,7 +38,7 @@
                 <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);">
                     01 / My Pets
                 </span>
-                <span style="font-size: 16px;">🐾</span>
+                <i class="fa-solid fa-paw" style="color: #10b981; font-size: 16px;"></i>
             </div>
             <div style="font-family: var(--font-mono); font-size: 2.4rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 10px;">
                 {{ $stats['pets'] ?? 2 }}
@@ -55,7 +55,7 @@
                 <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);">
                     02 / Appointments
                 </span>
-                <span style="font-size: 16px;">📅</span>
+                <i class="fa-solid fa-calendar-check" style="color: #0284c7; font-size: 16px;"></i>
             </div>
             <div style="font-family: var(--font-mono); font-size: 2.4rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 10px;">
                 {{ $stats['upcoming_appointments'] ?? 1 }}
@@ -72,7 +72,7 @@
                 <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);">
                     03 / Reminders
                 </span>
-                <span style="font-size: 16px;">🔔</span>
+                <i class="fa-solid fa-bell" style="color: #f59e0b; font-size: 16px;"></i>
             </div>
             <div style="font-family: var(--font-mono); font-size: 2.4rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 10px;">
                 3
@@ -92,7 +92,7 @@
         <div class="owner-subpage-card">
             <div class="owner-subpage-header">
                 <div class="owner-subpage-title">
-                    Recent Care Activity
+                    <i class="fa-solid fa-clock-rotate-left" style="color: #10b981;"></i> Recent Care Activity
                 </div>
                 <span style="font-family: var(--font-mono); font-size: 11px; color: var(--muted);">RECORD LOG</span>
             </div>
@@ -100,8 +100,8 @@
             <div style="display: flex; flex-direction: column;">
                 <div class="owner-activity-row">
                     <div style="display: flex; align-items: center; gap: 14px;">
-                        <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--paper-subtle); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
-                            📅
+                        <div style="width: 38px; height: 38px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;">
+                            <i class="fa-solid fa-calendar-check"></i>
                         </div>
                         <div>
                             <strong style="display: block; font-size: 13.5px; color: var(--ink); margin-bottom: 2px;">Appointment Confirmed</strong>
@@ -113,8 +113,8 @@
 
                 <div class="owner-activity-row">
                     <div style="display: flex; align-items: center; gap: 14px;">
-                        <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--paper-subtle); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
-                            🩺
+                        <div style="width: 38px; height: 38px; border-radius: 50%; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;">
+                            <i class="fa-solid fa-stethoscope"></i>
                         </div>
                         <div>
                             <strong style="display: block; font-size: 13.5px; color: var(--ink); margin-bottom: 2px;">Health Record Updated</strong>
@@ -126,8 +126,8 @@
 
                 <div class="owner-activity-row">
                     <div style="display: flex; align-items: center; gap: 14px;">
-                        <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--paper-subtle); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
-                            📦
+                        <div style="width: 38px; height: 38px; border-radius: 50%; background: #eef2ff; color: #6366f1; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;">
+                            <i class="fa-solid fa-box-open"></i>
                         </div>
                         <div>
                             <strong style="display: block; font-size: 13.5px; color: var(--ink); margin-bottom: 2px;">Order Dispatched</strong>

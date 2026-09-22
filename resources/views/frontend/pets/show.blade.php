@@ -10,9 +10,25 @@
         <div style="display: flex; align-items: center; gap: 24px;">
             <div style="width: 100px; height: 100px; border-radius: var(--radius-md); overflow: hidden; background: var(--paper-subtle); border: 1px solid var(--border); flex-shrink: 0;">
                 @php
-                    $img = '/images/buddy.jpg';
-                    if (strtolower($pet->species) === 'cat') $img = '/images/luna.jpg';
-                    if ($pet->photo_url) $img = $pet->photo_url;
+                    $pName = strtolower(trim($pet->name));
+                    $pSpecies = strtolower(trim($pet->species));
+                    $nameMap = [
+                        'buddy' => '/images/buddy.jpg',
+                        'luna' => '/images/luna.jpg',
+                        'max' => '/images/max.jpg',
+                        'bella' => '/images/bella.jpg',
+                        'charlie' => '/images/charlie.jpg',
+                        'rocky' => '/images/rocky.jpg',
+                    ];
+                    if (!empty($pet->photo_url)) {
+                        $img = $pet->photo_url;
+                    } elseif (isset($nameMap[$pName])) {
+                        $img = $nameMap[$pName];
+                    } elseif ($pSpecies === 'cat' || str_contains($pSpecies, 'feline')) {
+                        $img = '/images/luna.jpg';
+                    } else {
+                        $img = '/images/buddy.jpg';
+                    }
                 @endphp
                 <img src="{{ $img }}" alt="{{ $pet->name }}" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
@@ -105,14 +121,17 @@
             <div class="meta-label" style="margin-bottom: 16px;">Actions</div>
 
             <div style="display: flex; flex-direction: column; gap: 10px;">
-                <a href="{{ route('appointments.index') }}" class="btn btn-secondary btn-block" style="justify-content: flex-start;">
-                    <span>📅 Schedule Examination</span>
+                <a href="{{ route('appointments.index') }}" class="btn btn-secondary btn-block" style="justify-content: flex-start; gap: 8px;">
+                    <i class="fa-solid fa-calendar-plus" style="color: #059669;"></i>
+                    <span>Schedule Examination</span>
                 </a>
-                <a href="{{ route('appointments.index') }}" class="btn btn-secondary btn-block" style="justify-content: flex-start;">
-                    <span>🩺 Record Health Event</span>
+                <a href="{{ route('appointments.index') }}" class="btn btn-secondary btn-block" style="justify-content: flex-start; gap: 8px;">
+                    <i class="fa-solid fa-notes-medical" style="color: #059669;"></i>
+                    <span>Record Health Event</span>
                 </a>
-                <a href="{{ route('pets.index') }}" class="btn btn-secondary btn-block" style="justify-content: flex-start;">
-                    <span>🔔 Manage Reminders</span>
+                <a href="{{ route('pets.index') }}" class="btn btn-secondary btn-block" style="justify-content: flex-start; gap: 8px;">
+                    <i class="fa-solid fa-bell" style="color: #059669;"></i>
+                    <span>Manage Reminders</span>
                 </a>
             </div>
         </div>

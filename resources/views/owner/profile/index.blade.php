@@ -6,7 +6,7 @@
 <div class="owner-subpage-card" style="max-width: 680px;">
     <div class="owner-subpage-header">
         <div class="owner-subpage-title">
-            <span>👤</span> Account & Profile Settings
+            <i class="fa-solid fa-user-shield" style="color: #10b981;"></i> Account & Profile Settings
         </div>
     </div>
     <div class="owner-subpage-body">

@@ -29,7 +29,7 @@
                            class="form-control" aria-label="Search products">
                     @if(request('search'))
                         <a href="{{ route('products.index', array_filter(['category' => request('category'), 'sort' => request('sort')])) }}" 
-                           class="clear-search-link" title="Clear search">✕</a>
+                           class="clear-search-link" title="Clear search"><i class="fa-solid fa-xmark"></i></a>
                     @endif
                 </div>
 
@@ -94,7 +94,7 @@
             </div>
             <a href="{{ route('products.index') }}" class="clear-filter-btn">
                 <span>Reset All Filters</span>
-                <span>✕</span>
+                <span><i class="fa-solid fa-xmark"></i></span>
             </a>
         </div>
     @endif
@@ -195,7 +195,9 @@
                     </article>
                 @empty
                     <div class="card card-padded" style="grid-column: 1 / -1; text-align: center; padding: 64px 20px;">
-                        <div style="font-size: 2.8rem; margin-bottom: 14px;">🐾</div>
+                        <div style="width: 56px; height: 56px; border-radius: 50%; background: #ecfdf5; color: #059669; display: inline-flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 14px;">
+                            <i class="fa-solid fa-box-open"></i>
+                        </div>
                         <h3 style="font-size: 1.35rem; margin-bottom: 8px; color: #091a13;">No Products Found</h3>
                         <p style="color: var(--muted); max-width: 440px; margin: 0 auto 24px; font-size: 14px; line-height: 1.6;">
                             @if(request('search'))

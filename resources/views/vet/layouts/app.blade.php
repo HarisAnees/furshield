@@ -11,6 +11,19 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/owner/owner.css?v=2.6">
+
+    <!-- Favicon Suite -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- FontAwesome 6 Pro-grade Vectors -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .vet-badge {
             background: #ecfdf5;
@@ -165,12 +178,12 @@
             <main class="owner-page-content">
                 @if (session('success'))
                     <div style="background: #ecfdf5; border: 1px solid #10b981; color: #064e3b; padding: 14px 18px; border-radius: 12px; margin-bottom: 20px; font-size: 13.5px; display: flex; align-items: center; gap: 10px;">
-                        <span style="font-weight: 800;">✓</span> {{ session('success') }}
+                        <i class="fa-solid fa-circle-check" style="color: #059669; font-size: 16px;"></i> {{ session('success') }}
                     </div>
                 @endif
                 @if (session('error'))
                     <div style="background: #fef2f2; border: 1px solid #ef4444; color: #991b1b; padding: 14px 18px; border-radius: 12px; margin-bottom: 20px; font-size: 13.5px; display: flex; align-items: center; gap: 10px;">
-                        <span style="font-weight: 800;">✕</span> {{ session('error') }}
+                        <i class="fa-solid fa-circle-xmark" style="color: #dc2626; font-size: 16px;"></i> {{ session('error') }}
                     </div>
                 @endif
 

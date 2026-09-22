@@ -77,13 +77,13 @@
             @csrf
             <div class="shelter-modal-header">
                 <div class="shelter-modal-header-left">
-                    <div class="shelter-modal-icon-badge">📋</div>
+                    <div class="shelter-modal-icon-badge"><i class="fa-solid fa-clipboard-list"></i></div>
                     <div>
                         <h3 class="shelter-modal-title">Record Daily Care Activity</h3>
                         <p class="shelter-modal-subtitle">Log feeding, grooming, medical care, or observations.</p>
                     </div>
                 </div>
-                <button type="button" class="shelter-modal-close" onclick="closeCareLogModal()" aria-label="Close modal">✕</button>
+                <button type="button" class="shelter-modal-close" onclick="closeCareLogModal()" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
             <div class="shelter-modal-body">
@@ -117,7 +117,7 @@
 
             <div class="shelter-modal-footer">
                 <button type="button" onclick="closeCareLogModal()" class="shelter-btn-cancel">Cancel</button>
-                <button type="submit" class="shelter-btn-submit">Save Care Log ✓</button>
+                <button type="submit" class="shelter-btn-submit"><i class="fa-solid fa-check" style="margin-right: 6px;"></i>Save Care Log</button>
             </div>
         </form>
     </div>

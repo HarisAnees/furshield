@@ -106,13 +106,13 @@
             @csrf
             <div class="shelter-modal-header">
                 <div class="shelter-modal-header-left">
-                    <div class="shelter-modal-icon-badge">🩺</div>
+                    <div class="shelter-modal-icon-badge"><i class="fa-solid fa-stethoscope"></i></div>
                     <div>
                         <h3 class="shelter-modal-title">Clinical Treatment: <span id="modalPetName" style="color: #059669;">Companion</span></h3>
                         <p class="shelter-modal-subtitle">Record clinical diagnosis, medication dosage, and follow-up notes.</p>
                     </div>
                 </div>
-                <button type="button" class="shelter-modal-close" onclick="closeTreatmentModal()" aria-label="Close modal">✕</button>
+                <button type="button" class="shelter-modal-close" onclick="closeTreatmentModal()" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
             <div class="shelter-modal-body">
@@ -140,7 +140,7 @@
 
             <div class="shelter-modal-footer">
                 <button type="button" onclick="closeTreatmentModal()" class="shelter-btn-cancel">Cancel</button>
-                <button type="submit" class="shelter-btn-submit">Save & Complete Treatment ✓</button>
+                <button type="submit" class="shelter-btn-submit"><i class="fa-solid fa-check" style="margin-right: 6px;"></i>Save & Complete Treatment</button>
             </div>
         </form>
     </div>

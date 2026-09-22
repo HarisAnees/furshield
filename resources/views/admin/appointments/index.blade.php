@@ -70,7 +70,7 @@
                         </td>
                         <td>
                             <div class="user-info-cell">
-                                <span style="font-size: 16px;">🐾</span>
+                                <i class="fa-solid fa-shield-cat" style="color: #059669; font-size: 16px; margin-right: 8px;"></i>
                                 <div>
                                     <strong style="color: #0f172a;">{{ $apt->pet->name ?? 'Unknown Pet' }}</strong>
                                     <small style="display: block; color: #64748b;">{{ $apt->pet->species ?? '' }}</small>
@@ -120,7 +120,7 @@
                     <tr>
                         <td colspan="7">
                             <div class="empty-state">
-                                <span class="empty-state-icon">📅</span>
+                                <span class="empty-state-icon"><i class="fa-solid fa-calendar-xmark" style="color: #059669;"></i></span>
                                 <h4>No appointments found</h4>
                                 <p>There are no veterinary appointments matching your current filter.</p>
                             </div>

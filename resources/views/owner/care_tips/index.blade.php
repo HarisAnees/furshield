@@ -6,7 +6,7 @@
 <div class="owner-subpage-card">
     <div class="owner-subpage-header">
         <div class="owner-subpage-title">
-            <span>💡</span> Pet Care Knowledge & Veterinary Advice
+            <i class="fa-solid fa-lightbulb" style="color: #10b981;"></i> Pet Care Knowledge & Veterinary Advice
         </div>
         <span style="font-size: 12px; color: #64748b;">{{ $articles->count() }} Articles Published</span>
     </div>

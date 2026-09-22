@@ -8,7 +8,7 @@
 <!-- KPI Summary Cards -->
 <section class="kpi-grid">
     <div class="kpi-card">
-        <div class="kpi-icon-wrap teal">👥</div>
+        <div class="kpi-icon-wrap teal"><i class="fa-solid fa-users"></i></div>
         <div class="kpi-details">
             <span class="kpi-label">Total Users</span>
             <span class="kpi-value">{{ number_format($metrics['total_users']) }}</span>
@@ -16,7 +16,7 @@
         <div class="kpi-trend up">↑ 12%</div>
     </div>
     <div class="kpi-card">
-        <div class="kpi-icon-wrap blue">🐾</div>
+        <div class="kpi-icon-wrap blue"><i class="fa-solid fa-paw"></i></div>
         <div class="kpi-details">
             <span class="kpi-label">Registered Pets</span>
             <span class="kpi-value">{{ number_format($metrics['total_pets']) }}</span>
@@ -24,7 +24,7 @@
         <div class="kpi-trend up">↑ 8%</div>
     </div>
     <div class="kpi-card">
-        <div class="kpi-icon-wrap green">🩺</div>
+        <div class="kpi-icon-wrap green"><i class="fa-solid fa-stethoscope"></i></div>
         <div class="kpi-details">
             <span class="kpi-label">Appointments</span>
             <span class="kpi-value">{{ number_format($metrics['total_appointments']) }}</span>
@@ -32,7 +32,7 @@
         <div class="kpi-trend up">↑ 5%</div>
     </div>
     <div class="kpi-card">
-        <div class="kpi-icon-wrap orange">💳</div>
+        <div class="kpi-icon-wrap orange"><i class="fa-solid fa-credit-card"></i></div>
         <div class="kpi-details">
             <span class="kpi-label">Marketplace Revenue</span>
             <span class="kpi-value">${{ number_format($metrics['total_revenue'], 2) }}</span>
@@ -46,7 +46,7 @@
     <div class="admin-card">
         <div class="admin-card-header">
             <h3 class="admin-card-title">
-                <span>📁</span> Users & Pet Owners Report
+                <i class="fa-solid fa-folder-open" style="color: #059669; margin-right: 6px;"></i> Users & Pet Owners Report
             </h3>
         </div>
         <div class="admin-card-body">
@@ -63,7 +63,7 @@
     <div class="admin-card">
         <div class="admin-card-header">
             <h3 class="admin-card-title">
-                <span>📅</span> Appointments & Clinical Visits
+                <i class="fa-solid fa-calendar-days" style="color: #059669; margin-right: 6px;"></i> Appointments & Clinical Visits
             </h3>
         </div>
         <div class="admin-card-body">
@@ -80,7 +80,7 @@
     <div class="admin-card">
         <div class="admin-card-header">
             <h3 class="admin-card-title">
-                <span>🛍️</span> Marketplace Orders & Sales
+                <i class="fa-solid fa-bag-shopping" style="color: #059669; margin-right: 6px;"></i> Marketplace Orders & Sales
             </h3>
         </div>
         <div class="admin-card-body">

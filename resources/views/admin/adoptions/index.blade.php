@@ -11,13 +11,13 @@
             All Rescue Pets
         </a>
         <a href="{{ route('admin.adoptions.index', ['status' => 'available']) }}" class="filter-pill-link {{ request('status') === 'available' ? 'active' : '' }}">
-            🟢 Available
+            Available
         </a>
         <a href="{{ route('admin.adoptions.index', ['status' => 'pending']) }}" class="filter-pill-link {{ request('status') === 'pending' ? 'active' : '' }}">
-            🟡 Pending Adoption
+            Pending
         </a>
         <a href="{{ route('admin.adoptions.index', ['status' => 'adopted']) }}" class="filter-pill-link {{ request('status') === 'adopted' ? 'active' : '' }}">
-            🏡 Adopted
+            Adopted
         </a>
     </div>
 
@@ -59,8 +59,8 @@
                     <tr>
                         <td>
                             <div class="user-info-cell">
-                                <div class="user-avatar-sm" style="background: #fef3c7; color: #b45309; font-size: 16px;">
-                                    🐾
+                                <div class="user-avatar-sm" style="background: #ecfdf5; color: #059669; font-size: 14px;">
+                                    <i class="fa-solid fa-shield-cat"></i>
                                 </div>
                                 <div class="user-info-meta">
                                     <strong style="color: #0f172a;">{{ $item->pet_name }}</strong>
@@ -97,9 +97,9 @@
                                     @if($item->status === 'available') background: #dcfce7; color: #15803d; border-color: #86efac;
                                     @elseif($item->status === 'pending') background: #fef3c7; color: #b45309; border-color: #fde68a;
                                     @else background: #e0f2fe; color: #0369a1; border-color: #bae6fd; @endif">
-                                    <option value="available" {{ $item->status === 'available' ? 'selected' : '' }}>🟢 Available</option>
-                                    <option value="pending" {{ $item->status === 'pending' ? 'selected' : '' }}>🟡 Pending</option>
-                                    <option value="adopted" {{ $item->status === 'adopted' ? 'selected' : '' }}>🏡 Adopted</option>
+                                    <option value="available" {{ $item->status === 'available' ? 'selected' : '' }}>Available</option>
+                                    <option value="pending" {{ $item->status === 'pending' ? 'selected' : '' }}>Pending</option>
+                                    <option value="adopted" {{ $item->status === 'adopted' ? 'selected' : '' }}>Adopted</option>
                                 </select>
                             </form>
                         </td>
@@ -115,7 +115,7 @@
                     <tr>
                         <td colspan="7">
                             <div class="empty-state">
-                                <span class="empty-state-icon">🐶</span>
+                                <span class="empty-state-icon"><i class="fa-solid fa-paw" style="color: #059669;"></i></span>
                                 <h4>No adoption listings found</h4>
                                 <p>Add shelter animals looking for a loving forever home.</p>
                             </div>

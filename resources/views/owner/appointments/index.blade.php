@@ -8,10 +8,10 @@
     <div class="owner-subpage-card">
         <div class="owner-subpage-header">
             <div class="owner-subpage-title">
-                <span>🩺</span> My Consultations & Clinic Visits
+                <i class="fa-solid fa-stethoscope" style="color: #10b981;"></i> My Consultations & Clinic Visits
             </div>
             <button type="button" class="owner-btn owner-btn-primary" onclick="openOwnerModal('bookAptModal')">
-                + Book Visit
+                <i class="fa-solid fa-plus"></i> Book Visit
             </button>
         </div>
         <div class="owner-subpage-body no-padding" style="padding: 0;">
@@ -19,8 +19,8 @@
                 @forelse($appointments as $apt)
                     <div class="owner-appointment-item">
                         <div style="display: flex; align-items: center; gap: 14px;">
-                            <div style="width: 46px; height: 46px; border-radius: 10px; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
-                                🐾
+                            <div style="width: 46px; height: 46px; border-radius: 10px; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;">
+                                <i class="fa-solid fa-paw"></i>
                             </div>
                             <div>
                                 <div style="display: flex; align-items: center; gap: 8px;">
@@ -61,7 +61,9 @@
                     </div>
                 @empty
                     <div style="text-align: center; padding: 40px; color: #64748b;">
-                        <span style="font-size: 36px; display: block; margin-bottom: 8px;">📅</span>
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #ecfdf5; color: #059669; display: inline-flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 10px;">
+                            <i class="fa-solid fa-calendar-xmark"></i>
+                        </div>
                         <h4>No appointments yet</h4>
                         <p style="font-size: 12px;">Need a checkup or vaccination? Book your appointment online.</p>
                     </div>
@@ -74,7 +76,7 @@
     <div class="owner-subpage-card">
         <div class="owner-subpage-header">
             <div class="owner-subpage-title">
-                <span>➕</span> Schedule Appointment
+                <i class="fa-solid fa-calendar-plus" style="color: #10b981;"></i> Schedule Appointment
             </div>
         </div>
         <div class="owner-subpage-body">

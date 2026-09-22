@@ -12,6 +12,19 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/admin/admin.css?v=2.6">
+
+    <!-- Favicon Suite -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- FontAwesome 6 Pro-grade Vectors -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .flash-alert {
             padding: 14px 20px;
@@ -205,21 +218,21 @@
         <main class="content">
             @if (session('success'))
             <div class="flash-alert success">
-                <div>✓ {{ session('success') }}</div>
+                <div><i class="fa-solid fa-circle-check" style="margin-right: 6px;"></i>{{ session('success') }}</div>
                 <button type="button" class="flash-close-btn" onclick="this.parentElement.remove()" aria-label="Close alert">&times;</button>
             </div>
             @endif
 
             @if (session('error'))
             <div class="flash-alert error">
-                <div>⚠️ {{ session('error') }}</div>
+                <div><i class="fa-solid fa-triangle-exclamation" style="margin-right: 6px;"></i>{{ session('error') }}</div>
                 <button type="button" class="flash-close-btn" onclick="this.parentElement.remove()" aria-label="Close alert">&times;</button>
             </div>
             @endif
 
             @if ($errors->any())
             <div class="flash-alert error">
-                <div>⚠️ {{ $errors->first() }}</div>
+                <div><i class="fa-solid fa-triangle-exclamation" style="margin-right: 6px;"></i>{{ $errors->first() }}</div>
                 <button type="button" class="flash-close-btn" onclick="this.parentElement.remove()" aria-label="Close alert">&times;</button>
             </div>
             @endif

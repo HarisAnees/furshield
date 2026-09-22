@@ -22,9 +22,31 @@
     <div class="pet-directory-grid reveal delay-1" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 24px; margin-bottom: 48px; align-items: start;">
         @forelse($pets as $index => $pet)
             @php
-                $petImages = ['/images/buddy.jpg', '/images/luna.jpg', '/images/max.jpg'];
-                $img = $petImages[$index % count($petImages)];
-                if ($pet->photo_url) $img = $pet->photo_url;
+                $pName = strtolower(trim($pet->name));
+                $pSpecies = strtolower(trim($pet->species));
+                $nameMap = [
+                    'buddy' => '/images/buddy.jpg',
+                    'luna' => '/images/luna.jpg',
+                    'max' => '/images/max.jpg',
+                    'bella' => '/images/bella.jpg',
+                    'charlie' => '/images/charlie.jpg',
+                    'rocky' => '/images/rocky.jpg',
+                ];
+                $dogImages = ['/images/buddy.jpg', '/images/max.jpg', '/images/charlie.jpg', '/images/rocky.jpg'];
+                $catImages = ['/images/luna.jpg', '/images/bella.jpg', '/images/story-cat.jpg'];
+
+                if (!empty($pet->photo_url)) {
+                    $img = $pet->photo_url;
+                } elseif (isset($nameMap[$pName])) {
+                    $img = $nameMap[$pName];
+                } elseif ($pSpecies === 'dog' || str_contains($pSpecies, 'canine')) {
+                    $img = $dogImages[$index % count($dogImages)];
+                } elseif ($pSpecies === 'cat' || str_contains($pSpecies, 'feline')) {
+                    $img = $catImages[$index % count($catImages)];
+                } else {
+                    $img = $dogImages[$index % count($dogImages)];
+                }
+
                 $ageText = '1 year';
                 if ($pet->date_of_birth) {
                     $years = \Carbon\Carbon::parse($pet->date_of_birth)->age;
@@ -109,7 +131,9 @@
             </div>
         @empty
             <div style="grid-column: 1 / -1; text-align: center; padding: 64px 20px;" class="card">
-                <div style="font-size: 2.5rem; margin-bottom: 12px;">🐾</div>
+                <div style="width: 56px; height: 56px; border-radius: 50%; background: #ecfdf5; color: #059669; display: inline-flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 14px;">
+                    <i class="fa-solid fa-shield-cat"></i>
+                </div>
                 <h3 style="font-size: 1.25rem; margin-bottom: 8px;">No Pets Registered Yet</h3>
                 <p style="color: var(--muted); margin-bottom: 24px; max-width: 440px; margin-left: auto; margin-right: auto;">
                     Register your dog, cat or companion animal to document medical visits, track weights, and configure care reminders.
@@ -133,7 +157,7 @@
             <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: var(--paper); border: 1px solid var(--border); border-radius: var(--radius-md);">
                 <div style="display: flex; align-items: center; gap: 16px;">
                     <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--emerald-soft); color: var(--emerald-dark); font-size: 1.1rem; display: flex; align-items: center; justify-content: center;">
-                        🐾
+                        <i class="fa-solid fa-syringe"></i>
                     </div>
                     <div>
                         <strong style="display: block; font-size: 0.95rem; margin-bottom: 2px;">Vaccination Protocol</strong>
@@ -149,7 +173,7 @@
             <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: var(--paper); border: 1px solid var(--border); border-radius: var(--radius-md);">
                 <div style="display: flex; align-items: center; gap: 16px;">
                     <div style="width: 40px; height: 40px; border-radius: 50%; background: #e0f2fe; color: #0284c7; font-size: 1.1rem; display: flex; align-items: center; justify-content: center;">
-                        ✂️
+                        <i class="fa-solid fa-scissors"></i>
                     </div>
                     <div>
                         <strong style="display: block; font-size: 0.95rem; margin-bottom: 2px;">Grooming & Coat Check</strong>

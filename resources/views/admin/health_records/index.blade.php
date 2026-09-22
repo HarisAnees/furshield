@@ -11,16 +11,16 @@
             All Records
         </a>
         <a href="{{ route('admin.health-records.index', ['type' => 'vaccination']) }}" class="filter-pill-link {{ request('type') === 'vaccination' ? 'active' : '' }}">
-            💉 Vaccination
+            <i class="fa-solid fa-syringe" style="color: #059669; margin-right: 4px;"></i> Vaccination
         </a>
         <a href="{{ route('admin.health-records.index', ['type' => 'checkup']) }}" class="filter-pill-link {{ request('type') === 'checkup' ? 'active' : '' }}">
-            🩺 Exam / Checkup
+            <i class="fa-solid fa-stethoscope" style="color: #059669; margin-right: 4px;"></i> Exam / Checkup
         </a>
         <a href="{{ route('admin.health-records.index', ['type' => 'surgery']) }}" class="filter-pill-link {{ request('type') === 'surgery' ? 'active' : '' }}">
-            🩹 Surgery
+            <i class="fa-solid fa-bandage" style="color: #059669; margin-right: 4px;"></i> Surgery
         </a>
         <a href="{{ route('admin.health-records.index', ['type' => 'prescription']) }}" class="filter-pill-link {{ request('type') === 'prescription' ? 'active' : '' }}">
-            💊 Medication
+            <i class="fa-solid fa-pills" style="color: #059669; margin-right: 4px;"></i> Medication
         </a>
     </div>
 
@@ -65,7 +65,7 @@
                         </td>
                         <td>
                             <div class="user-info-cell">
-                                <span style="font-size: 16px;">🐾</span>
+                                <i class="fa-solid fa-shield-cat" style="color: #059669; font-size: 16px; margin-right: 8px;"></i>
                                 <div>
                                     <strong style="color: #0f172a;">{{ $rec->pet->name ?? 'Unknown Pet' }}</strong>
                                     <small style="display: block; color: #64748b;">Owner: {{ $rec->pet->user->name ?? '—' }}</small>
@@ -85,7 +85,7 @@
                         </td>
                         <td style="max-width: 260px;">
                             <strong style="font-size: 12.5px; color: #0f172a; display: block;">{{ $rec->title }}</strong>
-                            <p style="font-size: 11.5px; color: #64748b; margin: 2px 0 0; line-height: 1.3;">
+                            <p style="font-size: 11.5px; color: #64748b; margin-2px 0 0; line-height: 1.3;">
                                 {{ \Illuminate\Support\Str::limit($rec->description, 70) }}
                             </p>
                         </td>
@@ -115,7 +115,7 @@
                     <tr>
                         <td colspan="7">
                             <div class="empty-state">
-                                <span class="empty-state-icon">📋</span>
+                                <span class="empty-state-icon"><i class="fa-solid fa-clipboard-list" style="color: #059669;"></i></span>
                                 <h4>No medical records found</h4>
                                 <p>Record vaccinations, physical examinations, and treatments for pets here.</p>
                             </div>

@@ -71,7 +71,7 @@
 
         <div style="display: flex; justify-content: flex-end; gap: 10px;">
             <button type="submit" class="btn-sm btn-emerald" style="padding: 10px 20px;">
-                Save Profile Changes ✓
+                <i class="fa-solid fa-check" style="margin-right: 6px;"></i> Save Profile Changes
             </button>
         </div>
     </form>

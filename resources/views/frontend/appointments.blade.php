@@ -35,7 +35,7 @@
                 <a href="{{ route('appointments.index', ['condition' => 'Diagnostics']) }}" style="font-size: 11.5px; padding: 4px 10px; border-radius: 9999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; text-decoration: none;">Internal Diagnostics</a>
                 <a href="{{ route('appointments.index', ['condition' => 'Canine']) }}" style="font-size: 11.5px; padding: 4px 10px; border-radius: 9999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #ffffff; text-decoration: none;">Canine Wellness</a>
                 @if(request('search') || request('condition') || request('location'))
-                    <a href="{{ route('appointments.index') }}" style="font-size: 11.5px; padding: 4px 10px; border-radius: 9999px; background: rgba(239,68,68,0.2); border: 1px solid rgba(239,68,68,0.4); color: #fca5a5; text-decoration: none;">✕ Clear</a>
+                    <a href="{{ route('appointments.index') }}" style="font-size: 11.5px; padding: 4px 10px; border-radius: 9999px; background: rgba(239,68,68,0.2); border: 1px solid rgba(239,68,68,0.4); color: #fca5a5; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;"><i class="fa-solid fa-xmark"></i> Clear</a>
                 @endif
             </div>
         </div>

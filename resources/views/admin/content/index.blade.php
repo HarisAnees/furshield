@@ -86,7 +86,7 @@
                     <tr>
                         <td colspan="5">
                             <div class="empty-state">
-                                <span class="empty-state-icon">📖</span>
+                                <span class="empty-state-icon"><i class="fa-solid fa-book-open-reader" style="color: #059669;"></i></span>
                                 <h4>No articles found</h4>
                                 <p>Write veterinary guidance and pet wellness guides for your users.</p>
                             </div>

@@ -70,7 +70,7 @@
 
                     <div class="care-poster-description">
                         <div class="care-poster-meta-pill">
-                            <span class="care-poster-verified-icon">🐾</span>
+                            <span class="care-poster-verified-icon"><i class="fa-solid fa-shield-cat"></i></span>
                             <span>Practitioner Verified</span>
                             <span class="care-poster-meta-sep">•</span>
                             <span class="care-description__year">{{ $art['time'] }}</span>

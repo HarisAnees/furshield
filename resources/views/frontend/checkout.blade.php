@@ -58,7 +58,7 @@
                 <div class="card card-padded" style="background: var(--white);">
                     <div class="meta-label" style="margin-bottom: 10px;">Payment Method</div>
                     <div style="display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.95rem; color: var(--ink);">
-                        <span>💵</span>
+                        <i class="fa-solid fa-hand-holding-dollar" style="color: #059669; font-size: 18px;"></i>
                         <span>Cash on Delivery / In-Clinic Settlement</span>
                     </div>
                     <p style="font-size: 0.85rem; color: var(--muted); margin-top: 6px;">

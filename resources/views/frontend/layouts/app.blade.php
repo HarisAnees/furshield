@@ -6,6 +6,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>FurShield — @yield('title', 'Pet Care & Clinical Intelligence')</title>
 
+    <!-- FurShield Official Brand Favicons & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="FurShield">
+    <link rel="manifest" href="/site.webmanifest">
+
     <!-- Google Fonts: Anton (Display), Manrope (Sans), DM Mono (Monospace), Playfair Display (Editorial Italic) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,23 +46,23 @@
             @auth
                 @if(Auth::user()->role === 'admin')
                     <a href="{{ route('admin.dashboard') }}" class="fe-portal-link {{ request()->is('admin*') ? 'active' : '' }}" style="color: #10b981; font-weight: 700;">
-                        <span class="fe-portal-label-full">🛡️ Platform Admin Panel</span>
-                        <span class="fe-portal-label-short">🛡️ Admin</span>
+                        <span class="fe-portal-label-full"><i class="fa-solid fa-shield-halved" style="margin-right: 4px;"></i> Platform Admin Panel</span>
+                        <span class="fe-portal-label-short"><i class="fa-solid fa-shield-halved"></i> Admin</span>
                     </a>
                 @elseif(Auth::user()->role === 'vet')
                     <a href="{{ route('vet.dashboard') }}" class="fe-portal-link {{ request()->is('vet*') ? 'active' : '' }}" style="color: #10b981; font-weight: 700;">
-                        <span class="fe-portal-label-full">🩺 Clinician Portal</span>
-                        <span class="fe-portal-label-short">🩺 Vet</span>
+                        <span class="fe-portal-label-full"><i class="fa-solid fa-stethoscope" style="margin-right: 4px;"></i> Clinician Portal</span>
+                        <span class="fe-portal-label-short"><i class="fa-solid fa-stethoscope"></i> Vet</span>
                     </a>
                 @elseif(Auth::user()->role === 'shelter')
                     <a href="{{ route('shelter.dashboard') }}" class="fe-portal-link {{ request()->is('shelter*') ? 'active' : '' }}" style="color: #10b981; font-weight: 700;">
-                        <span class="fe-portal-label-full">🏡 Shelter Portal</span>
-                        <span class="fe-portal-label-short">🏡 Shelter</span>
+                        <span class="fe-portal-label-full"><i class="fa-solid fa-house-chimney-medical" style="margin-right: 4px;"></i> Shelter Portal</span>
+                        <span class="fe-portal-label-short"><i class="fa-solid fa-house-chimney-medical"></i> Shelter</span>
                     </a>
                 @else
                     <a href="{{ route('owner.dashboard') }}" class="fe-portal-link {{ request()->is('owner*') ? 'active' : '' }}" style="color: #10b981; font-weight: 700;">
-                        <span class="fe-portal-label-full">🐾 Pet Owner Portal</span>
-                        <span class="fe-portal-label-short">🐾 Owner</span>
+                        <span class="fe-portal-label-full"><i class="fa-solid fa-paw" style="margin-right: 4px;"></i> Pet Owner Portal</span>
+                        <span class="fe-portal-label-short"><i class="fa-solid fa-paw"></i> Owner</span>
                     </a>
                 @endif
             @else
@@ -64,7 +73,7 @@
         </div>
         <div class="fe-portal-bar-right" style="display: flex; align-items: center; gap: 16px;">
             <a href="tel:+15550199738" class="fe-portal-emergency" title="24/7 Emergency Hospital Dispatch">
-                <span class="fe-emergency-icon">🚨</span>
+                <span class="fe-emergency-icon"><i class="fa-solid fa-truck-medical"></i></span>
                 <span class="fe-emergency-label">Emergency Care:</span>
                 <strong>+1 (555) 0199-PETS</strong>
             </a>
@@ -206,19 +215,19 @@
 
             <nav class="fe-mobile-nav" aria-label="Mobile navigation">
                 <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">
-                    <span class="fe-mob-icon">🏠</span>
+                    <span class="fe-mob-icon"><i class="fa-solid fa-house"></i></span>
                     <span>Home</span>
                 </a>
                 <a href="{{ route('pets.index') }}" class="{{ request()->routeIs('pets.*') ? 'active' : '' }}">
-                    <span class="fe-mob-icon">🐾</span>
+                    <span class="fe-mob-icon"><i class="fa-solid fa-paw"></i></span>
                     <span>Pets & Adoption</span>
                 </a>
                 <a href="{{ route('products.index') }}" class="{{ request()->routeIs('products.*') ? 'active' : '' }}">
-                    <span class="fe-mob-icon">🛍️</span>
+                    <span class="fe-mob-icon"><i class="fa-solid fa-bag-shopping"></i></span>
                     <span>Pet Pharmacy & Store</span>
                 </a>
                 <a href="{{ route('cart.index') }}" class="fe-mobile-cart-link {{ request()->routeIs('cart.*') ? 'active' : '' }}" data-auth-cart="view" onclick="if(!window.FurShieldAuth){event.preventDefault();event.stopPropagation();if(typeof window.closeFurShieldMobileMenu==='function')window.closeFurShieldMobileMenu();window.openAuthCartModal({mode:'view',redirect:'{{ route('cart.index') }}'});return false;}">
-                    <span class="fe-mob-icon">🛒</span>
+                    <span class="fe-mob-icon"><i class="fa-solid fa-cart-shopping"></i></span>
                     <span style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
                         <span>Shopping Cart</span>
                         @if($cartCount > 0)
@@ -227,19 +236,19 @@
                     </span>
                 </a>
                 <a href="{{ route('appointments.index') }}" class="{{ request()->routeIs('appointments.*') ? 'active' : '' }}">
-                    <span class="fe-mob-icon">🩺</span>
+                    <span class="fe-mob-icon"><i class="fa-solid fa-stethoscope"></i></span>
                     <span>Book Clinician</span>
                 </a>
                 <a href="{{ route('care-tips.index') }}" class="{{ request()->routeIs('care-tips.*') ? 'active' : '' }}">
-                    <span class="fe-mob-icon">💡</span>
+                    <span class="fe-mob-icon"><i class="fa-solid fa-lightbulb"></i></span>
                     <span>Care & Clinical Tips</span>
                 </a>
                 <a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">
-                    <span class="fe-mob-icon">✨</span>
+                    <span class="fe-mob-icon"><i class="fa-solid fa-shield-heart"></i></span>
                     <span>About Sanctuary</span>
                 </a>
                 <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">
-                    <span class="fe-mob-icon">📬</span>
+                    <span class="fe-mob-icon"><i class="fa-solid fa-headset"></i></span>
                     <span>Emergency & Contact</span>
                 </a>
             </nav>
@@ -264,25 +273,29 @@
                         <a href="{{ $mPortal }}" class="btn btn-emerald btn-block" style="display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; padding: 12px 18px; border-radius: 12px; font-size: 14px;">
                             <span>{{ $mLabel }}</span>
                             <span style="font-size: 11px; opacity: 0.8;">({{ Auth::user()->name }})</span>
-                            <span>↗</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px;"></i>
                         </a>
                         <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
                             @csrf
-                            <button type="submit" class="btn btn-block" style="background: rgba(239, 68, 68, 0.12); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); font-size: 13px; font-weight: 600; padding: 10px; border-radius: 12px; cursor: pointer;">
-                                Sign Out ⏻
+                            <button type="submit" class="btn btn-block" style="background: rgba(239, 68, 68, 0.12); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); font-size: 13px; font-weight: 600; padding: 10px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                                <i class="fa-solid fa-power-off"></i>
+                                <span>Sign Out</span>
                             </button>
                         </form>
                     </div>
                 @else
                     <div style="display: flex; gap: 10px;">
                         <a href="{{ route('login') }}" class="btn btn-sm" style="flex: 1; background: rgba(255, 255, 255, 0.08); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.18); text-align: center; text-decoration: none; padding: 12px 0; border-radius: 12px; font-weight: 700; font-size: 14px;">Sign In</a>
-                        <a href="{{ route('register') }}" class="btn btn-emerald btn-sm" style="flex: 1; text-align: center; text-decoration: none; padding: 12px 0; border-radius: 12px; font-weight: 700; font-size: 14px;">Sign Up ↗</a>
+                        <a href="{{ route('register') }}" class="btn btn-emerald btn-sm" style="flex: 1; text-align: center; text-decoration: none; padding: 12px 0; border-radius: 12px; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                            <span>Sign Up</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px;"></i>
+                        </a>
                     </div>
                 @endauth
 
                 <!-- Emergency Dispatch Link -->
                 <a href="tel:+15550199738" class="fe-mobile-emergency-pill">
-                    <span style="font-size: 14px;">🚨</span>
+                    <span style="font-size: 14px;"><i class="fa-solid fa-truck-medical"></i></span>
                     <span>24/7 Emergency Care: <strong>+1 (555) 0199-PETS</strong></span>
                 </a>
             </div>
@@ -294,14 +307,14 @@
         <div class="container" style="padding-top: 24px;">
             @if(session('success'))
                 <div class="fe-alert fe-alert-success">
-                    <div>✓ {{ session('success') }}</div>
+                    <div><i class="fa-solid fa-circle-check" style="margin-right: 6px;"></i>{{ session('success') }}</div>
                     <button type="button" class="fe-alert-close" onclick="this.parentElement.remove()" aria-label="Close alert">&times;</button>
                 </div>
             @endif
 
             @if(session('error'))
                 <div class="fe-alert fe-alert-danger">
-                    <div>⚠️ {{ session('error') }}</div>
+                    <div><i class="fa-solid fa-triangle-exclamation" style="margin-right: 6px;"></i>{{ session('error') }}</div>
                     <button type="button" class="fe-alert-close" onclick="this.parentElement.remove()" aria-label="Close alert">&times;</button>
                 </div>
             @endif
@@ -478,21 +491,21 @@
 
             <div class="fe-auth-modal-perks">
                 <div class="fe-auth-perk-item">
-                    <div class="fe-auth-perk-icon">✓</div>
+                    <div class="fe-auth-perk-icon"><i class="fa-solid fa-check"></i></div>
                     <div class="fe-auth-perk-text">
                         <strong>Verified Clinical Essentials</strong>
                         <span>Veterinary-approved diets, supplements, and supplies</span>
                     </div>
                 </div>
                 <div class="fe-auth-perk-item">
-                    <div class="fe-auth-perk-icon">✓</div>
+                    <div class="fe-auth-perk-icon"><i class="fa-solid fa-check"></i></div>
                     <div class="fe-auth-perk-text">
                         <strong>Saved Pet Profiles & Addresses</strong>
                         <span>Fast, seamless checkout tailored to your companions</span>
                     </div>
                 </div>
                 <div class="fe-auth-perk-item">
-                    <div class="fe-auth-perk-icon">✓</div>
+                    <div class="fe-auth-perk-icon"><i class="fa-solid fa-check"></i></div>
                     <div class="fe-auth-perk-text">
                         <strong>Prescription & Order Tracking</strong>
                         <span>Instant digital invoices and shipment status alerts</span>
@@ -556,7 +569,7 @@
                         </span>
                     </div>
                 </div>
-                <button type="button" id="aiChatClose" aria-label="Close Chat" style="background: none; border: none; color: #94a3b8; font-size: 18px; cursor: pointer;">✕</button>
+                <button type="button" id="aiChatClose" aria-label="Close Chat" style="background: none; border: none; color: #94a3b8; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 6px; transition: color 0.2s;"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
             <!-- Messages Log -->
@@ -568,10 +581,10 @@
 
             <!-- Quick Suggestions -->
             <div class="ai-chips">
-                <button type="button" class="ai-chip" onclick="askAiQuestion('What foods are toxic to dogs and cats?')">🍫 Toxic Foods</button>
-                <button type="button" class="ai-chip" onclick="askAiQuestion('When should I vaccinate my pet?')">💉 Vaccines</button>
-                <button type="button" class="ai-chip" onclick="askAiQuestion('How much water does my pet need daily?')">💧 Hydration</button>
-                <button type="button" class="ai-chip" onclick="askAiQuestion('How do I book a vet consultation?')">🩺 Book Vet</button>
+                <button type="button" class="ai-chip" onclick="askAiQuestion('What foods are toxic to dogs and cats?')"><i class="fa-solid fa-triangle-exclamation" style="color:#ef4444; margin-right:4px;"></i> Toxic Foods</button>
+                <button type="button" class="ai-chip" onclick="askAiQuestion('When should I vaccinate my pet?')"><i class="fa-solid fa-syringe" style="color:#10b981; margin-right:4px;"></i> Vaccines</button>
+                <button type="button" class="ai-chip" onclick="askAiQuestion('How much water does my pet need daily?')"><i class="fa-solid fa-droplet" style="color:#06b6d4; margin-right:4px;"></i> Hydration</button>
+                <button type="button" class="ai-chip" onclick="askAiQuestion('How do I book a vet consultation?')"><i class="fa-solid fa-stethoscope" style="color:#10b981; margin-right:4px;"></i> Book Vet</button>
             </div>
 
             <!-- Input Bar -->
@@ -813,17 +826,17 @@
 
         function generateAiReply(lower) {
             if (lower.includes('toxic') || lower.includes('poison') || lower.includes('chocolate') || lower.includes('food')) {
-                return "⚠️ <strong>High Toxicity Alert:</strong> Never feed pets chocolate, grapes/raisins, onions, garlic, macadamia nuts, or anything with <em>Xylitol</em> (artificial sweetener). If ingested, please contact our 24/7 Emergency Care immediately at <strong>+1 (555) 0199-PETS</strong>.";
+                return "<i class=\"fa-solid fa-triangle-exclamation\" style=\"color:#ef4444; margin-right:4px;\"></i> <strong>High Toxicity Alert:</strong> Never feed pets chocolate, grapes/raisins, onions, garlic, macadamia nuts, or anything with <em>Xylitol</em> (artificial sweetener). If ingested, please contact our 24/7 Emergency Care immediately at <strong>+1 (555) 0199-PETS</strong>.";
             } else if (lower.includes('vaccin') || lower.includes('shot')) {
-                return "💉 <strong>Core Vaccinations:</strong> Puppies & kittens typically begin core shots at 6-8 weeks, followed by boosters every 3-4 weeks until 16 weeks (DHPP/FVRCP & Rabies). You can track full milestones in your <strong><a href='/owner/health-records' style='color:#059669;'>Health Records</a></strong>!";
+                return "<i class=\"fa-solid fa-syringe\" style=\"color:#10b981; margin-right:4px;\"></i> <strong>Core Vaccinations:</strong> Puppies & kittens typically begin core shots at 6-8 weeks, followed by boosters every 3-4 weeks until 16 weeks (DHPP/FVRCP & Rabies). You can track full milestones in your <strong><a href='/owner/health-records' style='color:#059669;'>Health Records</a></strong>!";
             } else if (lower.includes('water') || lower.includes('drink') || lower.includes('hydrate')) {
-                return "💧 <strong>Hydration Guidelines:</strong> Dogs need approx 50-60ml of water per kg of body weight daily. Cats need 50ml per kg. Always ensure access to fresh, clean water!";
+                return "<i class=\"fa-solid fa-droplet\" style=\"color:#06b6d4; margin-right:4px;\"></i> <strong>Hydration Guidelines:</strong> Dogs need approx 50-60ml of water per kg of body weight daily. Cats need 50ml per kg. Always ensure access to fresh, clean water!";
             } else if (lower.includes('vet') || lower.includes('book') || lower.includes('doctor') || lower.includes('appointment')) {
-                return "🩺 <strong>Consultation Booking:</strong> You can book certified veterinary specialists directly on our <strong><a href='/appointments' style='color:#059669;'>Appointments Page</a></strong>. Filter by condition or location to find the perfect clinician!";
+                return "<i class=\"fa-solid fa-stethoscope\" style=\"color:#10b981; margin-right:4px;\"></i> <strong>Consultation Booking:</strong> You can book certified veterinary specialists directly on our <strong><a href='/appointments' style='color:#059669;'>Appointments Page</a></strong>. Filter by condition or location to find the perfect clinician!";
             } else if (lower.includes('adopt') || lower.includes('shelter') || lower.includes('rescue')) {
-                return "🐾 <strong>Adoption Sanctuary:</strong> Explore rescued pets awaiting forever homes in our <strong><a href='/adoption' style='color:#059669;'>Adoption Gallery</a></strong>! Submit an online application with one click.";
+                return "<i class=\"fa-solid fa-house-chimney-medical\" style=\"color:#10b981; margin-right:4px;\"></i> <strong>Adoption Sanctuary:</strong> Explore rescued pets awaiting forever homes in our <strong><a href='/adoption' style='color:#059669;'>Adoption Gallery</a></strong>! Submit an online application with one click.";
             } else {
-                return "🐾 That is an important question regarding companion health. For clinical diagnosis or specific dietary protocol, we recommend booking a consult with one of our licensed veterinarians on the <a href='/appointments' style='color:#059669; font-weight:700;'>Appointments page</a>!";
+                return "<i class=\"fa-solid fa-paw\" style=\"color:#10b981; margin-right:4px;\"></i> That is an important question regarding companion health. For clinical diagnosis or specific dietary protocol, we recommend booking a consult with one of our licensed veterinarians on the <a href='/appointments' style='color:#059669; font-weight:700;'>Appointments page</a>!";
             }
         }
     </script>

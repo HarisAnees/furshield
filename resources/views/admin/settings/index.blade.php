@@ -11,7 +11,7 @@
         <div class="admin-card">
             <div class="admin-card-header">
                 <h3 class="admin-card-title">
-                    <span>🏢</span> Clinic & Platform Information
+                    <i class="fa-solid fa-hospital" style="color: #059669; margin-right: 6px;"></i> Clinic & Platform Information
                 </h3>
             </div>
             <div class="admin-card-body">
@@ -39,7 +39,7 @@
         <div class="admin-card">
             <div class="admin-card-header">
                 <h3 class="admin-card-title">
-                    <span>⚙️</span> Operational Rules & Automated Triggers
+                    <i class="fa-solid fa-sliders" style="color: #059669; margin-right: 6px;"></i> Operational Rules & Automated Triggers
                 </h3>
             </div>
             <div class="admin-card-body">

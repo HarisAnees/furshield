@@ -54,8 +54,8 @@
                     <tr>
                         <td>
                             <div class="user-info-cell">
-                                <div class="user-avatar-sm" style="background: #f1f5f9; font-size: 16px;">
-                                    📦
+                                <div class="user-avatar-sm" style="background: #ecfdf5; font-size: 14px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fa-solid fa-box-open" style="color: #059669;"></i>
                                 </div>
                                 <div class="user-info-meta">
                                     <strong style="color: #0f172a;">{{ $prod->name }}</strong>
@@ -98,7 +98,7 @@
                     <tr>
                         <td colspan="6">
                             <div class="empty-state">
-                                <span class="empty-state-icon">🛍️</span>
+                                <span class="empty-state-icon"><i class="fa-solid fa-bag-shopping" style="color: #059669;"></i></span>
                                 <h4>No products found</h4>
                                 <p>Add supplies and medication to your online marketplace catalog.</p>
                             </div>

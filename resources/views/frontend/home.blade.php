@@ -349,7 +349,7 @@
                             <div class="card-tag">{{ ucfirst($prod->category ?? 'Care Essential') }}</div>
                             <h3 class="card-title">{{ $prod->name }}</h3>
                             <div class="card-rating">
-                                <span class="stars">★★★★★</span>
+                                <span class="stars" style="color: #f59e0b;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
                                 <span class="rating-count">{{ $rating }} ({{ $reviews }})</span>
                             </div>
                             <p class="card-price">
